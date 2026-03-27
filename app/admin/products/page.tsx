@@ -39,8 +39,9 @@ export default async function AdminProductsPage() {
             </thead>
             <tbody>
               {products && products.length > 0 ? (
-                products.map((product) => (
+                products.map((product: any) => (
                   <tr key={product.id} className="border-b border-[#222222] hover:bg-[#222222]/50 transition-colors">
+
                     <td className="py-4 px-6">
                       <div className="flex items-center space-x-4">
                         <div className="w-12 h-12 bg-[#1a1a1a] rounded-lg overflow-hidden border border-[#333333] shrink-0 relative">

@@ -10,9 +10,9 @@ export default function DeleteProductButton({ productId }: { productId: string }
   const handleDelete = () => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       startTransition(async () => {
-        const result = await deleteProduct(productId);
+        const result: any = await deleteProduct(productId);
         if (result && !result.success) {
-          alert('Failed to delete: ' + result.error);
+          alert('Failed to delete: ' + (result.error || 'Unknown error'));
         }
       });
     }

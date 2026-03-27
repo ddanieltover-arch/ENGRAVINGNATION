@@ -34,9 +34,10 @@ export default async function AdminOrdersPage() {
               </tr>
             </thead>
             <tbody>
-               {orders && orders.length > 0 ? (
-                 orders.map((order) => (
-                   <tr key={order.id} className="border-b border-[#222222] hover:bg-[#222222]/50 transition-colors">
+                {orders && orders.length > 0 ? (
+                  orders.map((order: any) => (
+                    <tr key={order.id} className="border-b border-[#222222] hover:bg-[#222222]/50 transition-colors">
+
                      <td className="py-4 px-6 font-mono text-xs text-[#a0a0a0]" title={order.id}>{order.id.slice(0, 8)}...</td>
                      <td className="py-4 px-6">
                        <div className="font-semibold text-white">{order.firstName} {order.lastName}</div>

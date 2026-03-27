@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { LayoutDashboard, Package, ShoppingCart, Settings, LogOut, Ticket } from 'lucide-react';
 import clsx from 'clsx';
+import { logout } from '@/app/admin/login/actions';
+
 
 const navItems = [
   { name: 'Overview', href: '/admin', icon: LayoutDashboard },
@@ -47,11 +49,15 @@ export default function Sidebar() {
       </nav>
 
       <div className="p-4 border-t border-[#333333]">
-        <Link href="/" className="flex items-center space-x-3 px-4 py-3 w-full text-left text-red-500 hover:bg-red-500/10 rounded-lg transition-colors">
-          <LogOut size={20} />
-          <span className="font-medium">Exit Admin</span>
-        </Link>
+        <button 
+          onClick={() => logout()}
+          className="flex items-center space-x-3 px-4 py-3 w-full text-left text-red-500 hover:bg-red-500/10 rounded-lg transition-colors group"
+        >
+          <LogOut size={20} className="group-hover:rotate-12 transition-transform" />
+          <span className="font-medium">Logout Admin</span>
+        </button>
       </div>
+
     </aside>
   );
 }

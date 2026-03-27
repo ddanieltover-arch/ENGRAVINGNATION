@@ -12,8 +12,9 @@ export default async function AdminDashboard() {
   const ordersCount = orders.length;
 
 
-  const totalRevenue = orders?.reduce((sum, order) => sum + (order.total_amount || 0), 0) || 0;
-  const pendingOrders = orders?.filter(o => o.status === 'pending_payment').length || 0;
+  const totalRevenue = orders?.reduce((sum: number, order: any) => sum + (order.total_amount || 0), 0) || 0;
+  const pendingOrders = orders?.filter((o: any) => o.status === 'pending_payment').length || 0;
+
 
   const stats = [
     { label: 'Total Revenue', value: `$${totalRevenue.toFixed(2)}`, icon: DollarSign, trend: 'Last 30 days' },
@@ -66,8 +67,9 @@ export default async function AdminDashboard() {
                  </tr>
                </thead>
                <tbody>
-                 {orders.slice(0, 5).map(order => (
+                 {orders.slice(0, 5).map((order: any) => (
                    <tr key={order.id} className="hover:bg-white/5 transition-colors group border-b border-white/5 last:border-0">
+
                      <td className="py-3 px-4 font-mono text-xs text-[#a0a0a0]">{order.id.slice(0,8)}...</td>
                      <td className="py-3 px-4 text-sm">{new Date(order.created_at).toLocaleDateString()}</td>
                      <td className="py-3 px-4">
