@@ -6,7 +6,7 @@ export default function TawkChat() {
   return (
     <Script
       id="tawk-to"
-      strategy="lazyOnload"
+      strategy="afterInteractive"
       dangerouslySetInnerHTML={{
         __html: `
           var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -17,6 +17,7 @@ export default function TawkChat() {
             s1.charset='UTF-8';
             s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
+            console.log("Tawk.to Script Initialized");
           })();
         `,
       }}
