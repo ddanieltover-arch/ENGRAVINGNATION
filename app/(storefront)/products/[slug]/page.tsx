@@ -86,19 +86,8 @@ export default async function ProductDetailPage({
         </div>
 
         {/* Product Details Tabs */}
-        <ProductTabs description={product.description} />
+        <ProductTabs description={product.description} reviews={product.reviews} relatedProducts={relatedProducts} />
 
-        {/* Recommended Accessories */}
-        <section className="mt-32">
-          <h2 className="text-2xl font-heading font-black tracking-tighter uppercase italic mb-12">
-            Recommended <span className="text-brand-gold">Accessories</span>
-          </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-            {relatedProducts.map((p: any) => (
-              <ProductCard key={p.slug} product={p} />
-            ))}
-          </div>
-        </section>
       </div>
     </div>
   );

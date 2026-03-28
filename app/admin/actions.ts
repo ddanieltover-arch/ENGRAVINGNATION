@@ -2,6 +2,8 @@
 
 import { revalidatePath } from 'next/cache';
 import { getJsonData, saveJsonData, PRODUCTS_FILE, ORDERS_FILE, COUPONS_FILE } from '@/lib/data';
+import { sendEmail } from '@/lib/email';
+import { orderStatusUpdateTemplate } from '@/lib/email-templates';
 
 const getProducts = () => getJsonData(PRODUCTS_FILE);
 const saveProducts = (data: any[]) => saveJsonData(PRODUCTS_FILE, data);
@@ -82,8 +84,22 @@ export async function updateOrderStatus(orderId: string, status: string) {
   const orders = getOrders();
   const index = orders.findIndex((o: any) => o.id === orderId);
   if (index !== -1) {
-    orders[index].status = status;
+    const order = orders[index];
+    order.status = status;
     saveOrders(orders);
+
+    // --- Send Status Update Email ---
+    if (order.email) {
+      try {
+        await sendEmail({
+          to: order.email,
+          subject: `Status Update for Order #${orderId} - Engraving Nation`,
+          html: orderStatusUpdateTemplate(order, status),
+        });
+      } catch (emailError) {
+        console.error('Failed to send status update email:', emailError);
+      }
+    }
   }
   revalidatePath('/admin/orders');
   revalidatePath(`/admin/orders/${orderId}`);

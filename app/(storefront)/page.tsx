@@ -147,7 +147,7 @@ export default async function HomePage() {
                   <div className="space-y-2">
                     <p className="text-sm flex items-center gap-3">
                       <span className="font-bold text-[10px] uppercase tracking-widest opacity-40 text-white">Call Us:</span>
-                      <a href="tel:+16562436963" className="hover:text-brand-gold transition-colors font-medium text-white">+1 (656) 243-6963</a>
+                      <a href="tel:+13322566110" className="hover:text-brand-gold transition-colors font-medium text-white">+1 (332) 256-6110</a>
                     </p>
                     <p className="text-sm flex items-center gap-3">
                       <span className="font-bold text-[10px] uppercase tracking-widest opacity-40 text-white">Email:</span>

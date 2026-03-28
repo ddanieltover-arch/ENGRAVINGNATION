@@ -59,16 +59,7 @@ export default function Footer() {
           <div>
             <h4 className="text-[10px] font-black tracking-[0.2em] uppercase text-brand-gold mb-6">Newsletter</h4>
             <p className="text-sm text-white/40 mb-6 font-light">Subscribe for updates on new designs and exclusive offers.</p>
-            <form className="space-y-3">
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white w-full focus:outline-none focus:border-brand-gold transition-colors"
-              />
-              <button type="submit" className="btn-primary w-full py-3 text-[10px]">
-                Join the Nation
-              </button>
-            </form>
+            <NewsletterForm />
           </div>
         </div>
         
@@ -136,5 +127,66 @@ export default function Footer() {
         }
       />
     </footer>
+  );
+}
+
+function NewsletterForm() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setStatus('success');
+        setEmail('');
+        setMessage('Welcome to the Nation!');
+      } else {
+        setStatus('error');
+        setMessage(data.error || 'Something went wrong');
+      }
+    } catch (err) {
+      setStatus('error');
+      setMessage('Failed to subscribe');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-3">
+      <div className="relative">
+        <input 
+          type="email" 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Your email" 
+          disabled={status === 'loading' || status === 'success'}
+          className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white w-full focus:outline-none focus:border-brand-gold transition-colors disabled:opacity-50"
+          required
+        />
+      </div>
+      <button 
+        type="submit" 
+        disabled={status === 'loading' || status === 'success'}
+        className={`btn-primary w-full py-3 text-[10px] transition-all duration-300 ${status === 'success' ? 'bg-green-600 border-green-600 text-white' : ''}`}
+      >
+        {status === 'loading' ? 'Joining...' : status === 'success' ? 'Subscribed!' : 'Join the Nation'}
+      </button>
+      {message && (
+        <p className={`text-[10px] uppercase tracking-widest text-center mt-2 ${status === 'error' ? 'text-red-500' : 'text-brand-gold font-bold italic animate-pulse'}`}>
+          {message}
+        </p>
+      )}
+    </form>
   );
 }

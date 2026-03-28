@@ -1,0 +1,64 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.9.0
+2 info using node@v24.14.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\User\AppData\Local\Programs\Antigravity\.npmrc
+5 silly config load:file:C:\Users\User\.npmrc
+6 silly config load:file:C:\Users\User\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm exec firebase-tools@latest mcp
+8 verbose argv "exec" "--yes" "--" "firebase-tools@latest" "mcp"
+9 verbose logfile logs-max:10 dir:C:\Users\User\AppData\Local\npm-cache\_logs\2026-03-28T10_54_00_625Z-
+10 verbose logfile C:\Users\User\AppData\Local\npm-cache\_logs\2026-03-28T10_54_00_625Z-debug-0.log
+11 silly logfile start cleaning logs, removing 1 files
+12 silly logfile done cleaning log files
+13 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+14 http fetch GET 200 https://registry.npmjs.org/firebase-tools 606ms (cache revalidated)
+15 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+16 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+17 silly idealTree buildDeps
+18 silly fetch manifest firebase-tools@15.12.0
+19 silly packumentCache full:https://registry.npmjs.org/firebase-tools cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/firebase-tools 168ms (cache revalidated)
+21 silly packumentCache full:https://registry.npmjs.org/firebase-tools set size:2366031 disposed:false
+22 silly placeDep ROOT firebase-tools@15.12.0 REPLACE for:  want: 15.12.0
+23 silly fetch manifest tar@^7.5.11
+24 silly packumentCache full:https://registry.npmjs.org/tar cache-miss
+25 http fetch GET 200 https://registry.npmjs.org/tar 159ms (cache revalidated)
+26 silly packumentCache full:https://registry.npmjs.org/tar set size:531438 disposed:false
+27 silly fetch manifest string-width@^4.2.0
+28 silly packumentCache full:https://registry.npmjs.org/string-width cache-miss
+29 http fetch GET 200 https://registry.npmjs.org/string-width 159ms (cache revalidated)
+30 silly packumentCache full:https://registry.npmjs.org/string-width set size:68305 disposed:false
+31 silly fetch manifest strip-ansi@^6.0.1
+32 silly packumentCache full:https://registry.npmjs.org/strip-ansi cache-miss
+33 http fetch GET 200 https://registry.npmjs.org/strip-ansi 161ms (cache revalidated)
+34 silly packumentCache full:https://registry.npmjs.org/strip-ansi set size:44998 disposed:false
+35 silly fetch manifest wrap-ansi@^7.0.0
+36 silly packumentCache full:https://registry.npmjs.org/wrap-ansi cache-miss
+37 http fetch GET 200 https://registry.npmjs.org/wrap-ansi 172ms (cache revalidated)
+38 silly packumentCache full:https://registry.npmjs.org/wrap-ansi set size:55299 disposed:false
+39 silly placeDep node_modules/cliui string-width@4.2.3 OK for: cliui@8.0.1 want: ^4.2.0
+40 silly placeDep ROOT strip-ansi@6.0.1 OK for: cliui@8.0.1 want: ^6.0.1
+41 verbose stack TypeError: Invalid Version: 
+41 verbose stack     at new SemVer (C:\Program Files\nodejs\node_modules\npm\node_modules\semver\classes\semver.js:40:13)
+41 verbose stack     at compare (C:\Program Files\nodejs\node_modules\npm\node_modules\semver\functions\compare.js:5:32)
+41 verbose stack     at Object.eq (C:\Program Files\nodejs\node_modules\npm\node_modules\semver\functions\eq.js:4:29)
+41 verbose stack     at Node.canDedupe (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\node.js:1138:32)
+41 verbose stack     at PlaceDep.pruneDedupable (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\place-dep.js:426:14)
+41 verbose stack     at new PlaceDep (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\place-dep.js:278:14)
+41 verbose stack     at #buildDepStep (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:932:18)
+41 verbose stack     at async Arborist.buildIdealTree (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:170:7)
+41 verbose stack     at async Promise.all (index 1)
+41 verbose stack     at async Arborist.reify (C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\reify.js:110:5)
+42 error Invalid Version: 
+43 silly unfinished npm timer reify 1774695242011
+44 silly unfinished npm timer reify:loadTrees 1774695242012
+45 silly unfinished npm timer idealTree:buildDeps 1774695242338
+46 silly unfinished npm timer idealTree:node_modules/cliui 1774695242729
+47 verbose cwd C:\Users\User\AppData\Local\Programs\Antigravity
+48 verbose os Windows_NT 10.0.22621
+49 verbose node v24.14.0
+50 verbose npm  v11.9.0
+51 verbose exit 1
+52 verbose code 1
+53 error A complete log of this run can be found in: C:\Users\User\AppData\Local\npm-cache\_logs\2026-03-28T10_54_00_625Z-debug-0.log
