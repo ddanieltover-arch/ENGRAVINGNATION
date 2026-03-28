@@ -8,6 +8,8 @@ import ProductCard from '@/components/ProductCard';
 import ProductTabs from '@/components/ProductTabs';
 import ProductGallery from '@/components/ProductGallery';
 
+export const revalidate = 0;
+
 export default async function ProductDetailPage({ 
   params 
 }: { 

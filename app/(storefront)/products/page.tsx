@@ -5,6 +5,7 @@ import ProductCard from '@/components/ProductCard';
 
 // Opt out of caching so URL search params are read fresh if needed
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function ProductsPage({ 
   searchParams 

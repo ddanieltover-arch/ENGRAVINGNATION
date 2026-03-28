@@ -6,6 +6,8 @@ import VehicleSelector from '@/components/VehicleSelector';
 import ProductCard from '@/components/ProductCard';
 import { getProducts } from '@/lib/data';
 
+export const revalidate = 0;
+
 export default async function HomePage() {
   const allProducts = await getProducts();
   const featuredProducts = allProducts.slice(0, 8);

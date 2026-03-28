@@ -77,10 +77,10 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
               )}
             </div>
             
-            <div className="mt-6 pt-6 border-t border-[#333333] flex justify-between items-center">
-               <span className="text-lg text-[#a0a0a0]">Order Total</span>
-               <span className="text-2xl font-bold text-brand-gold">${(order.total_amount || 0).toFixed(2)}</span>
-            </div>
+            <div className="flex justify-between items-center bg-brand-gold/10 p-4 rounded-lg border border-brand-gold/20">
+               <span className="font-outfit font-bold text-lg text-white">Grand Total</span>
+               <span className="text-2xl font-bold text-brand-gold">${(order.grand_total || 0).toFixed(2)}</span>
+             </div>
           </div>
         </div>
 

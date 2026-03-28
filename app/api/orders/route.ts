@@ -11,15 +11,19 @@ export async function POST(req: Request) {
     const orderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000); // 6 digit random
     const newOrder = {
       id: orderId,
-      created_at: new Date().toISOString(),
       status: 'pending_payment',
       customer_name: data.customer_name,
       email: data.email,
       address: data.address,
       city: data.city,
       zip: data.zip,
-      total_amount: data.grandTotal,
+      country: data.country || 'US',
       items: data.items,
+      cart_total: data.cartTotal || 0,
+      discount_amount: data.discountAmount || 0,
+      shipping_method: data.shippingMethod || 'unknown',
+      shipping_cost: data.currentShippingCost || 0,
+      grand_total: data.grandTotal,
       payment_method: data.payment_method || 'Direct Bank Transfer',
       payment_status: 'pending'
     };

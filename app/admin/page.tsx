@@ -13,7 +13,7 @@ export default async function AdminDashboard() {
   const ordersCount = orders.length;
 
 
-  const totalRevenue = orders?.reduce((sum: number, order: any) => sum + (order.total_amount || 0), 0) || 0;
+  const totalRevenue = orders?.reduce((sum: number, order: any) => sum + (order.grand_total || 0), 0) || 0;
   const pendingOrders = orders?.filter((o: any) => o.status === 'pending_payment').length || 0;
 
 
@@ -70,7 +70,6 @@ export default async function AdminDashboard() {
                <tbody>
                  {orders.slice(0, 5).map((order: any) => (
                    <tr key={order.id} className="hover:bg-white/5 transition-colors group border-b border-white/5 last:border-0">
-
                      <td className="py-3 px-4 font-mono text-xs text-[#a0a0a0]">{order.id.slice(0,8)}...</td>
                      <td className="py-3 px-4 text-sm">{new Date(order.created_at).toLocaleDateString()}</td>
                      <td className="py-3 px-4">
@@ -82,7 +81,7 @@ export default async function AdminDashboard() {
                          {order.status}
                        </span>
                      </td>
-                     <td className="py-3 px-4 font-mono text-brand-gold">${(order.total_amount || 0).toFixed(2)}</td>
+                     <td className="py-3 px-4 font-mono text-brand-gold">${(order.grand_total || 0).toFixed(2)}</td>
                    </tr>
                  ))}
                </tbody>

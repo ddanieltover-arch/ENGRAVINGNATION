@@ -50,8 +50,8 @@ export default async function AdminOrdersPage() {
                          <span>{new Date(order.created_at).toLocaleDateString()}</span>
                        </div>
                      </td>
-                     <td className="py-6 px-4 font-mono font-bold text-brand-gold">
-                        ${(order.total_amount || 0).toFixed(2)}
+                      <td className="py-4 px-6 text-sm text-[#e0e0e0]">
+                        ${(order.grand_total || 0).toFixed(2)}
                       </td>
                      <td className="py-4 px-6">
                        <OrderStatusSelect orderId={order.id} initialStatus={order.status} />

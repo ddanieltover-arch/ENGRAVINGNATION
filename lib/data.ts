@@ -34,12 +34,24 @@ export function saveJsonData(filePath: string, data: any) {
 
 // --- New Supabase Methods ---
 
+function formatProduct(p: any) {
+  if (!p) return null;
+  return {
+    ...p,
+    price: Number(p.price),
+    regular_price: p.regular_price ? Number(p.regular_price) : Number(p.price),
+    images: p.product_images 
+      ? p.product_images.sort((a: any, b: any) => a.position - b.position).map((img: any) => img.url)
+      : []
+  };
+}
+
 export async function getProducts() {
   const { data, error } = await supabase
     .from('products')
     .select('*, product_images(*), categories(*)');
   if (error) throw error;
-  return data;
+  return data.map(formatProduct);
 }
 
 export async function getProductBySlug(slug: string) {
@@ -49,7 +61,7 @@ export async function getProductBySlug(slug: string) {
     .eq('slug', slug)
     .single();
   if (error) return null;
-  return data;
+  return formatProduct(data);
 }
 
 export async function getOrders() {
@@ -61,6 +73,7 @@ export async function getOrders() {
   if (error) throw error;
   return data;
 }
+
 
 export async function updateProduct(id: string, product: any) {
   const serviceClient = createServiceClient();
