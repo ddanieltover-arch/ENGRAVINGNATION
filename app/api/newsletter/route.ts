@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { sendEmail, ADMIN_EMAIL } from '@/lib/email';
 import { newsletterWelcomeTemplate, contactAdminAlertTemplate } from '@/lib/email-templates';
-import { getJsonData, saveJsonData } from '@/lib/data';
+import { getJsonData, saveJsonData, addSubscriber } from '@/lib/data';
 
 const SUBSCRIBERS_FILE = 'data/subscribers.json';
 
@@ -13,15 +13,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: 'Invalid email address' }, { status: 400 });
     }
 
-    // 1. Save to subscribers.json
-    const subscribers = getJsonData(SUBSCRIBERS_FILE) || [];
-    if (!subscribers.find((s: any) => s.email === email)) {
-      subscribers.push({
-        email,
-        created_at: new Date().toISOString()
-      });
-      saveJsonData(SUBSCRIBERS_FILE, subscribers);
-    }
+    // 1. Save to Supabase
+    await addSubscriber(email);
 
     // 2. Send Welcome Email to Subscriber
     await sendEmail({

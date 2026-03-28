@@ -1,17 +1,20 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { getJsonData, saveJsonData, PRODUCTS_FILE, ORDERS_FILE, COUPONS_FILE } from '@/lib/data';
+import { 
+  getProducts as fetchProducts, 
+  upsertProduct, 
+  deleteProduct as removeProduct,
+  getOrders as fetchOrders,
+  updateOrderStatus as changeOrderStatus,
+  getCoupons as fetchCoupons,
+  createCoupon as addCoupon,
+  deleteCoupon as removeCoupon,
+  addProductImage,
+  clearProductImages
+} from '@/lib/data';
 import { sendEmail } from '@/lib/email';
 import { orderStatusUpdateTemplate } from '@/lib/email-templates';
-
-const getProducts = () => getJsonData(PRODUCTS_FILE);
-const saveProducts = (data: any[]) => saveJsonData(PRODUCTS_FILE, data);
-
-const getOrders = () => getJsonData(ORDERS_FILE);
-const saveOrders = (data: any[]) => saveJsonData(ORDERS_FILE, data);
-
-
 
 export async function createProduct(formData: FormData) {
   const name = formData.get('name') as string;
@@ -25,93 +28,98 @@ export async function createProduct(formData: FormData) {
   const images = imageUrls ? imageUrls.split(',').map(s => s.trim()).filter(Boolean) : [];
   const sku = 'EN-' + Math.random().toString(36).substring(2, 8).toUpperCase();
 
-  const newProduct = {
-    name, slug, sku, description, short_description: description.substring(0, 100),
-    price, regular_price: price, sale_price: null,
-    stock_status: stock_quantity !== 0 ? 'instock' : 'outofstock',
-    stock_quantity, categories: category ? [category] : [], images,
-    id: Date.now().toString(), created_at: new Date().toISOString()
-  };
+  try {
+    const newProduct = await upsertProduct({
+      name, slug, sku, description, short_description: description.substring(0, 100),
+      price, regular_price: price, sale_price: null,
+      stock_status: stock_quantity !== 0 ? 'instock' : 'outofstock',
+      stock_quantity, tags: []
+    });
 
-  const products = getProducts();
-  products.push(newProduct);
-  saveProducts(products);
+    if (newProduct && images.length > 0) {
+      for (let i = 0; i < images.length; i++) {
+        await addProductImage(newProduct.id, images[i], i);
+      }
+    }
 
-  revalidatePath('/admin/products');
-  revalidatePath('/products');
-  return { success: true };
+    revalidatePath('/admin/products');
+    revalidatePath('/products');
+    return { success: true };
+  } catch (error: any) {
+    return { error: error.message };
+  }
 }
 
 export async function updateProduct(id: string, formData: FormData) {
-  const products = getProducts();
-  const index = products.findIndex((p: any) => p.slug === id || p.id === id);
-  if (index === -1) return { error: 'Not found' };
-  
-  const name = formData.get('name') as string;
-  const price = parseFloat(formData.get('price') as string);
-  const imageUrls = formData.get('imageUrls') as string;
-  const images = imageUrls ? imageUrls.split(',').map(s => s.trim()).filter(Boolean) : [];
+  try {
+    const name = formData.get('name') as string;
+    const price = parseFloat(formData.get('price') as string);
+    const imageUrls = formData.get('imageUrls') as string;
+    const images = imageUrls ? imageUrls.split(',').map(s => s.trim()).filter(Boolean) : [];
 
-  products[index] = {
-    ...products[index],
-    name,
-    description: formData.get('description') as string,
-    price,
-    regular_price: price,
-    stock_quantity: parseInt(formData.get('stock') as string) || null,
-    categories: formData.get('category') ? [formData.get('category')] : products[index].categories,
-    images: images.length > 0 ? images : products[index].images,
-  };
+    const updatedProduct = await upsertProduct({
+      id,
+      name,
+      description: formData.get('description') as string,
+      price,
+      regular_price: price,
+      stock_quantity: parseInt(formData.get('stock') as string) || null,
+    });
 
-  saveProducts(products);
-  revalidatePath('/admin/products');
-  revalidatePath(`/admin/products/${id}`);
-  revalidatePath('/products');
-  return { success: true };
+    if (images.length > 0) {
+      await clearProductImages(id);
+      for (let i = 0; i < images.length; i++) {
+        await addProductImage(id, images[i], i);
+      }
+    }
+
+    revalidatePath('/admin/products');
+    revalidatePath(`/admin/products/${id}`);
+    revalidatePath('/products');
+    return { success: true };
+  } catch (error: any) {
+    return { error: error.message };
+  }
 }
 
 export async function deleteProduct(id: string) {
-  let products = getProducts();
-  products = products.filter((p: any) => p.slug !== id && p.id !== id);
-  saveProducts(products);
-
-  revalidatePath('/admin/products');
-  revalidatePath('/products');
-  return { success: true };
+  try {
+    await removeProduct(id);
+    revalidatePath('/admin/products');
+    revalidatePath('/products');
+    return { success: true };
+  } catch (error: any) {
+    return { error: error.message };
+  }
 }
 
 export async function updateOrderStatus(orderId: string, status: string) {
-  const orders = getOrders();
-  const index = orders.findIndex((o: any) => o.id === orderId);
-  if (index !== -1) {
-    const order = orders[index];
-    order.status = status;
-    saveOrders(orders);
+  try {
+    const updatedOrder = await changeOrderStatus(orderId, status);
 
     // --- Send Status Update Email ---
-    if (order.email) {
+    if (updatedOrder && updatedOrder.email) {
       try {
         await sendEmail({
-          to: order.email,
+          to: updatedOrder.email,
           subject: `Status Update for Order #${orderId} - Engraving Nation`,
-          html: orderStatusUpdateTemplate(order, status),
+          html: orderStatusUpdateTemplate(updatedOrder, status),
         });
       } catch (emailError) {
         console.error('Failed to send status update email:', emailError);
       }
     }
+    
+    revalidatePath('/admin/orders');
+    revalidatePath(`/admin/orders/${orderId}`);
+    return { success: true };
+  } catch (error: any) {
+    return { error: error.message };
   }
-  revalidatePath('/admin/orders');
-  revalidatePath(`/admin/orders/${orderId}`);
-  return { success: true };
 }
 
 export async function getCoupons() {
-  return getJsonData(COUPONS_FILE);
-}
-
-export async function saveCoupons(data: any[]) {
-  return saveJsonData(COUPONS_FILE, data);
+  return await fetchCoupons();
 }
 
 export async function createCoupon(formData: FormData) {
@@ -123,29 +131,27 @@ export async function createCoupon(formData: FormData) {
     return { error: 'Invalid discount data' };
   }
 
-  const coupons = await getCoupons();
-  
-  const newCoupon = {
-    id: Date.now().toString(),
-    code: code.toUpperCase(),
-    type,
-    value,
-    used_count: 0,
-    created_at: new Date().toISOString()
-  };
+  try {
+    const newCoupon = await addCoupon({
+      code: code.toUpperCase(),
+      type,
+      value,
+      used_count: 0
+    });
 
-  coupons.push(newCoupon);
-  await saveCoupons(coupons);
-
-  revalidatePath('/admin/coupons');
-  return { success: true, coupon: newCoupon };
+    revalidatePath('/admin/coupons');
+    return { success: true, coupon: newCoupon };
+  } catch (error: any) {
+    return { error: error.message };
+  }
 }
 
 export async function deleteCoupon(id: string) {
-  let coupons = await getCoupons();
-  coupons = coupons.filter((c: any) => c.id !== id);
-  await saveCoupons(coupons);
-
-  revalidatePath('/admin/coupons');
-  return { success: true };
+  try {
+    await removeCoupon(id);
+    revalidatePath('/admin/coupons');
+    return { success: true };
+  } catch (error: any) {
+    return { error: error.message };
+  }
 }

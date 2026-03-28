@@ -2,16 +2,16 @@ import Link from 'next/link';
 import { ArrowLeft, User, MapPin, Mail, Phone, Package, Calendar } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import OrderStatusSelect from '@/components/admin/OrderStatusSelect';
-import { getJsonData, ORDERS_FILE } from '@/lib/data';
+import { getOrders } from '@/lib/data';
 
 
 
 export const revalidate = 0;
 
-export default async function OrderDetailsPage({ params }: { params: { id: string } }) {
+export default async function AdminOrderDetailPage({ params }: { params: { id: string } }) {
   const { id } = params;
 
-  const orders = getJsonData(ORDERS_FILE);
+  const orders = await getOrders();
   const order = orders.find((o: any) => o.id === id);
 
 

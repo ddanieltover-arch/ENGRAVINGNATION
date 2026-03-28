@@ -1,4 +1,4 @@
-import { getJsonData, PRODUCTS_FILE } from '@/lib/data';
+import { getProducts } from '@/lib/data';
 
 import VehicleSelector from '@/components/VehicleSelector';
 import ProductCard from '@/components/ProductCard';
@@ -17,7 +17,7 @@ export default async function ProductsPage({
   const modelFilter = params.model as string | undefined;
   const yearFilter = params.year as string | undefined;
   
-  let products = getJsonData(PRODUCTS_FILE);
+  let products = await getProducts();
 
 
   // Comprehensive filtering

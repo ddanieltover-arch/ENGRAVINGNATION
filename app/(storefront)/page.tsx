@@ -4,9 +4,11 @@ import { getJsonData, PRODUCTS_FILE } from '@/lib/data';
 import Hero from '@/components/Hero';
 import VehicleSelector from '@/components/VehicleSelector';
 import ProductCard from '@/components/ProductCard';
+import { getProducts } from '@/lib/data';
 
 export default async function HomePage() {
-  const featuredProducts = getJsonData(PRODUCTS_FILE).slice(0, 8);
+  const allProducts = await getProducts();
+  const featuredProducts = allProducts.slice(0, 8);
 
 
   return (

@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config({ path: '.env.local' });
 import { sendEmail } from '../lib/email';
 import { newsletterWelcomeTemplate } from '../lib/email-templates';
 

@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import { getJsonData, saveJsonData, COUPONS_FILE } from '@/lib/data';
+import { getCoupons, saveJsonData, COUPONS_FILE } from '@/lib/data';
 
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    const { code } = await request.json();
-    const coupons = getJsonData(COUPONS_FILE);
+    const { code } = await req.json();
+    const coupons = await getCoupons();
     if (!coupons || coupons.length === 0) {
       return NextResponse.json({ success: false, error: 'Invalid coupon' });
     }

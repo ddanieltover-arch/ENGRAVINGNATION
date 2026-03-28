@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getJsonData, saveJsonData, ORDERS_FILE } from "@/lib/data";
+import { createOrder } from "@/lib/data";
 import { sendEmail, ADMIN_EMAIL } from "@/lib/email";
 import { orderConfirmationTemplate } from "@/lib/email-templates";
 
@@ -7,19 +7,25 @@ import { orderConfirmationTemplate } from "@/lib/email-templates";
 export async function POST(req: Request) {
   try {
     const data = await req.json();
-    const orders = getJsonData(ORDERS_FILE);
 
     const orderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000); // 6 digit random
     const newOrder = {
       id: orderId,
       created_at: new Date().toISOString(),
       status: 'pending_payment',
-      ...data,
-      total_amount: data.grandTotal
+      customer_name: data.customer_name,
+      email: data.email,
+      address: data.address,
+      city: data.city,
+      zip: data.zip,
+      total_amount: data.grandTotal,
+      items: data.items,
+      payment_method: data.payment_method || 'Direct Bank Transfer',
+      payment_status: 'pending'
     };
 
-    orders.unshift(newOrder); // Add to beginning
-    saveJsonData(ORDERS_FILE, orders);
+    // 1. Save to Supabase
+    await createOrder(newOrder);
 
     // --- Email Notifications ---
     try {

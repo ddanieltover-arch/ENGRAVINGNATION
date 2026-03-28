@@ -1,13 +1,13 @@
 import Link from 'next/link';
-import { Plus, Edit } from 'lucide-react';
+import { Package, Plus, Search, Filter, MoreVertical, Edit2, Trash2, ExternalLink, Edit } from 'lucide-react';
 import DeleteProductButton from '@/components/admin/DeleteProductButton';
-import { getJsonData, PRODUCTS_FILE } from '@/lib/data';
+import { getProducts } from '@/lib/data';
 
 
 export const revalidate = 0;
 
 export default async function AdminProductsPage() {
-  const products = getJsonData(PRODUCTS_FILE);
+  const products = await getProducts();
 
   return (
     <div className="space-y-6 animate-fade-in">

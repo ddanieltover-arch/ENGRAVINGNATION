@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { X } from 'lucide-react';
 import EditProductForm from '@/components/admin/EditProductForm';
 import { notFound } from 'next/navigation';
-import { getJsonData, PRODUCTS_FILE } from '@/lib/data';
+import { getProducts } from '@/lib/data';
 
 
 export const revalidate = 0;
@@ -10,7 +10,7 @@ export const revalidate = 0;
 export default async function EditProductPage({ params }: { params: { id: string } }) {
   const { id } = params;
 
-  const products = getJsonData(PRODUCTS_FILE);
+  const products = await getProducts();
   const product = products.find((p: any) => p.slug === id || p.id === id);
 
 

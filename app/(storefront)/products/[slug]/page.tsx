@@ -1,4 +1,4 @@
-import { getJsonData, PRODUCTS_FILE } from '@/lib/data';
+import { getProductBySlug, getProducts } from '@/lib/data';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,8 +14,8 @@ export default async function ProductDetailPage({
   params: Promise<{ slug: string }> 
 }) {
   const { slug } = await params;
-  const allProducts = getJsonData(PRODUCTS_FILE);
-  const product = allProducts.find((p: any) => p.slug === slug);
+  const product = await getProductBySlug(slug);
+  const allProducts = await getProducts();
   const relatedProducts = allProducts.filter((p: any) => p.slug !== slug).slice(0, 4);
 
 

@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import { Package, ShoppingCart, DollarSign, ArrowUpRight, TrendingUp } from 'lucide-react';
-import { getJsonData, PRODUCTS_FILE, ORDERS_FILE } from '@/lib/data';
+import { getOrders, getProducts } from '@/lib/data';
 
 
 
 export const revalidate = 0; // Don't cache admin pages
 
 export default async function AdminDashboard() {
-  const orders = getJsonData(ORDERS_FILE);
-  const productsCount = getJsonData(PRODUCTS_FILE).length;
+  const orders = await getOrders();
+  const allProducts = await getProducts();
+  const productsCount = allProducts.length;
   const ordersCount = orders.length;
 
 

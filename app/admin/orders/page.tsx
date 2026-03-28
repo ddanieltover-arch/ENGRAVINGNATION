@@ -1,14 +1,12 @@
 import OrderStatusSelect from '@/components/admin/OrderStatusSelect';
 import Link from 'next/link';
-import { Eye, Search, Filter, Mail, Calendar } from 'lucide-react';
-import { getJsonData, ORDERS_FILE } from '@/lib/data';
-
-
+import { ShoppingCart, Eye, Package, Clock, CheckCircle, AlertCircle, Mail, Calendar } from 'lucide-react';
+import { getOrders } from '@/lib/data';
 
 export const revalidate = 0;
 
 export default async function AdminOrdersPage() {
-  const orders = getJsonData(ORDERS_FILE);
+  const orders = await getOrders();
 
 
   return (
