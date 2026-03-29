@@ -13,7 +13,8 @@ import {
   createCoupon as addCoupon,
   deleteCoupon as removeCoupon,
   addProductImage,
-  clearProductImages
+  clearProductImages,
+  updateSettings,
 } from '@/lib/data';
 import { sendEmail } from '@/lib/email';
 import { orderStatusUpdateTemplate } from '@/lib/email-templates';
@@ -170,6 +171,17 @@ export async function deleteCoupon(id: string) {
   try {
     await removeCoupon(id);
     revalidatePath('/admin/coupons');
+    return { success: true };
+  } catch (error: any) {
+    return { error: error.message };
+  }
+}
+
+export async function saveSettingsAction(settingsObj: any) {
+  try {
+    await updateSettings(settingsObj);
+    revalidatePath('/admin/settings');
+    revalidatePath('/checkout');
     return { success: true };
   } catch (error: any) {
     return { error: error.message };

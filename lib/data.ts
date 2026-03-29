@@ -49,7 +49,8 @@ function formatProduct(p: any) {
 export async function getProducts() {
   const { data, error } = await supabase
     .from('products')
-    .select('*, product_images(*), categories(*)');
+    .select('*, product_images(*), categories(*)')
+    .neq('slug', 'sys_settings');
   if (error) throw error;
   return data.map(formatProduct);
 }
@@ -62,6 +63,73 @@ export async function getProductBySlug(slug: string) {
     .single();
   if (error) return null;
   return formatProduct(data);
+}
+
+const DEFAULT_SETTINGS = {
+  payment_methods: [
+    { id: 'zelle', name: 'Zelle', type: 'zelle', instructions: 'Send payment to:' },
+    { id: 'cashapp', name: 'CashApp', type: 'cashapp', instructions: 'Send payment to:' },
+    { id: 'applepay', name: 'Apple Pay', type: 'applepay', instructions: 'Send payment to:' },
+    { id: 'bitcoin', name: 'Bitcoin', type: 'crypto', instructions: 'Send BTC to:' },
+  ],
+  shipping_zones: [
+    { id: 'us-standard', name: 'Standard Shipping (US)', cost: 10.00 },
+    { id: 'int-standard', name: 'International Shipping', cost: 25.00 },
+  ]
+};
+
+export async function getSettings() {
+  const { data, error } = await supabase
+    .from('products')
+    .select('dimensions')
+    .eq('slug', 'sys_settings')
+    .maybeSingle();
+    
+  if (error) console.error("Error fetching settings:", error);
+  
+  if (!data) {
+    return DEFAULT_SETTINGS;
+  }
+  
+  // Return the merged settings, ensuring arrays exist
+  return {
+    ...DEFAULT_SETTINGS,
+    ...(data.dimensions || {})
+  };
+}
+
+export async function updateSettings(newSettings: any) {
+  const serviceClient = createServiceClient();
+  
+  // Fetch existing first to see if we need to insert or update
+  const { data: existing } = await serviceClient
+    .from('products')
+    .select('id')
+    .eq('slug', 'sys_settings')
+    .maybeSingle();
+    
+  if (existing) {
+    const { error } = await serviceClient
+      .from('products')
+      .update({ dimensions: newSettings })
+      .eq('id', existing.id);
+    if (error) throw error;
+  } else {
+    // Insert new dummy product record
+    const { error } = await serviceClient
+      .from('products')
+      .insert({
+        title: 'System Settings (DO NOT DELETE)',
+        slug: 'sys_settings',
+        price: 0,
+        stock_quantity: 0,
+        dimensions: newSettings,
+        description: 'This is a system configuration record. Do not manually edit or delete.'
+      });
+    if (error) throw error;
+  }
+  
+  return { success: true };
 }
 
 export async function getOrders() {

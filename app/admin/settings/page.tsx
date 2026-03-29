@@ -1,25 +1,25 @@
-import { Settings as SettingsIcon } from 'lucide-react';
+import { getSettings } from '@/lib/data';
+import SettingsForm from './SettingsForm';
+import { Settings } from 'lucide-react';
 
-export const metadata = {
-  title: 'Settings | Admin Dashboard',
-};
+export const revalidate = 0;
 
-export default function SettingsPage() {
+export default async function SettingsPage() {
+  const currentSettings = await getSettings();
+
   return (
-    <div className="space-y-6 animate-fade-in max-w-4xl h-[60vh] flex flex-col items-center justify-center text-center">
-      <div className="w-20 h-20 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 relative">
-        <div className="absolute inset-0 border border-brand-gold/30 rounded-2xl animate-spin-slow"></div>
-        <SettingsIcon size={40} className="text-brand-gold" />
+    <div className="space-y-8 animate-fade-in max-w-5xl">
+      <div className="flex items-center space-x-4 border-b border-[#222222] pb-6 mb-8">
+        <div className="bg-[#222222] p-3 rounded-xl text-brand-gold">
+          <Settings size={28} />
+        </div>
+        <div>
+          <h1 className="text-3xl md:text-4xl font-outfit font-black text-white italic tracking-tight">System <span className="text-brand-gold">Settings</span></h1>
+          <p className="text-[#a0a0a0] mt-1 text-sm md:text-base">Configure dynamic checkout arrays for payment processors and shipping logistics.</p>
+        </div>
       </div>
-      
-      <h2 className="text-4xl font-outfit font-black text-transparent bg-clip-text bg-linear-to-r from-brand-gold to-[#e6c25e] uppercase tracking-tighter italic mb-4">
-        Settings Module
-      </h2>
-      
-      <p className="text-[#a0a0a0] max-w-lg text-lg">
-        The Global configuration and settings module is currently under development. 
-        General store settings, payment gateways, and shipping zones configurations will be available here soon.
-      </p>
+
+      <SettingsForm initialSettings={currentSettings} />
     </div>
   );
 }
