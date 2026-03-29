@@ -14,7 +14,7 @@ export async function POST(req: Request) {
       status: 'pending_payment',
       customer_name: data.customer_name,
       email: data.email,
-      address: data.address,
+      address: `${data.address}|PHONE:${data.phone || ''}`,
       city: data.city,
       zip: data.zip,
       country: data.country || 'US',
@@ -33,7 +33,10 @@ export async function POST(req: Request) {
 
     // --- Email Notifications ---
     try {
-      const emailOrderData = { ...newOrder, state: data.state || '' };
+      const emailOrderData = { ...newOrder, state: data.state || '', phone: data.phone || '' };
+      
+      // Clean up the address for email
+      emailOrderData.address = data.address;
 
       // 1. Send Confirmation to Client
       await sendEmail({

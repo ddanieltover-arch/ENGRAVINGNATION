@@ -148,6 +148,7 @@ export const orderConfirmationTemplate = (order: any, isAdmin: boolean = false) 
         <h3 style="margin: 0 0 15px; color: ${BRAND_GOLD}; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Shipping Details</h3>
         <p style="margin: 0; font-size: 14px; color: ${TEXT_GRAY}; line-height: 1.5;">
             ${order.customer_name || `${order.firstName} ${order.lastName}`}<br>
+            ${order.phone ? `${order.phone}<br>` : ''}
             ${order.address || order.shippingAddress}<br>
             ${order.city || order.shippingCity}, ${order.state || order.shippingState || ''} ${order.zip || order.shippingZip}
         </p>

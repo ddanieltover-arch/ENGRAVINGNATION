@@ -27,6 +27,25 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
     items = [];
   }
 
+  // Extract phone number from address if embedded, or use direct column if exists
+  let parsedAddress = order.address || '';
+  let parsedPhone = order.phone || '';
+
+  if (parsedAddress.includes('|PHONE:')) {
+    const parts = parsedAddress.split('|PHONE:');
+    parsedAddress = parts[0];
+    if (!parsedPhone) {
+      parsedPhone = parts[1];
+    }
+  }
+
+  // Update order object for rendering safely
+  const displayOrder = {
+    ...order,
+    address: parsedAddress,
+    phone: parsedPhone
+  };
+
   return (
     <div className="space-y-6 animate-fade-in max-w-5xl">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -100,10 +119,14 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
                  <Mail size={16} />
                  <a href={`mailto:${order.email}`} className="text-brand-gold hover:underline">{order.email}</a>
                </div>
-               <div className="flex items-center space-x-3 text-[#a0a0a0]">
-                 <Phone size={16} />
-                 <a href={`tel:${order.phone}`} className="text-white hover:text-brand-gold break-all">{order.phone || 'N/A'}</a>
-               </div>
+                <div className="flex items-center space-x-3 text-[#a0a0a0]">
+                  <Phone size={16} />
+                  {displayOrder.phone ? (
+                    <a href={`tel:${displayOrder.phone}`} className="text-white hover:text-brand-gold break-all">{displayOrder.phone}</a>
+                  ) : (
+                    <span className="text-white">N/A</span>
+                  )}
+                </div>
              </div>
           </div>
 
@@ -112,14 +135,15 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
                <MapPin className="mr-2 text-brand-gold" size={20} />
                Shipping Address
              </h3>
-             <address className="not-italic text-sm text-[#a0a0a0] space-y-1">
-               <p className="text-white">{order.customer_name}</p>
-               <p>{order.address}</p>
-               {(order.city || order.zip) && (
-                 <p>{order.city}, {order.zip}</p>
-               )}
-               <p>{order.country || 'US'}</p>
-             </address>
+              <address className="not-italic text-sm text-[#a0a0a0] space-y-1">
+                <p className="text-white">{displayOrder.customer_name}</p>
+                <p className="text-white">{displayOrder.email}</p>
+                <p>{displayOrder.address}</p>
+                {(displayOrder.city || displayOrder.zip) && (
+                  <p>{displayOrder.city}, {displayOrder.state || ''} {displayOrder.zip}</p>
+                )}
+                <p>{displayOrder.country || 'US'}</p>
+              </address>
           </div>
 
           <div className="bg-[#111111] border border-[#333333] rounded-xl p-6">
