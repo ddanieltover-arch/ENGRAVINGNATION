@@ -16,6 +16,15 @@ export default function CheckoutPage() {
   const [shippingMethod, setShippingMethod] = useState('us-standard');
   const [country, setCountry] = useState('US');
 
+  // Customer info states
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zip, setZip] = useState('');
+
   // Coupon States
   const [couponCode, setCouponCode] = useState('');
   const [appliedCoupon, setAppliedCoupon] = useState<{ type: string; value: number; code: string } | null>(null);
@@ -83,6 +92,12 @@ export default function CheckoutPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          customer_name: `${firstName} ${lastName}`.trim(),
+          email,
+          address,
+          city,
+          zip,
+          country,
           items,
           cartTotal,
           discountAmount,
@@ -90,8 +105,7 @@ export default function CheckoutPage() {
           shippingMethod,
           currentShippingCost,
           grandTotal,
-          paymentMethod,
-          country,
+          payment_method: paymentMethod,
         }),
       });
       
@@ -190,37 +204,37 @@ export default function CheckoutPage() {
                 <div className="grid grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">First Name</label>
-                    <input required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="John" />
+                    <input required value={firstName} onChange={(e) => setFirstName(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="John" />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">Last Name</label>
-                    <input required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="Doe" />
+                    <input required value={lastName} onChange={(e) => setLastName(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="Doe" />
                   </div>
                 </div>
                 
                 <div className="flex flex-col gap-2">
                   <label className="text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">Email Address</label>
-                  <input required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="email" placeholder="john@example.com" />
+                  <input required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="email" placeholder="john@example.com" />
                 </div>
                 
                 <div className="flex flex-col gap-2">
                   <label className="text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">Shipping Address</label>
-                  <input required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="123 Performance Way" />
+                  <input required value={address} onChange={(e) => setAddress(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="123 Performance Way" />
                 </div>
                 
                 <div className="grid grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">City</label>
-                    <input required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="Detroit" />
+                    <input required value={city} onChange={(e) => setCity(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="Detroit" />
                   </div>
                   <div className="grid grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
                       <label className="text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">State</label>
-                      <input required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="MI" />
+                      <input required value={state} onChange={(e) => setState(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="MI" />
                     </div>
                     <div className="flex flex-col gap-2">
                       <label className="text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">ZIP</label>
-                      <input required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="48201" />
+                      <input required value={zip} onChange={(e) => setZip(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="48201" />
                     </div>
                   </div>
                 </div>

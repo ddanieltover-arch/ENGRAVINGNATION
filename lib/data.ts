@@ -185,7 +185,8 @@ export async function getCoupons() {
 }
 
 export async function addSubscriber(email: string) {
-  const { data, error } = await supabase
+  const serviceClient = createServiceClient();
+  const { data, error } = await serviceClient
     .from('subscribers')
     .insert([{ email }])
     .select()
