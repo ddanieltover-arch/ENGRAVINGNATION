@@ -119,7 +119,7 @@ export async function updateSettings(newSettings: any) {
     const { error } = await serviceClient
       .from('products')
       .insert({
-        title: 'System Settings (DO NOT DELETE)',
+        name: 'System Settings (DO NOT DELETE)',
         slug: 'sys_settings',
         price: 0,
         stock_quantity: 0,
