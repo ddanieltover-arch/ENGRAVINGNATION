@@ -214,20 +214,19 @@ export default function CheckoutPage() {
                     <input required value={lastName} onChange={(e) => setLastName(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" type="text" placeholder="Doe" />
                   </div>
                 </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-white">Email Address</label>
-                  <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="w-full bg-[#111111] border border-[#222222] rounded-lg p-3 text-white focus:outline-none focus:border-brand-gold transition-colors" />
+                <div className="flex flex-col gap-2">
+                  <label className="text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">Email Address</label>
+                  <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" placeholder="john@example.com" />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-white">Phone Number</label>
-                  <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} required className="w-full bg-[#111111] border border-[#222222] rounded-lg p-3 text-white focus:outline-none focus:border-brand-gold transition-colors" />
+                <div className="flex flex-col gap-2">
+                  <label className="text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">Phone Number</label>
+                  <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" placeholder="123-456-7890" />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium mb-2 text-white">Street Address</label>
-                  <input type="text" value={address} onChange={e => setAddress(e.target.value)} required className="w-full bg-[#111111] border border-[#222222] rounded-lg p-3 text-white focus:outline-none focus:border-brand-gold transition-colors" />
+                <div className="flex flex-col gap-2">
+                  <label className="text-[10px] text-white/30 font-bold uppercase tracking-[0.2em]">Street Address</label>
+                  <input type="text" value={address} onChange={e => setAddress(e.target.value)} required className="w-full bg-white/5 border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold/40 focus:border-brand-gold/50 transition-all" placeholder="123 Performance Way" />
                 </div>
                 
                 <div className="grid grid-cols-2 gap-6">
