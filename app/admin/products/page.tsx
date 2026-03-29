@@ -61,11 +61,11 @@ export default async function AdminProductsPage() {
                     <td className="py-4 px-6 text-brand-gold font-mono font-bold">${(product.price || 0).toFixed(2)}</td>
                     <td className="py-4 px-6">
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        product.stock > 10 ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 
-                        product.stock > 0 ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20' :
+                        (product.stock_quantity ?? 0) > 10 ? 'bg-green-500/10 text-green-500 border border-green-500/20' : 
+                        (product.stock_quantity ?? 0) > 0 ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20' :
                         'bg-red-500/10 text-red-500 border border-red-500/20'
                       }`}>
-                        {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+                        {(product.stock_quantity ?? 0) > 0 ? `${product.stock_quantity} in stock` : 'Out of stock'}
                       </span>
                     </td>
                     <td className="py-4 px-6 text-right">

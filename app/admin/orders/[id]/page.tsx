@@ -93,7 +93,7 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
              <div className="space-y-3 text-sm">
                <div className="flex items-center space-x-3 text-[#a0a0a0]">
                  <User size={16} />
-                 <span className="text-white">{order.firstName} {order.lastName}</span>
+                 <span className="text-white">{order.customer_name}</span>
                </div>
                <div className="flex items-center space-x-3 text-[#a0a0a0]">
                  <Mail size={16} />
@@ -112,11 +112,12 @@ export default async function AdminOrderDetailPage({ params }: { params: { id: s
                Shipping Address
              </h3>
              <address className="not-italic text-sm text-[#a0a0a0] space-y-1">
-               <p className="text-white">{order.firstName} {order.lastName}</p>
-               <p>{order.shippingAddress}</p>
-               {(order.shippingCity || order.shippingState) && (
-                 <p>{order.shippingCity}, {order.shippingState} {order.shippingZip}</p>
+               <p className="text-white">{order.customer_name}</p>
+               <p>{order.address}</p>
+               {(order.city || order.zip) && (
+                 <p>{order.city}, {order.zip}</p>
                )}
+               <p>{order.country || 'US'}</p>
              </address>
           </div>
 

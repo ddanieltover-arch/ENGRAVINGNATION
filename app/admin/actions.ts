@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { 
   getProducts as fetchProducts, 
   upsertProduct, 
+  updateProduct as updateProductInDb,
   deleteProduct as removeProduct,
   getOrders as fetchOrders,
   updateOrderStatus as changeOrderStatus,
@@ -54,16 +55,22 @@ export async function updateProduct(id: string, formData: FormData) {
   try {
     const name = formData.get('name') as string;
     const price = parseFloat(formData.get('price') as string);
-    const imageUrls = formData.get('imageUrls') as string;
-    const images = imageUrls ? imageUrls.split(',').map(s => s.trim()).filter(Boolean) : [];
+    const stockVal = parseInt(formData.get('stock') as string);
+    const stock_quantity = isNaN(stockVal) ? null : stockVal;
 
-    const updatedProduct = await upsertProduct({
-      id,
+    // Collect image URLs from both possible form field names
+    const imageUrlsField = formData.get('imageUrls') as string;
+    const imageUrlField = formData.get('imageUrl') as string;
+    const rawUrls = imageUrlsField || imageUrlField || '';
+    const images = rawUrls ? rawUrls.split(',').map(s => s.trim()).filter(Boolean) : [];
+
+    const updatedProduct = await updateProductInDb(id, {
       name,
       description: formData.get('description') as string,
       price,
       regular_price: price,
-      stock_quantity: parseInt(formData.get('stock') as string) || null,
+      stock_quantity,
+      stock_status: stock_quantity && stock_quantity > 0 ? 'instock' : 'outofstock',
     });
 
     if (images.length > 0) {
@@ -76,8 +83,10 @@ export async function updateProduct(id: string, formData: FormData) {
     revalidatePath('/admin/products');
     revalidatePath(`/admin/products/${id}`);
     revalidatePath('/products');
+    revalidatePath('/');
     return { success: true };
   } catch (error: any) {
+    console.error('Update product error:', error);
     return { error: error.message };
   }
 }

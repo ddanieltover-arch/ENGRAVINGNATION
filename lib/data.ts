@@ -75,12 +75,27 @@ export async function getOrders() {
 }
 
 
-export async function updateProduct(id: string, product: any) {
+export async function deleteProduct(identifier: string) {
   const serviceClient = createServiceClient();
+  // Try deleting by UUID first, then by slug
+  const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(identifier);
+  const column = isUUID ? 'id' : 'slug';
+  const { error } = await serviceClient
+    .from('products')
+    .delete()
+    .eq(column, identifier);
+  if (error) throw error;
+  return true;
+}
+
+export async function updateProduct(identifier: string, product: any) {
+  const serviceClient = createServiceClient();
+  const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(identifier);
+  const column = isUUID ? 'id' : 'slug';
   const { data, error } = await serviceClient
     .from('products')
     .update(product)
-    .eq('id', id)
+    .eq(column, identifier)
     .select()
     .single();
   if (error) throw error;
@@ -96,16 +111,6 @@ export async function upsertProduct(product: any) {
     .single();
   if (error) throw error;
   return data;
-}
-
-export async function deleteProduct(id: string) {
-  const serviceClient = createServiceClient();
-  const { error } = await serviceClient
-    .from('products')
-    .delete()
-    .eq('id', id);
-  if (error) throw error;
-  return true;
 }
 
 export async function updateOrderStatus(id: string, status: string) {

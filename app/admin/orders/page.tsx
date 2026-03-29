@@ -38,7 +38,7 @@ export default async function AdminOrdersPage() {
 
                      <td className="py-4 px-6 font-mono text-xs text-[#a0a0a0]" title={order.id}>{order.id.slice(0, 8)}...</td>
                      <td className="py-4 px-6">
-                       <div className="font-semibold text-white">{order.firstName} {order.lastName}</div>
+                       <div className="font-semibold text-white">{order.customer_name}</div>
                        <div className="flex items-center space-x-2 text-xs text-[#a0a0a0] mt-1">
                          <Mail size={12} />
                          <span>{order.email}</span>

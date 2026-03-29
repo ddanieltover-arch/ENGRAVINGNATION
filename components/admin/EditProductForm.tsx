@@ -95,7 +95,7 @@ export default function EditProductForm({ product }: { product: any }) {
               <input 
                 name="stock" 
                 type="number" 
-                defaultValue={product.stock}
+                defaultValue={product.stock_quantity ?? 0}
                 required 
                 className="w-full bg-[#1a1a1a] border border-[#333333] rounded-lg px-4 py-2 text-white focus:border-brand-gold transition-colors appearance-none"
               />
