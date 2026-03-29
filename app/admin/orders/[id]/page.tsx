@@ -8,8 +8,9 @@ import { getOrders } from '@/lib/data';
 
 export const revalidate = 0;
 
-export default async function AdminOrderDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function AdminOrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const { id } = resolvedParams;
 
   const orders = await getOrders();
   const order = orders.find((o: any) => o.id === id);

@@ -7,8 +7,9 @@ import { getProducts } from '@/lib/data';
 
 export const revalidate = 0;
 
-export default async function EditProductPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = await params;
+  const { id } = resolvedParams;
 
   const products = await getProducts();
   const product = products.find((p: any) => p.slug === id || p.id === id);
