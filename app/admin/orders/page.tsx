@@ -1,4 +1,5 @@
 import OrderStatusSelect from '@/components/admin/OrderStatusSelect';
+import DeleteOrderButton from '@/components/admin/DeleteOrderButton';
 import Link from 'next/link';
 import { ShoppingCart, Eye, Package, Clock, CheckCircle, AlertCircle, Mail, Calendar } from 'lucide-react';
 import { getOrders } from '@/lib/data';
@@ -56,10 +57,11 @@ export default async function AdminOrdersPage() {
                      <td className="py-4 px-6">
                        <OrderStatusSelect orderId={order.id} initialStatus={order.status} />
                      </td>
-                     <td className="py-6 px-4 text-right">
-                       <Link href={`/admin/orders/${order.id}`} className="text-white/20 hover:text-brand-gold transition-colors inline-block">
+                     <td className="py-6 px-4 text-right flex items-center justify-end space-x-4">
+                       <Link href={`/admin/orders/${order.id}`} className="text-white/20 hover:text-brand-gold transition-colors inline-block" title="View Details">
                          <Eye size={18} />
                        </Link>
+                       <DeleteOrderButton id={order.id} />
                      </td>
                    </tr>
                  ))

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowLeft, User, MapPin, Mail, Phone, Package, Calendar } from 'lucide-react';
 import { notFound } from 'next/navigation';
 import OrderStatusSelect from '@/components/admin/OrderStatusSelect';
+import DeleteOrderButton from '@/components/admin/DeleteOrderButton';
 import { getOrders } from '@/lib/data';
 
 
@@ -57,8 +58,9 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
              Order <span className="text-brand-gold">#{order.id.slice(0, 8)}</span>
            </h2>
          </div>
-         <div>
+         <div className="flex items-center space-x-4">
            <OrderStatusSelect orderId={order.id} initialStatus={order.status} />
+           <DeleteOrderButton id={order.id} redirectUrl="/admin/orders" />
          </div>
       </div>
 

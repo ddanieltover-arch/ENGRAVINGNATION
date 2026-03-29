@@ -176,6 +176,16 @@ export async function createOrder(order: any) {
   return data;
 }
 
+export async function deleteOrder(id: string) {
+  const serviceClient = createServiceClient();
+  const { error } = await serviceClient
+    .from('orders')
+    .delete()
+    .eq('id', id);
+  if (error) throw error;
+  return true;
+}
+
 export async function getCoupons() {
   const { data, error } = await supabase
     .from('coupons')

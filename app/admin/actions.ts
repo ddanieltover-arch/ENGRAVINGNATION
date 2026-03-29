@@ -8,6 +8,7 @@ import {
   deleteProduct as removeProduct,
   getOrders as fetchOrders,
   updateOrderStatus as changeOrderStatus,
+  deleteOrder as removeOrder,
   getCoupons as fetchCoupons,
   createCoupon as addCoupon,
   deleteCoupon as removeCoupon,
@@ -96,6 +97,16 @@ export async function deleteProduct(id: string) {
     await removeProduct(id);
     revalidatePath('/admin/products');
     revalidatePath('/products');
+    return { success: true };
+  } catch (error: any) {
+    return { error: error.message };
+  }
+}
+
+export async function deleteOrderAction(id: string) {
+  try {
+    await removeOrder(id);
+    revalidatePath('/admin/orders');
     return { success: true };
   } catch (error: any) {
     return { error: error.message };
