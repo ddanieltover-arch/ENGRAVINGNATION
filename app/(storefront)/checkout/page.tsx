@@ -264,12 +264,12 @@ export default function CheckoutPage() {
                       }
                     }}
                   >
-                    <option value="US" className="bg-brand-bg">United States</option>
-                    <option value="CA" className="bg-brand-bg">Canada</option>
-                    <option value="GB" className="bg-brand-bg">United Kingdom</option>
-                    <option value="AU" className="bg-brand-bg">Australia</option>
-                    <option value="DE" className="bg-brand-bg">Germany</option>
-                    <option value="FR" className="bg-brand-bg">France</option>
+                    <option value="US" className="bg-[#1a1a1a] text-white">United States</option>
+                    <option value="CA" className="bg-[#1a1a1a] text-white">Canada</option>
+                    <option value="GB" className="bg-[#1a1a1a] text-white">United Kingdom</option>
+                    <option value="AU" className="bg-[#1a1a1a] text-white">Australia</option>
+                    <option value="DE" className="bg-[#1a1a1a] text-white">Germany</option>
+                    <option value="FR" className="bg-[#1a1a1a] text-white">France</option>
                   </select>
                 </div>
               </form>
