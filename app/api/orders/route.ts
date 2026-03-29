@@ -16,7 +16,6 @@ export async function POST(req: Request) {
       email: data.email,
       address: data.address,
       city: data.city,
-      state: data.state || '',
       zip: data.zip,
       country: data.country || 'US',
       items: data.items,
@@ -34,18 +33,20 @@ export async function POST(req: Request) {
 
     // --- Email Notifications ---
     try {
+      const emailOrderData = { ...newOrder, state: data.state || '' };
+
       // 1. Send Confirmation to Client
       await sendEmail({
         to: newOrder.email,
         subject: `Order Recieved #${orderId} - Engraving Nation`,
-        html: orderConfirmationTemplate(newOrder, false),
+        html: orderConfirmationTemplate(emailOrderData, false),
       });
 
       // 2. Notify Admin
       await sendEmail({
         to: ADMIN_EMAIL,
         subject: `NEW ORDER ALERT #${orderId}`,
-        html: orderConfirmationTemplate(newOrder, true),
+        html: orderConfirmationTemplate(emailOrderData, true),
       });
     } catch (emailError) {
       console.error('Email notification failed but order was saved:', emailError);
