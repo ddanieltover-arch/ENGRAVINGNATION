@@ -96,7 +96,25 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
                 <p className="text-[#a0a0a0] italic">No items found details.</p>
               )}
             </div>
-            
+            <div className="space-y-3 mt-6 mb-4 px-2 text-sm">
+              <div className="flex justify-between items-center text-[#a0a0a0]">
+                <span>Subtotal</span>
+                <span className="text-white">${(order.cart_total || 0).toFixed(2)}</span>
+              </div>
+              
+              {order.discount_amount > 0 && (
+                <div className="flex justify-between items-center text-emerald-500">
+                  <span>Discount</span>
+                  <span>-${(order.discount_amount).toFixed(2)}</span>
+                </div>
+              )}
+              
+              <div className="flex justify-between items-center text-[#a0a0a0]">
+                <span>Shipping <span className="text-xs uppercase opacity-50">({order.shipping_method?.replace('-', ' ') || 'standard'})</span></span>
+                <span className="text-white">${(order.shipping_cost || 0).toFixed(2)}</span>
+              </div>
+            </div>
+
             <div className="flex justify-between items-center bg-brand-gold/10 p-4 rounded-lg border border-brand-gold/20">
                <span className="font-outfit font-bold text-lg text-white">Grand Total</span>
                <span className="text-2xl font-bold text-brand-gold">${(order.grand_total || 0).toFixed(2)}</span>

@@ -139,6 +139,20 @@ export const orderConfirmationTemplate = (order: any, isAdmin: boolean = false) 
     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 30px;">
         ${itemsHtml}
         <tr>
+            <td style="padding: 15px 0 5px; font-weight: 500; font-size: 14px; text-transform: uppercase; color: ${TEXT_GRAY}; border-top: 1px solid #222;">Subtotal</td>
+            <td align="right" style="padding: 15px 0 5px; color: ${TEXT_WHITE}; font-size: 16px; border-top: 1px solid #222;">$${(order.cart_total || 0).toFixed(2)}</td>
+        </tr>
+        ${order.discount_amount ? `
+        <tr>
+            <td style="padding: 5px 0; font-weight: 500; font-size: 14px; text-transform: uppercase; color: #10B981;">Discount</td>
+            <td align="right" style="padding: 5px 0; color: #10B981; font-size: 16px;">-$${(order.discount_amount).toFixed(2)}</td>
+        </tr>
+        ` : ''}
+        <tr>
+            <td style="padding: 5px 0 15px; font-weight: 500; font-size: 14px; text-transform: uppercase; color: ${TEXT_GRAY}; border-bottom: 1px solid #222;">Shipping</td>
+            <td align="right" style="padding: 5px 0 15px; color: ${TEXT_WHITE}; font-size: 16px; border-bottom: 1px solid #222;">$${(order.shipping_cost || 0).toFixed(2)}</td>
+        </tr>
+        <tr>
             <td style="padding: 20px 0; font-weight: bold; font-size: 18px; text-transform: uppercase;">Total</td>
             <td align="right" style="padding: 20px 0; color: ${BRAND_GOLD}; font-size: 22px; font-weight: 900;">$${(order.total_amount || order.grand_total || 0).toFixed(2)}</td>
         </tr>
