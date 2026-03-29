@@ -96,6 +96,7 @@ export default function CheckoutPage() {
           email,
           address,
           city,
+          state,
           zip,
           country,
           items,
@@ -170,7 +171,7 @@ export default function CheckoutPage() {
               </p>
               <div className="mt-6 pt-6 border-t border-white/10 space-y-2">
                 <p className="text-sm font-mono text-white/60">Email: info@engravingnation.store</p>
-                <p className="text-sm font-mono text-white/60">Phone: +1 (656) 243-6963</p>
+                <p className="text-sm font-mono text-white/60">Phone: +1 (332) 256-6110</p>
               </div>
             </div>
           </div>

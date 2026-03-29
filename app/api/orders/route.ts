@@ -16,6 +16,7 @@ export async function POST(req: Request) {
       email: data.email,
       address: data.address,
       city: data.city,
+      state: data.state || '',
       zip: data.zip,
       country: data.country || 'US',
       items: data.items,

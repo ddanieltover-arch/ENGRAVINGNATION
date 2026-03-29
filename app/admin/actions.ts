@@ -74,9 +74,9 @@ export async function updateProduct(id: string, formData: FormData) {
     });
 
     if (images.length > 0) {
-      await clearProductImages(id);
+      await clearProductImages(updatedProduct.id);
       for (let i = 0; i < images.length; i++) {
-        await addProductImage(id, images[i], i);
+        await addProductImage(updatedProduct.id, images[i], i);
       }
     }
 

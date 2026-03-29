@@ -133,23 +133,23 @@ export const orderConfirmationTemplate = (order: any, isAdmin: boolean = false) 
       Order <span style="color: ${BRAND_GOLD};">${isAdmin ? 'Notification' : 'Confirmed'}</span>
     </h1>
     <p style="font-size: 14px; color: ${TEXT_GRAY}; margin: 0 0 30px;">
-      Order ID: <span style="color: ${TEXT_WHITE}; font-weight: bold;">#${order.id}</span> | Date: ${new Date(order.created_at).toLocaleDateString()}
+      Order ID: <span style="color: ${TEXT_WHITE}; font-weight: bold;">#${order.id}</span> | Date: ${new Date(order.created_at || Date.now()).toLocaleDateString()}
     </p>
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 30px;">
         ${itemsHtml}
         <tr>
             <td style="padding: 20px 0; font-weight: bold; font-size: 18px; text-transform: uppercase;">Total</td>
-            <td align="right" style="padding: 20px 0; color: ${BRAND_GOLD}; font-size: 22px; font-weight: 900;">$${(order.total_amount || 0).toFixed(2)}</td>
+            <td align="right" style="padding: 20px 0; color: ${BRAND_GOLD}; font-size: 22px; font-weight: 900;">$${(order.total_amount || order.grand_total || 0).toFixed(2)}</td>
         </tr>
     </table>
 
     <div style="padding: 25px; background-color: #1a1a1a; border-radius: 12px; border: 1px solid #222222; margin-bottom: 30px;">
         <h3 style="margin: 0 0 15px; color: ${BRAND_GOLD}; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Shipping Details</h3>
         <p style="margin: 0; font-size: 14px; color: ${TEXT_GRAY}; line-height: 1.5;">
-            ${order.firstName} ${order.lastName}<br>
-            ${order.shippingAddress}<br>
-            ${order.shippingCity}, ${order.shippingState} ${order.shippingZip}
+            ${order.customer_name || `${order.firstName} ${order.lastName}`}<br>
+            ${order.address || order.shippingAddress}<br>
+            ${order.city || order.shippingCity}, ${order.state || order.shippingState || ''} ${order.zip || order.shippingZip}
         </p>
     </div>
 
@@ -181,7 +181,7 @@ export const orderStatusUpdateTemplate = (order: any, status: string) => {
       Status <span style="color: ${BRAND_GOLD};">Updated</span>
     </h1>
     <p style="font-size: 18px; font-weight: bold; margin: 0 0 15px;">
-      Hello ${order.firstName},
+      Hello ${order.customer_name || order.firstName || 'Customer'},
     </p>
     <p style="font-size: 16px; font-weight: 300; margin: 0 0 25px; color: ${TEXT_GRAY}; line-height: 1.6;">
       Your order <span style="color: ${TEXT_WHITE}; font-weight: bold;">#${order.id}</span> ${statusLabel}.
