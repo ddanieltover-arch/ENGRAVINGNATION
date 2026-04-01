@@ -180,6 +180,16 @@ export default function ProductTabs({ description, reviews, relatedProducts = []
                   <span>Direct replacement for OEM parts</span>
                 </li>
               </ul>
+              <div className="mt-12 pt-8 border-t border-white/5 flex flex-wrap gap-x-8 gap-y-4">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] text-white/20 uppercase tracking-widest font-bold">Purchase Protection</span>
+                  <a href="/refund-and-returns" className="text-sm text-brand-gold/70 hover:text-brand-gold underline underline-offset-4 transition-colors">Refund & Returns Policy</a>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] text-white/20 uppercase tracking-widest font-bold">Logistics</span>
+                  <a href="/shipping" className="text-sm text-brand-gold/70 hover:text-brand-gold underline underline-offset-4 transition-colors">Shipping Information</a>
+                </div>
+              </div>
             </div>
           </div>
         )}

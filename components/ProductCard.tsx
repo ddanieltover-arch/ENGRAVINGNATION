@@ -37,12 +37,12 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div className="glass-card group relative overflow-hidden h-full flex flex-col">
-      <Link href={`/products/${product.slug}`} className="block flex-grow">
+      <Link href={`/products/${product.slug}`} className="block grow">
         <div className="relative aspect-square w-full overflow-hidden bg-black/60">
           {product.images?.[0] ? (
             <Image
               src={product.images[0]}
-              alt={product.name}
+              alt={`Custom Engraved ${product.name} - Automotive Accessory`}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
@@ -62,7 +62,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
         
         <div className="p-3 sm:p-6 flex flex-col gap-2 sm:gap-3">
-          <h3 className="text-sm font-heading font-medium text-white/90 line-clamp-2 min-h-[2.5rem] group-hover:text-brand-gold transition-colors tracking-wide">
+          <h3 className="text-sm font-heading font-medium text-white/90 line-clamp-2 min-h-10 group-hover:text-brand-gold transition-colors tracking-wide">
             {product.name}
           </h3>
           <div className="flex items-center justify-between mt-auto pt-4 border-t border-brand-border/50">

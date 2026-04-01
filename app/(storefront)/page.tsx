@@ -5,6 +5,16 @@ import Hero from '@/components/Hero';
 import VehicleSelector from '@/components/VehicleSelector';
 import ProductCard from '@/components/ProductCard';
 import { getProducts } from '@/lib/data';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Engraving Nation | Custom Silverado & Chevrolet Truck Emblems',
+  description: 'Shop premium engraved Chevy emblems, Silverado badges, and custom automotive art. Hand-etched precision for the elite enthusiast.',
+  alternates: {
+    canonical: 'https://engravingnation.store',
+  },
+  keywords: ['silverado emblems', 'engraved chevy emblem', 'chevrolet truck emblems', 'custom chevy badges', 'black silverado emblems', 'custom automotive engraving'],
+};
 
 export const revalidate = 0;
 
@@ -12,9 +22,24 @@ export default async function HomePage() {
   const allProducts = await getProducts();
   const featuredProducts = allProducts.slice(0, 8);
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Engraving Nation',
+    url: 'https://engravingnation.store',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://engravingnation.store/products?search={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  };
 
   return (
     <div className="min-h-screen bg-brand-bg text-white/90 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Hero />
       
       <div className="container mx-auto px-4 py-24">

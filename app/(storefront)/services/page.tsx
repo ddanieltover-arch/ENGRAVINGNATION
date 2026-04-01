@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Shield, Zap, Hammer, Award, Wrench } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Our Services | Engraving Nation',
-  description: 'Explore our precision automotive engraving services for Chevy, GMC, Ford, and more.',
+  title: 'Custom Automotive Engraving Services | Engraving Nation',
+  description: 'Precision laser engraving for Chevrolet, Silverado, GMC, and Ford. Deep, durable emblems and mirror caps crafted for performance builds.',
 };
 
 export default function ServicesPage() {

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About Us | Engraving Nation',
-  description: 'Learn about our passion for hand-crafted precision automotive emblems and mirror caps.',
+  title: 'Our Story & Craftsmanship | Engraving Nation',
+  description: 'Learn about Engraving Nation\'s commitment to handmade, precision-etched automotive art. From custom Silverado emblems to unique vehicle styling.',
 };
 
 export default function AboutPage() {
@@ -39,7 +39,7 @@ export default function AboutPage() {
             <div className="glass-card p-8 group">
               <h3 className="text-brand-gold font-heading font-black uppercase italic text-xl mb-4 group-hover:translate-x-2 transition-transform">Platform Focus</h3>
               <p className="text-white/50 font-light leading-relaxed">
-                We focus heavily on <strong className="text-white/80">Chevy, GMC, and Ford platforms</strong>, offering custom solutions for a wide range of models and years. Whether you’re upgrading a Silverado, Sierra, or another performance-driven build, our engravings are crafted to fit precisely and enhance the factory lines of your vehicle.
+                We focus heavily on <strong className="text-white/80">Chevy, GMC, and Ford platforms</strong>, offering custom solutions for a wide range of models and years. Whether you’re upgrading a <a href="https://www.chevrolet.com/trucks/silverado" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:underline">Silverado</a>, <a href="https://www.gmc.com/trucks/sierra/1500" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:underline">Sierra</a>, or another performance-driven build, our engravings are crafted to fit precisely and enhance the factory lines of your vehicle.
               </p>
             </div>
             <div className="glass-card p-8 group">

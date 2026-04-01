@@ -27,7 +27,7 @@ export default function Hero() {
           </h1>
           
           <p className="text-lg md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light tracking-wide drop-shadow-sm">
-            Elite custom engravings for <span className="text-brand-gold font-black italic">GMC, Chevy, Ford & Ram</span>. Precision-etched performance art for those who demand excellence.
+            Elite <span className="text-brand-gold font-black italic">custom engraved Silverado & Chevrolet emblems</span> and accessories. Precision-etched performance art for those who demand excellence.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
@@ -42,7 +42,7 @@ export default function Hero() {
           {/* Scroll Indicator - repositioned beneath buttons */}
           <div className="pt-16 flex flex-col items-center animate-bounce opacity-30 hover:opacity-100 transition-opacity">
             <span className="text-[10px] uppercase tracking-[0.4em] mb-4 font-bold text-white">Scroll</span>
-            <div className="w-[1px] h-10 bg-gradient-to-b from-brand-gold to-transparent"></div>
+            <div className="w-px h-10 bg-linear-to-b from-brand-gold to-transparent"></div>
           </div>
         </div>
       </div>

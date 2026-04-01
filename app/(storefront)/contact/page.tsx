@@ -56,30 +56,44 @@ export default function ContactPage() {
             </p>
           </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 animate-fade-in">
-            {/* ... Contact cards stay the same ... */}
-            <div className="glass-card p-8 text-center flex flex-col items-center group">
-              <div className="w-12 h-12 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-black transition-all duration-500">
-                <Phone size={24} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 animate-fade-in">
+            <div className="glass-card p-6 text-center flex flex-col items-center group">
+              <div className="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-4 group-hover:bg-brand-gold group-hover:text-black transition-all duration-500">
+                <Phone size={20} />
               </div>
-              <h3 className="text-xs font-black uppercase tracking-widest text-white mb-2 text-[10px]">Call Us</h3>
-              <a href="tel:+13322566110" className="text-white/60 hover:text-brand-gold transition-colors font-light text-sm tracking-tight">+1 (332) 256-6110</a>
+              <h3 className="text-xs font-black uppercase tracking-widest text-white mb-2 text-[9px]">Call Us</h3>
+              <a href="tel:+13322566110" className="text-white/40 hover:text-brand-gold transition-colors font-light text-[11px] tracking-tight">+1 (332) 256-6110</a>
             </div>
 
-            <div className="glass-card p-8 text-center flex flex-col items-center group">
-              <div className="w-12 h-12 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-black transition-all duration-500">
-                <Mail size={24} />
+            <div className="glass-card p-6 text-center flex flex-col items-center group">
+              <div className="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-4 group-hover:bg-brand-gold group-hover:text-black transition-all duration-500">
+                <Mail size={20} />
               </div>
-              <h3 className="text-xs font-black uppercase tracking-widest text-white mb-2 text-[10px]">Email Support</h3>
-              <a href="mailto:info@engravingnation.store" className="text-white/60 hover:text-brand-gold transition-colors font-light text-sm tracking-tight">info@engravingnation.store</a>
+              <h3 className="text-xs font-black uppercase tracking-widest text-white mb-2 text-[9px]">Email Support</h3>
+              <a href="mailto:info@engravingnation.store" className="text-white/40 hover:text-brand-gold transition-colors font-light text-[11px] tracking-tight">info@engravingnation.store</a>
             </div>
 
-            <div className="glass-card p-8 text-center flex flex-col items-center group">
-              <div className="w-12 h-12 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-6 group-hover:bg-brand-gold group-hover:text-black transition-all duration-500">
-                <Clock size={24} />
+            <div className="glass-card p-6 text-center flex flex-col items-center group">
+              <div className="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-4 group-hover:bg-brand-gold group-hover:text-black transition-all duration-500">
+                <MapPin size={20} />
               </div>
-              <h3 className="text-xs font-black uppercase tracking-widest text-white mb-2 text-[10px]">Business Hours</h3>
-              <p className="text-white/60 font-light text-sm tracking-tight">Mon-Fri: 9AM - 6PM EST</p>
+              <h3 className="text-xs font-black uppercase tracking-widest text-white mb-2 text-[9px]">Workshop</h3>
+              <a 
+                href="https://www.google.com/maps/search/?api=1&query=111+SMITHTOWN+BYP+STE+228+HAUPPAUGE+NY+11788-2531+USA" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white/40 hover:text-brand-gold transition-colors font-light text-[11px] leading-tight text-center"
+              >
+                111 SMITHTOWN BYP STE 228<br/>HAUPPAUGE, NY 11788
+              </a>
+            </div>
+
+            <div className="glass-card p-6 text-center flex flex-col items-center group">
+              <div className="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-4 group-hover:bg-brand-gold group-hover:text-black transition-all duration-500">
+                <Clock size={20} />
+              </div>
+              <h3 className="text-xs font-black uppercase tracking-widest text-white mb-2 text-[9px]">Business Hours</h3>
+              <p className="text-white/40 font-light text-[11px] tracking-tight">Mon-Fri: 9AM - 6PM EST</p>
             </div>
           </div>
 

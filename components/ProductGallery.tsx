@@ -27,7 +27,7 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
         <div className="relative w-full h-full">
           <Image 
             src={activeImage} 
-            alt={name}
+            alt={`Custom Engraved ${name} - Engraving Nation Product Detail`}
             fill
             className="object-contain p-4 sm:p-8 transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 1024px) 100vw, 50vw"
@@ -50,7 +50,7 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
           >
             <Image 
               src={img} 
-              alt={`${name} thumbnail ${idx + 1}`}
+              alt={`Custom Engraved ${name} Thumb ${idx + 1}`}
               fill
               className={`object-cover p-1 transition-transform duration-500 ${activeImage === img ? 'scale-105' : 'group-hover:scale-110 opacity-60 group-hover:opacity-100'}`}
               sizes="100px"
