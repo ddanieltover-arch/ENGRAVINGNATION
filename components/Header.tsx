@@ -14,7 +14,13 @@ const navLinks = [
   { href: '/products?make=Ford', label: 'Ford' },
   { href: '/products?make=Ram', label: 'Ram' },
   { href: '/services', label: 'Services' },
-  { href: '/about', label: 'Our Story' },
+  { 
+    href: '/about', 
+    label: 'Our Story',
+    dropdown: [
+      { href: '/gallery', label: 'Build Gallery' },
+    ]
+  },
 ];
 
 export default function Header() {
@@ -61,14 +67,32 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden xl:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-[10px] font-black tracking-[0.2em] text-white/70 hover:text-brand-gold transition-all duration-300 uppercase italic"
-            >
-              {link.label}
-            </Link>
+          {navLinks.map((link: any) => (
+            <div key={link.href} className="relative group/nav">
+              <Link
+                href={link.href}
+                className="text-[10px] font-black tracking-[0.2em] text-white/70 hover:text-brand-gold transition-all duration-300 uppercase italic flex items-center gap-1"
+              >
+                {link.label}
+                {link.dropdown && <span className="text-[8px] transition-transform group-hover/nav:rotate-180">▼</span>}
+              </Link>
+              
+              {link.dropdown && (
+                <div className="absolute top-full left-0 pt-4 opacity-0 translate-y-2 pointer-events-none group-hover/nav:opacity-100 group-hover/nav:translate-y-0 group-hover/nav:pointer-events-auto transition-all duration-300">
+                  <div className="bg-brand-bg border border-white/5 rounded-xl p-4 min-w-[200px] shadow-2xl backdrop-blur-xl">
+                    {link.dropdown.map((sub: any) => (
+                      <Link
+                        key={sub.href}
+                        href={sub.href}
+                        className="block py-2 px-4 text-[10px] font-black tracking-[0.2em] text-white/40 hover:text-brand-gold transition-colors uppercase italic border-l border-transparent hover:border-brand-gold/30"
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -113,16 +137,31 @@ export default function Header() {
             aria-hidden="true"
           />
           <nav className="xl:hidden absolute top-20 left-0 w-full z-50 bg-brand-bg border-b border-white/10 shadow-2xl animate-fade-in origin-top">
-            <div className="container mx-auto px-4 py-6 flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="py-3 px-4 text-sm font-bold tracking-[0.1em] text-white/80 hover:text-brand-gold hover:bg-white/5 rounded-lg transition-all uppercase"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
+            <div className="container mx-auto px-4 py-6 flex flex-col gap-2 max-h-[70vh] overflow-y-auto">
+              {navLinks.map((link: any) => (
+                <div key={link.href} className="flex flex-col">
+                  <Link
+                    href={link.href}
+                    className="py-3 px-4 text-sm font-bold tracking-widest text-white/80 hover:text-brand-gold hover:bg-white/5 rounded-lg transition-all uppercase flex items-center justify-between"
+                    onClick={() => !link.dropdown && setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                  {link.dropdown && (
+                    <div className="pl-8 mb-2 flex flex-col gap-1 border-l-2 border-brand-gold/10 ml-4">
+                      {link.dropdown.map((sub: any) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className="py-2 px-4 text-xs font-bold tracking-wider text-white/50 hover:text-brand-gold transition-colors uppercase italic"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
             </div>
           </nav>

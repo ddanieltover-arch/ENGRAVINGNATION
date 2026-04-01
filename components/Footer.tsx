@@ -34,6 +34,7 @@ export default function Footer() {
               <li><Link href="/products?make=GMC" className="text-sm text-white/40 hover:text-brand-gold transition-colors">GMC Emblems</Link></li>
               <li><Link href="/products?make=Ford" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Ford Emblems</Link></li>
               <li><Link href="/products?make=Ram" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Ram Emblems</Link></li>
+              <li><Link href="/gallery" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Build Gallery</Link></li>
             </ul>
           </div>
           <div>

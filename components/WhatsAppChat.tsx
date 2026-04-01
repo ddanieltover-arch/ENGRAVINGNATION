@@ -12,7 +12,7 @@ export default function WhatsAppChat() {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-24 md:bottom-8 left-6 z-[9999] group bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 flex items-center gap-3 animate-fade-in"
+      className="fixed bottom-24 md:bottom-8 left-6 z-50 group bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 flex items-center gap-3 animate-fade-in"
       aria-label="Chat on WhatsApp"
     >
       <MessageCircle size={24} className="group-hover:rotate-12 transition-transform" />
