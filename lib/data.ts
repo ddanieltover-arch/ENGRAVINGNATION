@@ -3,6 +3,7 @@ import path from 'path';
 import { supabase, createServiceClient } from './supabase';
 
 export const PRODUCTS_FILE = path.join(process.cwd(), 'data/products.json');
+export const ARTICLES_FILE = path.join(process.cwd(), 'data/articles.json');
 export const ORDERS_FILE = path.join(process.cwd(), 'data/orders.json');
 export const COUPONS_FILE = path.join(process.cwd(), 'data/coupons.json');
 export const SUBSCRIBERS_FILE = path.join(process.cwd(), 'data/subscribers.json');
@@ -93,6 +94,40 @@ export async function getProductBySlug(slug: string) {
     reviews: data.reviews && data.reviews.length > 0 ? data.reviews : (local?.reviews || []),
     description: (local?.description && local.description.includes('href=')) ? local.description : data.description
   };
+}
+
+export async function getArticles() {
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .order('published_at', { ascending: false });
+  
+  const localArticles = getJsonData(ARTICLES_FILE);
+  
+  // Merge Supabase results with local JSON fallback
+  const dbData = data || [];
+  const merged = [...dbData];
+  
+  localArticles.forEach((local: any) => {
+    if (!merged.find(m => m.slug === local.slug)) {
+      merged.push(local);
+    }
+  });
+
+  return merged;
+}
+
+export async function getArticleBySlug(slug: string) {
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('slug', slug)
+    .single();
+  
+  if (data) return data;
+  
+  const localArticles = getJsonData(ARTICLES_FILE);
+  return localArticles.find((a: any) => a.slug === slug) || null;
 }
 
 const DEFAULT_SETTINGS = {
