@@ -109,7 +109,7 @@ export default function ProductTabs({ description, reviews, relatedProducts = []
       }
 
       // 4. Default Paragraph
-      return <p key={idx} className="text-white/70 leading-relaxed text-base font-light mb-4">{line}</p>;
+      return <p key={idx} className="text-white/70 leading-relaxed text-base font-light mb-4" dangerouslySetInnerHTML={{ __html: line }} />;
     });
   };
 

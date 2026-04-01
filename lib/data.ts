@@ -60,7 +60,20 @@ export async function getProducts() {
     .select('*, product_images(*), categories(*), product_fitments(vehicle_fitments(*))')
     .neq('slug', 'sys_settings');
   if (error) throw error;
-  return data.map(formatProduct);
+  
+  // Merge reviews and enhanced descriptions from local JSON as a fallback/overlay
+  const localProducts = getJsonData(PRODUCTS_FILE);
+  
+  return data.map(p => {
+    const formatted = formatProduct(p);
+    const local = localProducts.find((lp: any) => lp.slug === p.slug);
+    
+    return {
+      ...formatted,
+      reviews: p.reviews && p.reviews.length > 0 ? p.reviews : (local?.reviews || []),
+      description: (local?.description && local.description.includes('href=')) ? local.description : p.description
+    };
+  });
 }
 
 export async function getProductBySlug(slug: string) {
@@ -70,7 +83,16 @@ export async function getProductBySlug(slug: string) {
     .eq('slug', slug)
     .single();
   if (error) return null;
-  return formatProduct(data);
+  
+  const formatted = formatProduct(data);
+  const localProducts = getJsonData(PRODUCTS_FILE);
+  const local = localProducts.find((lp: any) => lp.slug === slug);
+  
+  return {
+    ...formatted,
+    reviews: data.reviews && data.reviews.length > 0 ? data.reviews : (local?.reviews || []),
+    description: (local?.description && local.description.includes('href=')) ? local.description : data.description
+  };
 }
 
 const DEFAULT_SETTINGS = {
