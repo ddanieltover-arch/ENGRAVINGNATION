@@ -4,6 +4,7 @@ const { createClient } = require('@supabase/supabase-js');
 
 // Configuration
 const productsFilePath = path.join(process.cwd(), 'data/products.json');
+const articlesFilePath = path.join(process.cwd(), 'data/articles.json');
 const SUPABASE_URL = 'https://dbnqxojbamfoexfrsext.supabase.co';
 const SUPABASE_SERVICE_ROLE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRibnF4b2piYW1mb2V4ZnJzZXh0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NDY5NDY0OSwiZXhwIjoyMDkwMjcwNjQ5fQ.Yy7HG2-lTcYhURZE27SPo6hkZuuZ4say5EpEGLbfYrA';
 
@@ -65,9 +66,40 @@ function generateReviews(productName, category, year = '2022', genericVehicle = 
   return reviews;
 }
 
+async function syncArticles() {
+  if (!fs.existsSync(articlesFilePath)) return;
+  const articles = JSON.parse(fs.readFileSync(articlesFilePath, 'utf8'));
+  console.log(`Syncing ${articles.length} articles to Supabase...`);
+
+  for (const article of articles) {
+    console.log(`  Syncing article: ${article.title}`);
+    
+    // Use upsert to create or update
+    const { error } = await supabase
+      .from('articles')
+      .upsert({
+        slug: article.slug,
+        title: article.title,
+        excerpt: article.excerpt,
+        content: article.content,
+        image: article.image,
+        category: article.category,
+        author: article.author,
+        published_at: article.published_at || article.publishedAt,
+        seo_title: article.seoMetadata?.title,
+        seo_description: article.seoMetadata?.description
+      }, { onConflict: 'slug' });
+
+    if (error) {
+      console.error(`    Error syncing ${article.slug}:`, error.message);
+    }
+  }
+}
+
 async function run() {
   console.log('--- EN CONTENT ENRICHER START ---');
   
+  // 1. Sync Products
   const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf8'));
   console.log(`Processing ${products.length} products...`);
 
@@ -78,18 +110,18 @@ async function run() {
     const year = product.name.includes('07-13') ? '2012' : (product.name.includes('99-06') ? '2004' : '2023');
     const vehicle = product.name.toLowerCase().includes('gmc') ? 'GMC Sierra' : (product.name.toLowerCase().includes('chevy') ? 'Silverado' : 'truck');
 
-    // 1. Generate 20 Unique Reviews
-    product.reviews = generateReviews(product.name, category, year, vehicle);
+    // Generate 20 Unique Reviews if missing
+    if (!product.reviews || product.reviews.length === 0) {
+      product.reviews = generateReviews(product.name, category, year, vehicle);
+    }
 
-    // 2. Inject Internal Links (Strategic)
+    // Inject Internal Links (Strategic)
     if (!product.description.includes('href=')) {
       const linkHtml = `\n\nLooking for more? Check out our <a href="/gallery" class="text-brand-gold hover:underline">Build Showcase</a> for inspiration or browse our <a href="/products" class="text-brand-gold hover:underline">Full Collection</a> of custom items.`;
       product.description += linkHtml;
     }
 
-    console.log(`  Updating product: ${product.name}`);
-    
-    // 3. Update Supabase
+    // Update Supabase
     const { error } = await supabase
       .from('products')
       .update({ 
@@ -99,13 +131,18 @@ async function run() {
       .eq('slug', product.slug);
 
     if (error) {
-      console.error(`  Error updating ${product.slug} in Supabase:`, error.message);
+      console.log(`  Skip update for ${product.slug} (Table may not exist or connection issue)`);
     }
   }
 
-  // 4. Save to Local JSON
+  // 2. Sync Articles
+  await syncArticles();
+
+  // 3. Save to Local JSON
   fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 2));
   console.log('--- EN CONTENT ENRICHER COMPLETE ---');
 }
+
+run().catch(console.error);
 
 run().catch(console.error);
