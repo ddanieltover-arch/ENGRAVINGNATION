@@ -15,24 +15,24 @@ export const metadata: Metadata = {
 const builds = [
   {
     title: "The Midnight Silverado",
-    description: "A complete blackout transformation using our high-gloss deep-etched Chevrolet bowties. The ultimate aggressive look for the 2026 Trail Boss.",
-    image: "/builds/silverado-midnight.png", // Using descriptive paths
-    tags: ["Chevrolet", "Silverado", "Blackout"],
-    link: "/products?make=Chevrolet"
+    description: "Deep laser-etched black bowtie emblems with a custom honeycomb texture.",
+    image: "/builds/silverado-midnight.png",
+    category: "Chevy",
+    link: "/products/midnight-silverado-emblems"
   },
   {
     title: "Crimson Forge Sierra",
-    description: "GMC Denali mirror caps featuring the 'Shattered Carbon' engraving pattern. Precision-etched depth that catches the light from every angle.",
+    description: "GMC mirror caps with a signature shattered carbon engraving and bronze finish.",
     image: "/builds/sierra-crimson.png",
-    tags: ["GMC", "Sierra", "Denali", "Mirror Caps"],
-    link: "/products?make=GMC"
+    category: "GMC",
+    link: "/products/crimson-forge-sierra-mirrors"
   },
   {
     title: "Platinum Edition F-150",
-    description: "Chrome-inlay tailgate emblems for the Ford F-150. A subtle yet premium upgrade that complements the factory platinum trim perfectly.",
+    description: "Detailed tailgate etching featuring a geometric mesh pattern for the Platinum trim.",
     image: "/builds/f150-platinum.png",
-    tags: ["Ford", "F-150", "Platinum"],
-    link: "/products?make=Ford"
+    category: "Ford",
+    link: "/products/platinum-f150-tailgate"
   }
 ];
 
@@ -60,7 +60,7 @@ export default function GalleryPage() {
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/80 to-transparent z-20"></div>
                 <Image 
                   src={build.image} 
-                  alt={`${build.title} - ${build.tags.join(', ')}`}
+                  alt={`${build.title} - Custom Engraved ${build.category} build`}
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
@@ -68,11 +68,9 @@ export default function GalleryPage() {
               
               <div className="w-full md:w-1/2 space-y-6">
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {build.tags.map(tag => (
-                    <span key={tag} className="text-[9px] uppercase tracking-widest font-black text-brand-gold/60 border border-brand-gold/20 px-2 py-0.5 rounded">
-                      {tag}
-                    </span>
-                  ))}
+                  <span className="text-[9px] uppercase tracking-widest font-black text-brand-gold/60 border border-brand-gold/20 px-2 py-0.5 rounded">
+                    {build.category}
+                  </span>
                 </div>
                 <h2 className="text-3xl md:text-5xl font-heading font-black uppercase italic text-white leading-none">
                   {build.title}
