@@ -26,9 +26,12 @@ export default async function ProductsPage({
     products = products.filter((p: any) => {
       let matches = true;
       
+      const pCategories = p.categories || [];
+      const pFitments = p.vehicle_fitment || [];
+
       if (categoryFilter) {
-        matches = matches && p.categories.some((c: string) => 
-          c.toLowerCase().includes(categoryFilter.toLowerCase())
+        matches = matches && pCategories.some((c: string) => 
+          c.toLowerCase().includes((categoryFilter as string).toLowerCase())
         );
       }
       
@@ -42,20 +45,21 @@ export default async function ProductsPage({
           'ram': ['ram', 'dodge'],
           'dodge': ['dodge', 'ram'],
         };
-        const filterLower = makeFilter.toLowerCase();
+        const filterLower = (makeFilter as string).toLowerCase();
         const aliases = makeAliases[filterLower] || [];
         const allTerms = [filterLower, ...aliases];
 
         matches = matches && (
-          allTerms.some(term => p.categories?.some((c: string) => c.toLowerCase().includes(term))) ||
-          p.vehicle_fitment?.some((f: any) => allTerms.includes(f.make.toLowerCase()))
+          allTerms.some(term => pCategories.some((c: string) => c.toLowerCase().includes(term))) ||
+          pFitments.some((f: any) => f?.make && allTerms.includes(f.make.toLowerCase()))
         );
       }
 
       if (modelFilter) {
+        const modelLower = (modelFilter as string).toLowerCase();
         matches = matches && (
-          p.name.toLowerCase().includes(modelFilter.toLowerCase()) ||
-          p.vehicle_fitment?.some((f: any) => f.model.toLowerCase() === modelFilter.toLowerCase())
+          p.name.toLowerCase().includes(modelLower) ||
+          pFitments.some((f: any) => f?.model && f.model.toLowerCase() === modelLower)
         );
       }
       

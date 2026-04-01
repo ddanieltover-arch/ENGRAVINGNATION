@@ -15,6 +15,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/product-category/chevy-emblems',
+        destination: 'https://www.engravingnation.store/products?make=Chevrolet',
+        permanent: true,
+      },
+      {
+        source: '/product-category/chevy-emblems/',
+        destination: 'https://www.engravingnation.store/products?make=Chevrolet',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

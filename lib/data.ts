@@ -42,6 +42,14 @@ function formatProduct(p: any) {
     regular_price: p.regular_price ? Number(p.regular_price) : Number(p.price),
     images: p.product_images 
       ? p.product_images.sort((a: any, b: any) => a.position - b.position).map((img: any) => img.url)
+      : [],
+    // Flatten single category object or array into array of names
+    categories: Array.isArray(p.categories) 
+      ? p.categories.map((c: any) => c.name)
+      : p.categories?.name ? [p.categories.name] : [],
+    // Flatten product_fitments junction table into vehicle_fitment array
+    vehicle_fitment: p.product_fitments 
+      ? p.product_fitments.map((pf: any) => pf.vehicle_fitments).filter(Boolean)
       : []
   };
 }
@@ -49,7 +57,7 @@ function formatProduct(p: any) {
 export async function getProducts() {
   const { data, error } = await supabase
     .from('products')
-    .select('*, product_images(*), categories(*)')
+    .select('*, product_images(*), categories(*), product_fitments(vehicle_fitments(*))')
     .neq('slug', 'sys_settings');
   if (error) throw error;
   return data.map(formatProduct);
@@ -58,7 +66,7 @@ export async function getProducts() {
 export async function getProductBySlug(slug: string) {
   const { data, error } = await supabase
     .from('products')
-    .select('*, product_images(*), categories(*)')
+    .select('*, product_images(*), categories(*), product_fitments(vehicle_fitments(*))')
     .eq('slug', slug)
     .single();
   if (error) return null;
