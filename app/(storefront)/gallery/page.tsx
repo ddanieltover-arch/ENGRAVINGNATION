@@ -18,21 +18,21 @@ const builds = [
     description: "Deep laser-etched black bowtie emblems with a custom honeycomb texture.",
     image: "/builds/silverado-midnight.png",
     category: "Chevy",
-    link: "/products/midnight-silverado-emblems"
+    link: "/products?make=Chevrolet"
   },
   {
     title: "Crimson Forge Sierra",
     description: "GMC mirror caps with a signature shattered carbon engraving and bronze finish.",
     image: "/builds/sierra-crimson.png",
     category: "GMC",
-    link: "/products/crimson-forge-sierra-mirrors"
+    link: "/products?make=GMC"
   },
   {
     title: "Platinum Edition F-150",
     description: "Detailed tailgate etching featuring a geometric mesh pattern for the Platinum trim.",
     image: "/builds/f150-platinum.png",
     category: "Ford",
-    link: "/products/platinum-f150-tailgate"
+    link: "/products?make=Ford"
   }
 ];
 
