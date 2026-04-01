@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import TawkChat from '@/components/TawkChat';
+import WhatsAppChat from '@/components/WhatsAppChat';
 import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -153,6 +154,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans min-h-screen flex flex-col antialiased bg-[#0a0a0a] text-white">
         {children}
+        <WhatsAppChat />
         <TawkChat />
       </body>
     </html>
