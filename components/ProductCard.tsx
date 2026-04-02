@@ -42,7 +42,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           {product.images?.[0] ? (
             <Image
               src={product.images[0]}
-              alt={`Custom Engraved ${product.name} - Automotive Accessory`}
+              alt={`Premium Custom Engraved ${product.name} - Hand-Etched Automotive Art`}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"

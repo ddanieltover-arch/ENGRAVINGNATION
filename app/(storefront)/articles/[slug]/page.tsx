@@ -57,6 +57,35 @@ export default async function ArticleDetailPage({ params }: Props) {
           })
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://engravingnation.store"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "The Journal",
+                "item": "https://engravingnation.store/articles"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": article.title,
+                "item": `https://engravingnation.store/articles/${slug}`
+              }
+            ]
+          })
+        }}
+      />
 
       {/* Parallax Hero Header */}
       <div className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden">
