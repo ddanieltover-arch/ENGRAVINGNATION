@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Star, Upload, Loader2, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -22,10 +23,27 @@ export default function WriteReviewModal({ productId, productSlug, productName, 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Body scroll lock
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+  if (!isOpen || !mounted) return null;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(e.target.files || []);
@@ -95,9 +113,9 @@ export default function WriteReviewModal({ productId, productSlug, productName, 
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-      <div className="bg-brand-bg w-full max-w-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+  const modalContent = (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto overflow-x-hidden">
+      <div className="bg-brand-bg w-full max-w-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 my-auto">
         <div className="flex items-center justify-between p-6 border-b border-white/5 bg-white/5">
           <div>
             <h3 className="text-xl font-heading font-black text-white uppercase italic tracking-tighter">Write a <span className="text-brand-gold">Review</span></h3>
@@ -217,4 +235,6 @@ export default function WriteReviewModal({ productId, productSlug, productName, 
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }
