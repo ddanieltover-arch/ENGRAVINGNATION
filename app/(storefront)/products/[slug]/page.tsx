@@ -222,7 +222,13 @@ export default async function ProductDetailPage({
         </div>
 
         {/* Product Details Tabs */}
-        <ProductTabs description={product.description} reviews={product.reviews} relatedProducts={relatedProducts} />
+        <ProductTabs 
+          productId={product.id.toString()} 
+          productName={product.name} 
+          description={product.description} 
+          reviews={product.reviews} 
+          relatedProducts={relatedProducts} 
+        />
 
       </div>
     </div>

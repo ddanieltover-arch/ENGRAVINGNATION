@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import { Star } from 'lucide-react';
+import Image from 'next/image';
 import ProductCard from '@/components/ProductCard';
+import WriteReviewModal from '@/components/WriteReviewModal';
 
 interface Review {
   id?: number | string;
@@ -38,15 +40,23 @@ const mockReviews: Review[] = [
 ];
 
 interface ProductTabsProps {
+  productId: string;
+  productName: string;
   description: string;
   reviews?: Review[];
   relatedProducts?: any[];
 }
 
-export default function ProductTabs({ description, reviews, relatedProducts = [] }: ProductTabsProps) {
+export default function ProductTabs({ productId, productName, description, reviews, relatedProducts = [] }: ProductTabsProps) {
   const [activeTab, setActiveTab] = useState<'description' | 'reviews' | 'related'>('description');
+  const [localReviews, setLocalReviews] = useState<Review[]>(reviews || []);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
-  const displayReviews = reviews && reviews.length > 0 ? reviews : mockReviews;
+  const displayReviews = localReviews.length > 0 ? localReviews : mockReviews;
+  
+  const handleReviewSuccess = (newReview: any) => {
+    setLocalReviews(prev => [newReview, ...prev]);
+  };
   
   // Calculate average rating if we have reviews
   const averageRating = displayReviews.length > 0 
@@ -204,11 +214,16 @@ export default function ProductTabs({ description, reviews, relatedProducts = []
                 </div>
                 <div className="text-[10px] text-white/30 uppercase tracking-widest">Based on {displayReviews.length} reviews</div>
               </div>
-              <button className="btn-primary py-2 px-6 text-[10px]">Write a Review</button>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="btn-primary py-2 px-6 text-[10px]"
+              >
+                Write a Review
+              </button>
             </div>
             
             <div className="grid grid-cols-1 gap-6">
-              {displayReviews.map((review, idx) => (
+              {displayReviews.map((review: any, idx) => (
                 <div key={review.id || idx} className="glass-card p-6 md:p-8">
                   <div className="flex justify-between items-start mb-4">
                     <div>
@@ -222,11 +237,39 @@ export default function ProductTabs({ description, reviews, relatedProducts = []
                     <span className="text-[10px] text-white/20 uppercase tracking-widest">{review.date}</span>
                   </div>
                   {(review.comment || review.text) && (
-                    <p className="text-white/60 font-light leading-relaxed italic">"{review.comment || review.text}"</p>
+                    <p className="text-white/60 font-light leading-relaxed italic mb-6">"{review.comment || review.text}"</p>
+                  )}
+
+                  {/* Photo Gallery */}
+                  {review.images && review.images.length > 0 && (
+                    <div className="flex flex-wrap gap-3 mt-4">
+                      {review.images.map((img: string, i: number) => (
+                        <div 
+                          key={i} 
+                          className="relative w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden border border-white/5 group bg-white/5 hover:border-brand-gold/30 transition-all cursor-zoom-in"
+                        >
+                          <Image 
+                            src={img} 
+                            alt={review.imageAlts?.[i] || `Review photo ${i + 1} by ${review.author}`}
+                            fill 
+                            className="object-cover group-hover:scale-110 transition-transform duration-500" 
+                          />
+                        </div>
+                      ))}
+                    </div>
                   )}
                 </div>
               ))}
             </div>
+
+
+            <WriteReviewModal 
+              productId={productId}
+              productName={productName}
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              onSuccess={handleReviewSuccess}
+            />
           </div>
         )}
 
