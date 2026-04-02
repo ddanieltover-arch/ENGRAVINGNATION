@@ -337,3 +337,22 @@ export async function addSubscriber(email: string) {
   if (error) throw error;
   return data;
 }
+
+export async function searchProducts(query: string) {
+  if (!query || query.length < 2) return [];
+  
+  const { data, error } = await supabase
+    .from('products')
+    .select('id, name, slug, price, product_images(url)')
+    .or(`name.ilike.%${query}%,description.ilike.%${query}%`)
+    .neq('slug', 'sys_settings')
+    .limit(8);
+    
+  if (error) throw error;
+  
+  return data.map(p => ({
+    ...p,
+    price: Number(p.price),
+    images: p.product_images?.map((img: any) => img.url) || []
+  }));
+}

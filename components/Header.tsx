@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ShoppingCart, Menu, X, Search } from 'lucide-react';
 import { useCart } from '@/components/CartProvider';
+import LiveSearch from './LiveSearch';
 
 const navLinks = [
   { 
@@ -115,16 +116,9 @@ export default function Header() {
             Contact
           </Link>
 
-          <form onSubmit={handleSearch} className="relative hidden md:flex items-center group">
-            <input
-              type="text"
-              placeholder="Search designs..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 text-xs text-white/70 w-48 focus:outline-none focus:border-brand-gold/30 focus:w-64 transition-all duration-500 placeholder:text-white/20"
-            />
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30 group-focus-within:text-brand-gold transition-colors" />
-          </form>
+          <div className="hidden md:block">
+             <LiveSearch />
+          </div>
 
           <Link href="/cart" className="p-2 text-white/70 hover:text-brand-gold transition-colors relative group" onClick={() => setMobileMenuOpen(false)}>
             <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform" />
