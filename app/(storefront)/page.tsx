@@ -4,6 +4,7 @@ import { getJsonData, PRODUCTS_FILE } from '@/lib/data';
 import Hero from '@/components/Hero';
 import VehicleSelector from '@/components/VehicleSelector';
 import ProductCard from '@/components/ProductCard';
+import VIPNewsletter from '@/components/VIPNewsletter';
 import { getProducts } from '@/lib/data';
 import type { Metadata } from 'next';
 
@@ -188,6 +189,9 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* VIP Newsletter Section */}
+        <VIPNewsletter />
       </div>
     </div>
   );

@@ -149,10 +149,10 @@ function NewsletterForm() {
       });
 
       const data = await res.json();
-      if (data.success) {
+      if (res.ok) {
         setStatus('success');
         setEmail('');
-        setMessage('Welcome to the Nation!');
+        setMessage('Welcome to the Elite.');
       } else {
         setStatus('error');
         setMessage(data.error || 'Something went wrong');
@@ -170,18 +170,18 @@ function NewsletterForm() {
           type="email" 
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Your email" 
+          placeholder="VIP Email Address" 
           disabled={status === 'loading' || status === 'success'}
-          className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white w-full focus:outline-none focus:border-brand-gold transition-colors disabled:opacity-50"
+          className="bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white w-full focus:outline-none focus:border-brand-gold transition-colors disabled:opacity-50 placeholder:text-white/20"
           required
         />
       </div>
       <button 
         type="submit" 
         disabled={status === 'loading' || status === 'success'}
-        className={`btn-primary w-full py-3 text-[10px] transition-all duration-300 ${status === 'success' ? 'bg-green-600 border-green-600 text-white' : ''}`}
+        className={`btn-primary w-full py-3 text-[10px] transition-all duration-300 ${status === 'success' ? 'bg-brand-gold border-brand-gold text-black' : ''}`}
       >
-        {status === 'loading' ? 'Joining...' : status === 'success' ? 'Subscribed!' : 'Join the Nation'}
+        {status === 'loading' ? 'Joining...' : status === 'success' ? 'Welcome to the Elite' : 'Join the Elite Nation'}
       </button>
       {message && (
         <p className={`text-[10px] uppercase tracking-widest text-center mt-2 ${status === 'error' ? 'text-red-500' : 'text-brand-gold font-bold italic animate-pulse'}`}>
