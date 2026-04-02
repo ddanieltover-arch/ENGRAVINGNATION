@@ -3,8 +3,8 @@ const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 
 // Configuration
-const productsFilePath = path.join(process.cwd(), 'data/products.json');
-const articlesFilePath = path.join(process.cwd(), 'data/articles.json');
+const productsFilePath = path.join(__dirname, '../data/products.json');
+const articlesFilePath = path.join(__dirname, '../data/articles.json');
 const SUPABASE_URL = 'https://dbnqxojbamfoexfrsext.supabase.co';
 const SUPABASE_SERVICE_ROLE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRibnF4b2piYW1mb2V4ZnJzZXh0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NDY5NDY0OSwiZXhwIjoyMDkwMjcwNjQ5fQ.Yy7HG2-lTcYhURZE27SPo6hkZuuZ4say5EpEGLbfYrA';
 

@@ -8,17 +8,27 @@ import { ShoppingCart, Menu, X, Search } from 'lucide-react';
 import { useCart } from '@/components/CartProvider';
 
 const navLinks = [
-  { href: '/products', label: 'Shop All' },
-  { href: '/products?make=Chevrolet', label: 'Chevy' },
-  { href: '/products?make=GMC', label: 'GMC' },
-  { href: '/products?make=Ford', label: 'Ford' },
-  { href: '/products?make=Ram', label: 'Ram' },
+  { 
+    href: '/products', 
+    label: 'Shop',
+    dropdown: [
+      { href: '/products', label: 'All Products' },
+      { href: '/products?make=Chevrolet', label: 'Chevrolet' },
+      { href: '/products?make=GMC', label: 'GMC' },
+      { href: '/products?make=Ford', label: 'Ford' },
+      { href: '/products?make=Ram', label: 'Ram' },
+    ]
+  },
+  { href: '/articles', label: 'The Journal' },
+  { href: '/gallery', label: 'Gallery' },
   { href: '/services', label: 'Services' },
   { 
     href: '/about', 
     label: 'Our Story',
     dropdown: [
-      { href: '/gallery', label: 'Build Gallery' },
+      { href: '/about', label: 'About Us' },
+      { href: '/shipping', label: 'Shipping Info' },
+      { href: '/refund-and-returns', label: 'Returns Policy' },
     ]
   },
 ];
