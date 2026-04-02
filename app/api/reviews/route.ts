@@ -8,18 +8,18 @@ const supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey);
 
 export async function POST(request: Request) {
   try {
-    const { productId, author, rating, comment, images } = await request.json();
+    const { productId, productSlug, author, rating, comment, images } = await request.json();
 
-    if (!productId || !author || !rating || !comment) {
+    if (!(productId || productSlug) || !author || !rating || !comment) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
     // 1. Fetch current reviews and product name for SEO
-    const { data: product, error: fetchError } = await supabaseAdmin
-      .from('products')
-      .select('name, reviews')
-      .eq('id', productId)
-      .single();
+    const query = productId 
+      ? supabaseAdmin.from('products').select('id, name, reviews').eq('id', productId)
+      : supabaseAdmin.from('products').select('id, name, reviews').eq('slug', productSlug);
+
+    const { data: product, error: fetchError } = await query.single();
 
     if (fetchError || !product) {
       return NextResponse.json({ error: 'Product not found' }, { status: 404 });
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
       .update({
         reviews: [newReview, ...currentReviews]
       })
-      .eq('id', productId);
+      .eq('id', product.id);
 
     if (updateError) {
       return NextResponse.json({ error: 'Failed to update reviews' }, { status: 500 });

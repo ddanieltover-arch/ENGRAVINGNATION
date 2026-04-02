@@ -7,6 +7,7 @@ import AddToCartForm from '@/components/AddToCartForm';
 import ProductCard from '@/components/ProductCard';
 import ProductTabs from '@/components/ProductTabs';
 import ProductGallery from '@/components/ProductGallery';
+import TrustSeals from '@/components/TrustSeals';
 import type { Metadata, ResolvingMetadata } from 'next';
 
 export async function generateMetadata(
@@ -204,8 +205,9 @@ export default async function ProductDetailPage({
             </div>
 
             {/* Form */}
-            <div className="mb-10">
+            <div className="mb-8">
               <AddToCartForm product={{ slug: product.slug, name: product.name, price: product.price, images: product.images }} />
+              <TrustSeals />
             </div>
             
             <div className="flex items-center gap-6 pt-6 border-t border-brand-border/20">
@@ -224,6 +226,7 @@ export default async function ProductDetailPage({
         {/* Product Details Tabs */}
         <ProductTabs 
           productId={product.id.toString()} 
+          productSlug={product.slug}
           productName={product.name} 
           description={product.description} 
           reviews={product.reviews} 

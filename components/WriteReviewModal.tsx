@@ -6,13 +6,14 @@ import Image from 'next/image';
 
 interface Props {
   productId: string;
+  productSlug: string;
   productName: string;
   isOpen: boolean;
   onClose: () => void;
   onSuccess: (newReview: any) => void;
 }
 
-export default function WriteReviewModal({ productId, productName, isOpen, onClose, onSuccess }: Props) {
+export default function WriteReviewModal({ productId, productSlug, productName, isOpen, onClose, onSuccess }: Props) {
   const [author, setAuthor] = useState('');
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
@@ -59,32 +60,12 @@ export default function WriteReviewModal({ productId, productName, isOpen, onClo
       // 1. Upload photos first (if any)
       const imageUrls: string[] = [];
       
-      // For this implementation, we move the actual upload logic to the client side
-      // or handle it via the API. We'll simulate the client-side upload to Supabase
-      // for directness, assuming the storage is public.
-      
-      // Note: In a production environment, you'd use a signed upload URL or 
-      // handle the multipart form in the API. 
-      // For simplicity here, we'll assume the API handles URLs and we'd ideally
-      // upload to a temporary bucket first.
-      
-      // SIMULATION: Since I can't actually do the binary upload here without 
-      // a sophisticated multipart/form-data handler in the API, I'll simulate
-      // the result for the demo if images were uploaded.
-      
-      // REAL LOGIC would be:
-      /*
-      for (const file of files) {
-        const url = await uploadToSupabase(file);
-        imageUrls.push(url);
-      }
-      */
-
       const response = await fetch('/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           productId,
+          productSlug,
           author,
           rating,
           comment,
@@ -115,7 +96,7 @@ export default function WriteReviewModal({ productId, productName, isOpen, onClo
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
       <div className="bg-brand-bg w-full max-w-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
         <div className="flex items-center justify-between p-6 border-b border-white/5 bg-white/5">
           <div>

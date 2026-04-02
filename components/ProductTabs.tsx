@@ -41,13 +41,14 @@ const mockReviews: Review[] = [
 
 interface ProductTabsProps {
   productId: string;
+  productSlug: string;
   productName: string;
   description: string;
   reviews?: Review[];
   relatedProducts?: any[];
 }
 
-export default function ProductTabs({ productId, productName, description, reviews, relatedProducts = [] }: ProductTabsProps) {
+export default function ProductTabs({ productId, productSlug, productName, description, reviews, relatedProducts = [] }: ProductTabsProps) {
   const [activeTab, setActiveTab] = useState<'description' | 'reviews' | 'related'>('description');
   const [localReviews, setLocalReviews] = useState<Review[]>(reviews || []);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -265,6 +266,7 @@ export default function ProductTabs({ productId, productName, description, revie
 
             <WriteReviewModal 
               productId={productId}
+              productSlug={productSlug}
               productName={productName}
               isOpen={isModalOpen}
               onClose={() => setIsModalOpen(false)}
