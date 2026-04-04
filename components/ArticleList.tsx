@@ -41,8 +41,29 @@ export default function ArticleList({ initialArticles }: ArticleListProps) {
 
   return (
     <div>
-      {/* Controls: Tabs + Sort */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
+      {/* Controls: Sort above Tabs */}
+      <div className="flex flex-col items-center gap-8 mb-16">
+        {/* Sort Dropdown */}
+        <div className="relative group min-w-[220px]">
+          <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-[9px] font-black uppercase tracking-[0.2em] text-white/20 whitespace-nowrap">
+            Sort Journals By
+          </div>
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value as SortOrder)}
+            className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-8 py-4 text-[10px] font-black uppercase tracking-widest italic text-white appearance-none cursor-pointer focus:outline-none focus:border-brand-gold/40 transition-all text-center"
+          >
+            <option value="newest" className="bg-brand-bg text-white">Newest First</option>
+            <option value="oldest" className="bg-brand-bg text-white">Oldest First</option>
+            <option value="alphabetical" className="bg-brand-bg text-white">Name (A-Z)</option>
+          </select>
+          <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-brand-gold">
+            <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+            </svg>
+          </div>
+        </div>
+
         {/* Horizontal Tabs */}
         <div className="flex items-center gap-2 p-1.5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full overflow-x-auto no-scrollbar max-w-full">
           {categories.map((category) => (
@@ -58,24 +79,6 @@ export default function ArticleList({ initialArticles }: ArticleListProps) {
               {category}
             </button>
           ))}
-        </div>
-
-        {/* Sort Dropdown */}
-        <div className="relative group min-w-[180px]">
-          <select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value as SortOrder)}
-            className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 text-[10px] font-black uppercase tracking-widest italic text-white appearance-none cursor-pointer focus:outline-none focus:border-brand-gold/40 transition-all"
-          >
-            <option value="newest" className="bg-brand-bg text-white">Newest First</option>
-            <option value="oldest" className="bg-brand-bg text-white">Oldest First</option>
-            <option value="alphabetical" className="bg-brand-bg text-white">Name (A-Z)</option>
-          </select>
-          <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-brand-gold">
-            <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20">
-              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-            </svg>
-          </div>
         </div>
       </div>
 
