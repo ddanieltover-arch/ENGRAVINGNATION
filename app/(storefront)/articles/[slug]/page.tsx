@@ -91,7 +91,7 @@ export default async function ArticleDetailPage({ params }: Props) {
       <div className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden">
         <Image 
           src={article.image || '/images/hero-bg.jpg'} 
-          alt={article.title}
+          alt={article.imageAlt || article.title}
           fill
           className="object-cover scale-105"
           priority
