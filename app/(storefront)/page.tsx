@@ -9,12 +9,12 @@ import { getProducts } from '@/lib/data';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Engraving Nation | Custom Silverado & Chevrolet Truck Emblems',
-  description: 'Shop premium engraved Chevy emblems, Silverado badges, and custom automotive art. Hand-etched precision for the elite enthusiast.',
+  title: 'Engraving Nation | Custom Chevy Emblems, Silverado Badges & Engraved Logos',
+  description: 'Shop premium engraved Chevy emblems, custom Silverado badges, and Chevrolet truck emblems. Hand-etched Chevy badges and logos, custom silverado badges, and engraved car parts for the elite truck enthusiast.',
   alternates: {
     canonical: 'https://engravingnation.store',
   },
-  keywords: ['silverado emblems', 'engraved chevy emblem', 'chevrolet truck emblems', 'custom chevy badges', 'black silverado emblems', 'custom automotive engraving'],
+  keywords: ['silverado emblem', 'silverado badges', 'silverado badge', 'engraved chevy emblem', 'chevrolet truck emblems', 'custom chevy badges', 'chevy silverado emblem', 'chevy silverado badges', 'engraved chevy logo', 'chevy truck badges', 'chevy badges and emblems', 'custom silverado badges', 'engraved car parts', 'silverado logos'],
 };
 
 export const revalidate = 0;

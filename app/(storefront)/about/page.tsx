@@ -4,6 +4,14 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Our Story & Craftsmanship | Engraving Nation',
   description: 'Learn about Engraving Nation\'s commitment to handmade, precision-etched automotive art. From custom Silverado emblems to unique vehicle styling.',
+  alternates: {
+    canonical: 'https://engravingnation.store/about',
+  },
+  openGraph: {
+    title: 'About Engraving Nation | Hand-Crafted Automotive Excellence',
+    description: 'Discover the craftsmanship behind our custom engraved emblems and mirror caps for Chevy, GMC, and Ford trucks.',
+    url: 'https://engravingnation.store/about',
+  },
 };
 
 export default function AboutPage() {

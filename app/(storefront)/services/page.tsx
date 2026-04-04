@@ -4,6 +4,14 @@ import { Shield, Zap, Hammer, Award, Wrench } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Custom Automotive Engraving Services | Engraving Nation',
   description: 'Precision laser engraving for Chevrolet, Silverado, GMC, and Ford. Deep, durable emblems and mirror caps crafted for performance builds.',
+  alternates: {
+    canonical: 'https://engravingnation.store/services',
+  },
+  openGraph: {
+    title: 'Custom Engraving Services | Engraving Nation',
+    description: 'Professional hand-engraved emblems, mirror caps, and custom automotive accessories.',
+    url: 'https://engravingnation.store/services',
+  },
 };
 
 export default function ServicesPage() {

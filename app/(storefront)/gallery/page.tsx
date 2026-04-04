@@ -5,10 +5,14 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Build Showcase & Inspiration Gallery | Engraving Nation',
   description: 'Explore the elite collection of custom engraved builds. From blacked-out Silverado emblems to precision-etched GMC mirror caps. Get inspired for your next project.',
+  alternates: {
+    canonical: 'https://engravingnation.store/gallery',
+  },
   openGraph: {
     title: 'Custom Build Gallery | Engraving Nation',
     description: 'Real-world examples of our precision engraving on Chevy, GMC, Ford, and more.',
-    images: ['/gallery-og.jpg'],
+    url: 'https://engravingnation.store/gallery',
+    images: ['/og-image.jpg'],
   },
 };
 
