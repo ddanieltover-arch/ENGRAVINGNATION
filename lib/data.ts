@@ -114,7 +114,14 @@ export async function getArticles() {
     }
   });
 
-  return merged;
+  // Filter out articles with future publish dates (Automated Scheduling)
+  const now = new Date();
+  const filtered = merged.filter(article => {
+    const pubDateStr = article.published_at || article.publishedAt;
+    return pubDateStr ? new Date(pubDateStr) <= now : true;
+  });
+
+  return filtered;
 }
 
 export async function getArticleBySlug(slug: string) {
