@@ -131,15 +131,7 @@ export default async function ArticleDetailPage({ params }: Props) {
             <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl -mr-48 -mt-48 opacity-50 pointer-events-none"></div>
             
             <div 
-              className="prose prose-invert prose-brand max-w-none 
-                prose-h2:font-heading prose-h2:font-black prose-h2:uppercase prose-h2:italic prose-h2:text-3xl prose-h2:tracking-tight prose-h2:mb-8 prose-h2:mt-16
-                prose-h3:font-heading prose-h3:font-black prose-h3:uppercase prose-h3:italic prose-h3:text-xl prose-h3:text-brand-gold prose-h3:mb-6 prose-h3:mt-10
-                prose-p:text-white/70 prose-p:text-lg prose-p:font-light prose-p:leading-relaxed prose-p:mb-8
-                prose-a:text-brand-gold prose-a:no-underline prose-a:font-bold hover:prose-a:underline
-                prose-strong:text-white prose-strong:font-bold
-                prose-ul:text-white/60 prose-ul:font-light prose-ul:mb-10
-                prose-li:mb-2
-              "
+              className="article-content max-w-none"
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
           </div>

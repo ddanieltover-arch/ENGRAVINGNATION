@@ -81,6 +81,70 @@
     -webkit-text-fill-color: transparent;
     animation: shine 8s linear infinite;
   }
+
+  /* Premium Article Typography Engine */
+  .article-content {
+    @apply text-white/70 text-lg font-light leading-relaxed;
+  }
+
+  .article-content h2 {
+    @apply font-heading font-black uppercase italic text-3xl md:text-4xl text-white tracking-tighter mt-20 mb-10;
+    line-height: 1.1;
+  }
+
+  .article-content h3 {
+    @apply font-heading font-black uppercase italic text-xl md:text-2xl text-brand-gold tracking-tight mt-16 mb-8;
+    line-height: 1.2;
+  }
+
+  .article-content p {
+    @apply mb-8 text-white/70;
+    line-height: 1.8;
+  }
+
+  .article-content strong {
+    @apply text-white font-black;
+  }
+
+  .article-content ul {
+    @apply mb-12 pl-4 list-none space-y-6;
+  }
+
+  .article-content li {
+    @apply relative pl-8 text-white/60;
+  }
+
+  .article-content li::before {
+    content: '';
+    @apply absolute left-0 top-[12px] w-2.5 h-2.5 rounded-full bg-brand-gold shadow-[0_0_12px_rgba(212,160,23,0.6)];
+  }
+
+  .article-content a {
+    @apply text-brand-gold underline decoration-brand-gold/30 underline-offset-8 transition-all hover:text-white hover:decoration-white;
+  }
+
+  .article-content blockquote {
+    @apply pl-10 border-l-4 border-brand-gold italic text-2xl text-white/50 my-16 bg-white/5 py-8 pr-8 rounded-r-2xl;
+  }
+
+  /* Specific handling for CTA boxes inside articles */
+  .article-content .cta-box {
+    @apply bg-white/5 border border-brand-gold/20 rounded-3xl p-12 my-20 text-center backdrop-blur-xl relative overflow-hidden;
+  }
+
+  .article-content .cta-box h4 {
+    @apply text-white font-heading font-black uppercase italic text-2xl mb-4 relative z-10;
+  }
+
+  .article-content .cta-box p {
+    @apply text-white/50 mb-10 max-w-xl mx-auto relative z-10;
+  }
+
+  .article-content .cta-box a.btn-primary {
+    @apply inline-block px-10 py-4 rounded-xl font-black uppercase italic tracking-widest text-xs relative z-10;
+    background: linear-gradient(135deg, var(--color-brand-gold), var(--color-brand-gold-dark));
+    color: #000;
+  }
 }
 
 @keyframes shine {
