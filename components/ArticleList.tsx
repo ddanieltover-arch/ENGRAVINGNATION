@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,21 +8,42 @@ interface ArticleListProps {
   initialArticles: any[];
 }
 
+type SortOrder = 'newest' | 'oldest' | 'alphabetical';
+
 export default function ArticleList({ initialArticles }: ArticleListProps) {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
 
   // Extract unique categories and add 'All'
-  const categories = ['All', ...Array.from(new Set(initialArticles.map(a => a.category))).filter(Boolean)];
+  const categories = useMemo(() => {
+    return ['All', ...Array.from(new Set(initialArticles.map(a => a.category))).filter(Boolean)];
+  }, [initialArticles]);
 
-  // Filter articles based on active category
-  const filteredArticles = activeCategory === 'All' 
-    ? initialArticles 
-    : initialArticles.filter(a => a.category === activeCategory);
+  // Combined Filtering and Sorting Logic
+  const processedArticles = useMemo(() => {
+    let result = activeCategory === 'All' 
+      ? [...initialArticles] 
+      : initialArticles.filter(a => a.category === activeCategory);
+
+    // Apply Sorting
+    result.sort((a, b) => {
+      if (sortOrder === 'newest') {
+        return new Date(b.published_at || b.publishedAt).getTime() - new Date(a.published_at || a.publishedAt).getTime();
+      }
+      if (sortOrder === 'oldest') {
+        return new Date(a.published_at || a.publishedAt).getTime() - new Date(b.published_at || b.publishedAt).getTime();
+      }
+      return a.title.localeCompare(b.title);
+    });
+
+    return result;
+  }, [initialArticles, activeCategory, sortOrder]);
 
   return (
     <div>
-      {/* Horizontal Tabs */}
-      <div className="flex justify-center mb-16">
+      {/* Controls: Tabs + Sort */}
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
+        {/* Horizontal Tabs */}
         <div className="flex items-center gap-2 p-1.5 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full overflow-x-auto no-scrollbar max-w-full">
           {categories.map((category) => (
             <button
@@ -38,11 +59,29 @@ export default function ArticleList({ initialArticles }: ArticleListProps) {
             </button>
           ))}
         </div>
+
+        {/* Sort Dropdown */}
+        <div className="relative group min-w-[180px]">
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value as SortOrder)}
+            className="w-full bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 text-[10px] font-black uppercase tracking-widest italic text-white appearance-none cursor-pointer focus:outline-none focus:border-brand-gold/40 transition-all"
+          >
+            <option value="newest" className="bg-brand-bg text-white">Newest First</option>
+            <option value="oldest" className="bg-brand-bg text-white">Oldest First</option>
+            <option value="alphabetical" className="bg-brand-bg text-white">Name (A-Z)</option>
+          </select>
+          <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-brand-gold">
+            <svg className="w-3 h-3 fill-current" viewBox="0 0 20 20">
+              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+            </svg>
+          </div>
+        </div>
       </div>
 
       {/* Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredArticles.map((article: any) => (
+        {processedArticles.map((article: any) => (
           <Link 
             key={article.slug} 
             href={`/articles/${article.slug}`}
@@ -86,7 +125,7 @@ export default function ArticleList({ initialArticles }: ArticleListProps) {
         ))}
       </div>
 
-      {filteredArticles.length === 0 && (
+      {processedArticles.length === 0 && (
         <div className="text-center py-32 glass-card border-dashed">
           <p className="text-white/20 italic font-light">New insights coming soon to this category.</p>
         </div>
