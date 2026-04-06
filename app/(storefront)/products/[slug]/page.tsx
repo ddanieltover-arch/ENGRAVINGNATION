@@ -24,16 +24,26 @@ export async function generateMetadata(
   }
 
   const previousImages = (await parent).openGraph?.images || [];
+  
+  // Extract fitment summary for description
+  const fitmentSummary = product.vehicle_fitment?.length > 0
+    ? ` Fits ${product.vehicle_fitment.map((f: any) => `${f.year} ${f.make} ${f.model}`).join(', ')}.`
+    : '';
+
+  const metaTitle = `${product.name} | Custom Engraved Automotive Emblems`;
+  const metaDescription = product.short_description 
+    ? `${product.short_description}${fitmentSummary} Premium hand-engraved quality.` 
+    : `Shop ${product.name}.${fitmentSummary} Hand-etched precision custom automotive part for your vehicle. Premium quality, built to last.`;
 
   return {
-    title: `${product.name} | Custom Engraved Automotive Emblems`,
-    description: `Shop ${product.name}. Hand-etched precision custom ${product.categories?.join(', ') || 'automotive part'} for your vehicle. Premium quality, built to last.`,
+    title: metaTitle,
+    description: metaDescription.substring(0, 160),
     alternates: {
       canonical: `https://engravingnation.store/products/${slug}`,
     },
     openGraph: {
       title: `${product.name} | Engraving Nation`,
-      description: product.description?.substring(0, 160),
+      description: metaDescription.substring(0, 160),
       url: `https://engravingnation.store/products/${slug}`,
       siteName: 'Engraving Nation',
       images: [
@@ -45,7 +55,7 @@ export async function generateMetadata(
     twitter: {
       card: 'summary_large_image',
       title: product.name,
-      description: product.description?.substring(0, 160),
+      description: metaDescription.substring(0, 160),
       images: [product.images?.[0] || ''],
     },
   };

@@ -48,7 +48,42 @@ export default async function HomePage() {
           <VehicleSelector />
         </div>
         
-        <section className="mt-32 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+        {/* Browse by Make Section */}
+        <section className="mt-32 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-heading font-black tracking-tighter uppercase italic leading-none mb-4">
+              Shop by <span className="text-brand-gold">Brand</span>
+            </h2>
+            <div className="w-24 h-1 bg-brand-gold mx-auto mb-6"></div>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            {[
+              { name: 'Chevrolet', label: 'Chevy', count: '12+ Parts', color: 'from-blue-600/20 to-blue-900/40' },
+              { name: 'GMC', label: 'GMC', count: '8+ Parts', color: 'from-red-600/20 to-red-900/40' },
+              { name: 'Ford', label: 'Ford', count: '6+ Parts', color: 'from-indigo-600/20 to-indigo-900/40' },
+              { name: 'RAM', label: 'RAM', count: '4+ Parts', color: 'from-orange-600/20 to-orange-900/40' },
+            ].map((make) => (
+              <Link 
+                key={make.name}
+                href={`/products?make=${make.name}`}
+                className={`group relative overflow-hidden rounded-3xl aspect-[16/10] flex items-center justify-center bg-linear-to-br ${make.color} border border-white/5 hover:border-brand-gold/50 transition-all duration-500`}
+              >
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+                <div className="relative z-10 text-center">
+                  <h3 className="text-2xl md:text-3xl font-heading font-black uppercase italic text-white group-hover:scale-110 transition-transform duration-500">
+                    {make.label}
+                  </h3>
+                  <p className="text-[10px] uppercase tracking-widest text-brand-gold font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-500 mt-2">
+                    {make.count}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-40 animate-slide-up" style={{ animationDelay: '0.5s' }}>
           <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16 px-2">
             <div>
               <h2 className="text-4xl md:text-5xl font-heading font-black tracking-tighter uppercase italic leading-none mb-4">

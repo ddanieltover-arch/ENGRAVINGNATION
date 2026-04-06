@@ -114,6 +114,12 @@ export const contactAdminAlertTemplate = (data: { name: string, email: string, s
   return baseLayout(content, 'New Contact Message');
 };
 
+const PAYMENT_HANDLES: Record<string, string> = {
+  'CashApp': '$EngravingNation',
+  'Zelle': 'payment@engravingnation.store',
+  'Apple Pay': '13322566110',
+};
+
 export const orderConfirmationTemplate = (order: any, isAdmin: boolean = false) => {
   const items = Array.isArray(order.items) ? order.items : [];
   const itemsHtml = items.map((item: any) => `
@@ -128,6 +134,8 @@ export const orderConfirmationTemplate = (order: any, isAdmin: boolean = false) 
     </tr>
   `).join('');
 
+  const paymentHandle = PAYMENT_HANDLES[order.payment_method] || 'Please contact support';
+
   const content = `
     <h1 style="font-size: 24px; font-weight: 900; margin: 0 0 10px; text-transform: uppercase; font-style: italic; letter-spacing: -1px;">
       Order <span style="color: ${BRAND_GOLD};">${isAdmin ? 'Notification' : 'Confirmed'}</span>
@@ -135,6 +143,12 @@ export const orderConfirmationTemplate = (order: any, isAdmin: boolean = false) 
     <p style="font-size: 14px; color: ${TEXT_GRAY}; margin: 0 0 30px;">
       Order ID: <span style="color: ${TEXT_WHITE}; font-weight: bold;">#${order.id}</span> | Date: ${new Date(order.created_at || Date.now()).toLocaleDateString()}
     </p>
+
+    <div style="padding: 25px; background-color: #1a1a1a; border-radius: 12px; border: 1px solid ${BRAND_GOLD}33; margin-bottom: 30px; text-align: center;">
+        <p style="margin: 0 0 10px; color: ${BRAND_GOLD}; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Action Required: Send Payment</p>
+        <p style="margin: 0 0 5px; font-size: 20px; font-weight: bold; color: ${TEXT_WHITE};">${order.payment_method}: <span style="color: ${BRAND_GOLD};">${paymentHandle}</span></p>
+        <p style="margin: 0; font-size: 12px; color: ${TEXT_GRAY};">Please include Order ID #${order.id.split('-')[1]} in notes</p>
+    </div>
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 30px;">
         ${itemsHtml}
@@ -170,11 +184,11 @@ export const orderConfirmationTemplate = (order: any, isAdmin: boolean = false) 
 
     ${!isAdmin ? `
     <p style="font-size: 14px; color: ${TEXT_GRAY}; line-height: 1.6;">
-        We have received your payment information and will begin your manual craftsmanship build once the transfer is verified. You will receive an update as soon as your project moves into production.
+        We have received your order. Once your manual transfer is verified, our master artisans will begin your bespoke build. You will receive an status update as soon as your project moves into production.
     </p>
     ` : `
     <p style="font-size: 14px; color: ${BRAND_GOLD}; font-weight: bold;">
-        New order placed. Please verify the offline payment in the admin dashboard.
+        New order placed via ${order.payment_method}. Please verify the transfer in your accounts.
     </p>
     `}
   `;

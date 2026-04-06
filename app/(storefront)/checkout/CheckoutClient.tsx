@@ -3,7 +3,13 @@
 import { useState } from 'react';
 import { useCart } from '@/components/CartProvider';
 import Link from 'next/link';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Copy, Check } from 'lucide-react';
+
+const PAYMENT_HANDLES: Record<string, string> = {
+  'CashApp': '$EngravingNation',
+  'Zelle': 'payment@engravingnation.store',
+  'Apple Pay': '13322566110',
+};
 
 export default function CheckoutClient({ settings }: { settings: any }) {
   const { items, cartTotal, clearCart } = useCart();
@@ -35,10 +41,18 @@ export default function CheckoutClient({ settings }: { settings: any }) {
 
   // Scroll to top on success
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [copiedHandle, setCopiedHandle] = useState<string | null>(null);
+
   if (isSubmitted && !hasScrolled) {
     if (typeof window !== 'undefined') window.scrollTo(0, 0);
     setHasScrolled(true);
   }
+
+  const handleCopy = (text: string, id: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedHandle(id);
+    setTimeout(() => setCopiedHandle(null), 2000);
+  };
 
   const shippingRates: Record<string, number> = (settings?.shipping_zones || []).reduce((acc: any, zone: any) => {
     acc[zone.id] = zone.cost;
@@ -184,12 +198,33 @@ export default function CheckoutClient({ settings }: { settings: any }) {
           <div className="flex justify-center">
             <div className="glass-card bg-brand-gold/5 border border-brand-gold/30 p-8 max-w-lg w-full text-center">
               <p className="text-lg text-white/90 mb-4">
-                Thank you for choosing {paymentMethod}.
+                Thank you for choosing <span className="text-brand-gold font-bold uppercase">{paymentMethod}</span>.
               </p>
-              <p className="text-brand-gold font-medium leading-relaxed">
-                Please contact the admin using the phone number or our email to receive the payment details and instructions.
+              
+              <div className="my-8 p-6 bg-black/40 rounded-2xl border border-white/5 relative group">
+                <p className="text-[10px] text-white/30 uppercase tracking-[0.2em] mb-4">Send Payment To:</p>
+                <div className="flex items-center justify-center gap-4">
+                  <span className="text-2xl font-mono font-bold text-white tracking-tight">
+                    {PAYMENT_HANDLES[paymentMethod] || 'Contact Admin'}
+                  </span>
+                  {PAYMENT_HANDLES[paymentMethod] && (
+                    <button 
+                      onClick={() => handleCopy(PAYMENT_HANDLES[paymentMethod], 'handle')}
+                      className="p-2 hover:bg-white/10 rounded-lg transition-colors text-brand-gold"
+                      title="Copy to clipboard"
+                    >
+                      {copiedHandle === 'handle' ? <Check className="w-5 h-5 text-emerald-500" /> : <Copy className="w-5 h-5" />}
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              <p className="text-white/60 text-sm leading-relaxed mb-6">
+                Please include your Order ID <strong className="text-white">#{orderId?.split('-')[1]}</strong> in the payment notes to ensure instant verification.
               </p>
+
               <div className="mt-6 pt-6 border-t border-white/10 space-y-2">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-white/20 mb-3">Support Contacts</p>
                 <p className="text-sm font-mono text-white/60">Email: info@engravingnation.store</p>
                 <p className="text-sm font-mono text-white/60">Phone: +1 (332) 256-6110</p>
               </div>
