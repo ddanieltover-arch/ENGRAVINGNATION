@@ -133,10 +133,28 @@ export default function CartPage() {
                 <span className="text-4xl font-heading font-black text-brand-gold italic">${cartTotal.toFixed(2)}</span>
               </div>
               
-              <Link href="/checkout" className="btn-primary w-full h-[70px] flex items-center justify-center text-lg uppercase tracking-[0.3em] font-black italic group underline-none decoration-transparent">
+              <button 
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).gtag) {
+                    (window as any).gtag('event', 'begin_checkout', {
+                      currency: 'USD',
+                      value: cartTotal,
+                      items: items.map(item => ({
+                        item_id: item.slug,
+                        item_name: item.name,
+                        price: item.price,
+                        quantity: item.quantity,
+                        item_variant: item.finishType
+                      }))
+                    });
+                  }
+                  window.location.href = '/checkout';
+                }}
+                className="btn-primary w-full h-[70px] flex items-center justify-center text-lg uppercase tracking-[0.3em] font-black italic group underline-none decoration-transparent"
+              >
                 Checkout
                 <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </Link>
+              </button>
               
               <p className="mt-8 text-[10px] text-center text-white/30 uppercase tracking-widest font-medium"> Secure Offline Payment Flow</p>
             </div>

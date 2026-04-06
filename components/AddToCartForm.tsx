@@ -19,6 +19,21 @@ export default function AddToCartForm({ product }: AddToCartFormProps) {
   const [added, setAdded] = useState(false);
 
   const handleAddToCart = () => {
+    // GA4 Tracking
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'add_to_cart', {
+        currency: 'USD',
+        value: product.price,
+        items: [{
+          item_id: product.slug,
+          item_name: product.name,
+          price: product.price,
+          item_variant: finishType,
+          quantity: 1
+        }]
+      });
+    }
+
     addToCart({
       slug: product.slug,
       name: product.name,

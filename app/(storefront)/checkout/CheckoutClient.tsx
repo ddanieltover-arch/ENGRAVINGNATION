@@ -115,6 +115,23 @@ export default function CheckoutClient({ settings }: { settings: any }) {
       
       const data = await response.json();
       if (data.success) {
+        // GA4 Tracking
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'purchase', {
+            transaction_id: data.id,
+            value: grandTotal,
+            currency: 'USD',
+            coupon: appliedCoupon?.code || '',
+            items: items.map(item => ({
+              item_id: item.slug,
+              item_name: item.name,
+              price: item.price,
+              quantity: item.quantity,
+              item_variant: item.finishType
+            }))
+          });
+        }
+
         setOrderId(data.id);
         setIsSubmitted(true);
         clearCart();
