@@ -114,11 +114,7 @@ export const contactAdminAlertTemplate = (data: { name: string, email: string, s
   return baseLayout(content, 'New Contact Message');
 };
 
-const PAYMENT_HANDLES: Record<string, string> = {
-  'CashApp': '$EngravingNation',
-  'Zelle': 'payment@engravingnation.store',
-  'Apple Pay': '13322566110',
-};
+
 
 export const orderConfirmationTemplate = (order: any, isAdmin: boolean = false) => {
   const items = Array.isArray(order.items) ? order.items : [];
@@ -134,7 +130,7 @@ export const orderConfirmationTemplate = (order: any, isAdmin: boolean = false) 
     </tr>
   `).join('');
 
-  const paymentHandle = PAYMENT_HANDLES[order.payment_method] || 'Please contact support';
+
 
   const content = `
     <h1 style="font-size: 24px; font-weight: 900; margin: 0 0 10px; text-transform: uppercase; font-style: italic; letter-spacing: -1px;">
@@ -145,9 +141,10 @@ export const orderConfirmationTemplate = (order: any, isAdmin: boolean = false) 
     </p>
 
     <div style="padding: 25px; background-color: #1a1a1a; border-radius: 12px; border: 1px solid ${BRAND_GOLD}33; margin-bottom: 30px; text-align: center;">
-        <p style="margin: 0 0 10px; color: ${BRAND_GOLD}; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Action Required: Send Payment</p>
-        <p style="margin: 0 0 5px; font-size: 20px; font-weight: bold; color: ${TEXT_WHITE};">${order.payment_method}: <span style="color: ${BRAND_GOLD};">${paymentHandle}</span></p>
-        <p style="margin: 0; font-size: 12px; color: ${TEXT_GRAY};">Please include Order ID #${order.id.split('-')[1]} in notes</p>
+        <p style="margin: 0 0 10px; color: ${BRAND_GOLD}; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Action Required: Complete Payment</p>
+        <p style="margin: 0; font-size: 14px; color: ${TEXT_WHITE};">
+          Please contact our support team via <strong style="color: ${BRAND_GOLD};">Email</strong> or <strong style="color: ${BRAND_GOLD};">Text/WhatsApp</strong> to receive secure payment instructions for <strong style="color: ${TEXT_WHITE}; font-weight: 900;">${order.payment_method}</strong>.
+        </p>
     </div>
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom: 30px;">
@@ -176,7 +173,8 @@ export const orderConfirmationTemplate = (order: any, isAdmin: boolean = false) 
         <h3 style="margin: 0 0 15px; color: ${BRAND_GOLD}; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Shipping Details</h3>
         <p style="margin: 0; font-size: 14px; color: ${TEXT_GRAY}; line-height: 1.5;">
             ${order.customer_name || `${order.firstName} ${order.lastName}`}<br>
-            ${order.phone ? `${order.phone}<br>` : ''}
+            ${order.email ? `Email: <span style="color: ${TEXT_WHITE};">${order.email}</span><br>` : ''}
+            ${order.phone ? `Phone: ${order.phone}<br>` : ''}
             ${order.address || order.shippingAddress}<br>
             ${order.city || order.shippingCity}, ${order.state || order.shippingState || ''} ${order.zip || order.shippingZip}
         </p>

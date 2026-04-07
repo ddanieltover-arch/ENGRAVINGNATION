@@ -50,6 +50,7 @@ export async function POST(req: Request) {
         to: ADMIN_EMAIL,
         subject: `NEW ORDER ALERT #${orderId}`,
         html: orderConfirmationTemplate(emailOrderData, true),
+        replyTo: newOrder.email,
       });
     } catch (emailError) {
       console.error('Email notification failed but order was saved:', emailError);
