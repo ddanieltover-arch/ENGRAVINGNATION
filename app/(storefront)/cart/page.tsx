@@ -49,7 +49,7 @@ export default function CartPage() {
                 
                 <button 
                   onClick={() => removeFromCart(item.slug)}
-                  className="absolute top-6 right-6 text-white/20 hover:text-red-500 transition-colors p-2"
+                  className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/40 hover:text-red-500 transition-colors p-2 z-20 bg-black/20 hover:bg-black/40 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none rounded-full sm:rounded-none shadow-lg sm:shadow-none"
                 >
                   <Trash2 className="w-5 h-5" />
                 </button>

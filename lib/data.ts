@@ -146,7 +146,9 @@ const DEFAULT_SETTINGS = {
   ],
   shipping_zones: [
     { id: 'us-standard', name: 'Standard Shipping (US)', cost: 15.00 },
+    { id: 'us-express', name: 'Express Shipping (US)', cost: 25.00 },
     { id: 'int-standard', name: 'International Shipping', cost: 35.00 },
+    { id: 'int-express', name: 'International Express Shipping', cost: 50.00 },
   ]
 };
 

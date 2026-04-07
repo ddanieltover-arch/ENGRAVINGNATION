@@ -67,13 +67,14 @@ export default function CheckoutClient({ settings }: { settings: any }) {
   // Tiered Shipping Logic
   const isInternational = country !== 'US';
   const activeThreshold = isInternational ? FREE_SHIPPING_THRESHOLD_INTL : FREE_SHIPPING_THRESHOLD_USA;
-  const activeBaseCost = isInternational ? SHIPPING_COST_INTL : SHIPPING_COST_USA;
+  
+  const selectedShipping = (settings?.shipping_zones || []).find((z: any) => z.id === shippingMethod);
+  const selectedCost = selectedShipping?.cost ?? (isInternational ? SHIPPING_COST_INTL : SHIPPING_COST_USA);
   
   const isFreeShipping = cartTotal >= activeThreshold;
-  const finalShippingCost = isFreeShipping ? 0 : activeBaseCost;
+  const finalShippingCost = isFreeShipping ? 0 : selectedCost;
   
   const grandTotal = Math.max(0, cartTotal - discountAmount + finalShippingCost);
-  const selectedShipping = (settings?.shipping_zones || []).find((z: any) => z.id === shippingMethod);
 
   const handleApplyCoupon = async () => {
     if (!couponCode) return;
@@ -425,7 +426,7 @@ export default function CheckoutClient({ settings }: { settings: any }) {
                   </div>
                 )}
                 <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 leading-none">
-                  <span>Shipping ({isInternational ? 'International' : 'Domestic'})</span>
+                  <span>Shipping ({selectedShipping?.name || (isInternational ? 'International' : 'Domestic')})</span>
                   {finalShippingCost === 0 ? (
                     <span className="text-emerald-500">FREE</span>
                   ) : (
