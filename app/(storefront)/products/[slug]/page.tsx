@@ -77,28 +77,88 @@ export default async function ProductDetailPage({
     notFound();
   }
 
+  const reviewsData = product.reviews || [];
+  const totalReviews = reviewsData.length;
+  const averageRating = totalReviews > 0 
+    ? (reviewsData.reduce((acc: number, r: any) => acc + r.rating, 0) / totalReviews).toFixed(1)
+    : null;
+
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
     image: product.images,
-    description: product.description,
+    description: product.description?.substring(0, 5000),
     sku: product.sku,
     brand: {
       '@type': 'Brand',
       name: 'Engraving Nation',
     },
+    ...(totalReviews > 0 ? {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: averageRating,
+        reviewCount: totalReviews,
+      },
+      review: reviewsData.map((r: any) => ({
+        '@type': 'Review',
+        author: {
+          '@type': 'Person',
+          name: r.author,
+        },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: r.rating,
+        },
+        reviewBody: r.text,
+        datePublished: new Date(r.date).toISOString().split('T')[0],
+      })),
+    } : {}),
     offers: {
       '@type': 'Offer',
       url: `https://engravingnation.store/products/${slug}`,
       priceCurrency: 'USD',
       price: product.price,
+      priceValidUntil: new Date(new Date().getFullYear() + 1, 0, 1).toISOString().split('T')[0],
       itemCondition: 'https://schema.org/NewCondition',
       availability: 'https://schema.org/InStock',
       seller: {
         '@type': 'Organization',
         name: 'Engraving Nation',
       },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+        "merchantReturnLink": "https://engravingnation.store/refund-and-returns"
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": product.price >= 300 ? "0.00" : "15.00",
+          "currency": "USD"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "US"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 3,
+            "maxValue": 5,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 3,
+            "unitCode": "DAY"
+          }
+        }
+      }
     },
   };
 
