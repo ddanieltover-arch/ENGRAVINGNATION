@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Truck, Globe } from 'lucide-react';
 
 export default function ShippingPage() {
   return (
@@ -39,16 +40,35 @@ export default function ShippingPage() {
               Shipping Rates
             </h2>
             <div className="prose prose-invert prose-lg max-w-none text-white/70 leading-relaxed pl-11 space-y-4">
-              <div className="grid md:grid-cols-2 gap-6 mt-8">
-                <div className="p-6 rounded-xl bg-white/[0.03] border border-white/10 hover:border-brand-gold/30 transition-colors duration-300">
-                  <h3 className="text-xl font-bold mb-2 text-white">Domestic (USA)</h3>
-                  <p className="text-brand-gold font-medium mb-1">Free Shipping</p>
-                  <p className="text-sm text-white/40">On most orders over $150 USD</p>
+              <div className="grid md:grid-cols-2 gap-8 mt-10">
+                {/* Domestic Tier */}
+                <div className="p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-brand-gold/30 transition-all duration-500 group">
+                  <div className="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center mb-6 group-hover:bg-brand-gold/20 transition-colors">
+                    <Truck className="text-brand-gold" size={24} />
+                  </div>
+                  <h3 className="text-2xl font-heading font-black italic tracking-tight mb-2 text-white">Domestic (USA)</h3>
+                  <div className="flex flex-col gap-1 mb-6">
+                    <p className="text-brand-gold font-bold uppercase tracking-widest text-xs">Free over $300 USD</p>
+                    <p className="text-white/40 text-[10px] uppercase tracking-[0.2em]">Standard Rate: $15.00</p>
+                  </div>
+                  <p className="text-sm text-white/50 leading-relaxed border-t border-white/5 pt-6">
+                    Precision engraving for all domestic orders. Reliable, tracked, and insured delivery to your doorstep.
+                  </p>
                 </div>
-                <div className="p-6 rounded-xl bg-white/[0.03] border border-white/10 hover:border-brand-gold/30 transition-colors duration-300">
-                  <h3 className="text-xl font-bold mb-2 text-white">Standard Shipping</h3>
-                  <p className="text-brand-gold font-medium mb-1">Calculated at Checkout</p>
-                  <p className="text-sm text-white/40">For all orders under $150 USD</p>
+
+                {/* International Tier */}
+                <div className="p-8 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-brand-gold/30 transition-all duration-500 group">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6 group-hover:bg-emerald-500/20 transition-colors">
+                    <Globe className="text-emerald-500" size={24} />
+                  </div>
+                  <h3 className="text-2xl font-heading font-black italic tracking-tight mb-2 text-white">International</h3>
+                  <div className="flex flex-col gap-1 mb-6">
+                    <p className="text-emerald-500 font-bold uppercase tracking-widest text-xs">Free over $1000 USD</p>
+                    <p className="text-white/40 text-[10px] uppercase tracking-[0.2em]">Standard Rate: $35.00</p>
+                  </div>
+                  <p className="text-sm text-white/50 leading-relaxed border-t border-white/5 pt-6">
+                    Global logistics handling for our international community. Securely packaged and shipped worldwide.
+                  </p>
                 </div>
               </div>
             </div>

@@ -2,6 +2,12 @@
 
 import { useState } from 'react';
 import { useCart } from '@/components/CartProvider';
+import { 
+  FREE_SHIPPING_THRESHOLD_USA, 
+  FREE_SHIPPING_THRESHOLD_INTL, 
+  SHIPPING_COST_USA, 
+  SHIPPING_COST_INTL 
+} from '@/lib/constants';
 import Link from 'next/link';
 import { CheckCircle2, Copy, Check } from 'lucide-react';
 
@@ -68,8 +74,16 @@ export default function CheckoutClient({ settings }: { settings: any }) {
   };
 
   const discountAmount = calculateDiscount();
-  const currentShippingCost = shippingRates[shippingMethod] || 0;
-  const grandTotal = Math.max(0, cartTotal - discountAmount + currentShippingCost);
+  
+  // Tiered Shipping Logic
+  const isInternational = country !== 'US';
+  const activeThreshold = isInternational ? FREE_SHIPPING_THRESHOLD_INTL : FREE_SHIPPING_THRESHOLD_USA;
+  const activeBaseCost = isInternational ? SHIPPING_COST_INTL : SHIPPING_COST_USA;
+  
+  const isFreeShipping = cartTotal >= activeThreshold;
+  const finalShippingCost = isFreeShipping ? 0 : activeBaseCost;
+  
+  const grandTotal = Math.max(0, cartTotal - discountAmount + finalShippingCost);
   const selectedShipping = (settings?.shipping_zones || []).find((z: any) => z.id === shippingMethod);
 
   const handleApplyCoupon = async () => {
@@ -121,7 +135,7 @@ export default function CheckoutClient({ settings }: { settings: any }) {
           discountAmount,
           appliedCoupon: appliedCoupon?.code,
           shippingMethod,
-          currentShippingCost,
+          currentShippingCost: finalShippingCost,
           grandTotal,
           payment_method: paymentMethod,
         }),
@@ -438,8 +452,12 @@ export default function CheckoutClient({ settings }: { settings: any }) {
                   </div>
                 )}
                 <div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 leading-none">
-                  <span>Shipping ({selectedShipping?.name || 'Standard'})</span>
-                  <span className="text-white/80">${currentShippingCost.toFixed(2)}</span>
+                  <span>Shipping ({isInternational ? 'International' : 'Domestic'})</span>
+                  {finalShippingCost === 0 ? (
+                    <span className="text-emerald-500">FREE</span>
+                  ) : (
+                    <span className="text-white/80">${finalShippingCost.toFixed(2)}</span>
+                  )}
                 </div>
               </div>
 

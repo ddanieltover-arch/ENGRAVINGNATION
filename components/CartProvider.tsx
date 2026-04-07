@@ -12,6 +12,20 @@ export interface CartItem {
   finishType?: string;
 }
 
+import { 
+  FREE_SHIPPING_THRESHOLD_USA, 
+  FREE_SHIPPING_THRESHOLD_INTL, 
+  SHIPPING_COST_USA, 
+  SHIPPING_COST_INTL 
+} from '@/lib/constants';
+
+export { 
+  FREE_SHIPPING_THRESHOLD_USA, 
+  FREE_SHIPPING_THRESHOLD_INTL, 
+  SHIPPING_COST_USA, 
+  SHIPPING_COST_INTL 
+};
+
 interface CartContextType {
   items: CartItem[];
   addToCart: (item: CartItem) => void;

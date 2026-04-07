@@ -190,7 +190,7 @@ export default async function HomePage() {
                   <div>
                     <h4 className="text-sm font-black uppercase tracking-widest mb-3 text-white">Fast & Free Shipping</h4>
                     <p className="text-white/60 text-sm font-light leading-relaxed">
-                      Orders over $150 ship quickly, straight to your door.
+                      Free shipping on orders over $300 (USA) and $1000 (International).
                     </p>
                   </div>
                 </div>

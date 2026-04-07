@@ -1,0 +1,4 @@
+export const FREE_SHIPPING_THRESHOLD_USA = 300;
+export const FREE_SHIPPING_THRESHOLD_INTL = 1000;
+export const SHIPPING_COST_USA = 15;
+export const SHIPPING_COST_INTL = 35;

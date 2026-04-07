@@ -1,4 +1,5 @@
 import { getProductBySlug, getProducts } from '@/lib/data';
+import { FREE_SHIPPING_THRESHOLD_USA, SHIPPING_COST_USA } from '@/lib/constants';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -136,7 +137,7 @@ export default async function ProductDetailPage({
         "@type": "OfferShippingDetails",
         "shippingRate": {
           "@type": "MonetaryAmount",
-          "value": product.price >= 300 ? "0.00" : "15.00",
+          "value": product.price >= FREE_SHIPPING_THRESHOLD_USA ? "0.00" : SHIPPING_COST_USA.toFixed(2),
           "currency": "USD"
         },
         "shippingDestination": {

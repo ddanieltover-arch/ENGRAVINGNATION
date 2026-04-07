@@ -145,8 +145,8 @@ const DEFAULT_SETTINGS = {
     { id: 'bitcoin', name: 'Bitcoin', type: 'crypto', instructions: 'Send BTC to:' },
   ],
   shipping_zones: [
-    { id: 'us-standard', name: 'Standard Shipping (US)', cost: 10.00 },
-    { id: 'int-standard', name: 'International Shipping', cost: 25.00 },
+    { id: 'us-standard', name: 'Standard Shipping (US)', cost: 15.00 },
+    { id: 'int-standard', name: 'International Shipping', cost: 35.00 },
   ]
 };
 

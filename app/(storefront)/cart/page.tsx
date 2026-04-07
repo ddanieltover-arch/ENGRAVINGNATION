@@ -1,12 +1,16 @@
 'use client';
 
 import { useCart } from '@/components/CartProvider';
+import { FREE_SHIPPING_THRESHOLD_USA, SHIPPING_COST_USA } from '@/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Truck } from 'lucide-react';
 
 export default function CartPage() {
   const { items, removeFromCart, updateQuantity, cartTotal } = useCart();
+  const isFreeShipping = cartTotal >= FREE_SHIPPING_THRESHOLD_USA;
+  const remainingForFree = FREE_SHIPPING_THRESHOLD_USA - cartTotal;
+  const progressPercent = Math.min(100, (cartTotal / FREE_SHIPPING_THRESHOLD_USA) * 100);
 
   if (items.length === 0) {
     return (
@@ -111,6 +115,30 @@ export default function CartPage() {
               
               <h2 className="text-2xl font-heading font-black tracking-tighter uppercase italic mb-10 border-b border-white/10 pb-6">Payment Details</h2>
               
+              {/* Free Shipping Progress Indicator */}
+              <div className="mb-10 bg-white/5 border border-white/10 rounded-2xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${isFreeShipping ? 'bg-emerald-500/20 text-emerald-500' : 'bg-brand-gold/20 text-brand-gold'}`}>
+                    <Truck size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] font-black uppercase tracking-widest text-white/40">Shipping Offer</h4>
+                    <p className="text-xs font-bold text-white">
+                      {isFreeShipping 
+                        ? 'FREE SHIPPING UNLOCKED' 
+                        : `$${remainingForFree.toFixed(2)} away from FREE shipping`
+                      }
+                    </p>
+                  </div>
+                </div>
+                <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div 
+                    className={`h-full transition-all duration-1000 ease-out rounded-full ${isFreeShipping ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]' : 'bg-brand-gold shadow-[0_0_10px_rgba(212,160,23,0.5)]'}`}
+                    style={{ width: `${progressPercent}%` }}
+                  ></div>
+                </div>
+              </div>
+
               <div className="space-y-6 text-xs uppercase tracking-[0.2em] font-bold mb-8">
                 <div className="flex justify-between">
                   <span className="text-white/30">Merchandise</span>
@@ -118,7 +146,11 @@ export default function CartPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-white/30">Shipping</span>
-                  <span className="text-emerald-500">Free</span>
+                  {isFreeShipping ? (
+                    <span className="text-emerald-500">Free</span>
+                  ) : (
+                    <span className="text-white/80">${SHIPPING_COST_USA.toFixed(2)}</span>
+                  )}
                 </div>
                 <div className="flex justify-between italic">
                   <span className="text-white/30">Tax</span>
