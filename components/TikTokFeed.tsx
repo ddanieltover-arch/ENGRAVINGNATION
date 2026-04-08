@@ -35,7 +35,7 @@ export default function TikTokFeed() {
           <p className="text-white/40 uppercase tracking-[0.3em] text-[10px] font-bold mb-12">Follow @engraving_nation for the latest drops and behind the scenes</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* TikTok Embed Profile */}
           <div className="lg:col-span-1 glass-card p-4 flex flex-col items-center justify-center min-h-[500px] border-white/5 hover:border-brand-gold/30 transition-all duration-500">
              <blockquote 
@@ -51,20 +51,6 @@ export default function TikTokFeed() {
             </blockquote>
           </div>
 
-          {/* Featured Video 1 */}
-          <div className="glass-card p-4 border-white/5 hover:border-brand-gold/30 transition-all duration-500 flex flex-col items-center justify-center min-h-[500px]">
-            <blockquote 
-              className="tiktok-embed" 
-              cite="https://www.tiktok.com/@engraving_nation" 
-              data-unique-id="engraving_nation" 
-              data-embed-type="video" 
-              style={{ maxWidth: '605px', minWidth: '325px' }}
-            >
-              <section>
-                <a target="_blank" title="@engraving_nation" href="https://www.tiktok.com/@engraving_nation">@engraving_nation</a>
-              </section>
-            </blockquote>
-          </div>
 
           {/* Call to action card */}
           <div className="glass-card p-10 border-white/5 bg-linear-to-br from-white/[0.02] to-white/[0.05] flex flex-col items-center justify-center text-center relative overflow-hidden group min-h-[500px]">
