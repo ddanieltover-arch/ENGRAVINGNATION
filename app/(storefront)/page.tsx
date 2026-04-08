@@ -7,6 +7,7 @@ import ProductCard from '@/components/ProductCard';
 import VIPNewsletter from '@/components/VIPNewsletter';
 import { getProducts } from '@/lib/data';
 import type { Metadata } from 'next';
+import TikTokFeed from '@/components/TikTokFeed';
 
 export const metadata: Metadata = {
   title: 'Engraving Nation | Custom Chevy Emblems, Silverado Badges & Engraved Logos',
@@ -155,6 +156,8 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+
+        <TikTokFeed />
 
         {/* Ready to Upgrade Section */}
         <section className="mt-40 mb-20 animate-slide-up">
