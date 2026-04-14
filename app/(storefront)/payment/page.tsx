@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CreditCard, Wallet, Smartphone, Banknote, Info } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Payment Options | Engraving Nation',
+  title: 'Payment Options',
   description: 'Secure and convenient payment options for your custom automotive orders.',
 };
 

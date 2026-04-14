@@ -3,7 +3,7 @@ import CheckoutClient from './CheckoutClient';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Checkout | Engraving Nation',
+  title: 'Secure Checkout',
   description: 'Complete your custom emblem order with our secure offline payment checkout.',
   robots: {
     index: false,

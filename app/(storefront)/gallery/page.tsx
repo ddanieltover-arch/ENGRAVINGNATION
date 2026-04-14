@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Build Showcase & Inspiration Gallery | Engraving Nation',
+  title: 'Build Showcase & Inspiration Gallery',
   description: 'Explore the elite collection of custom engraved builds. From blacked-out Silverado emblems to precision-etched GMC mirror caps. Get inspired for your next project.',
   alternates: {
     canonical: 'https://engravingnation.store/gallery',

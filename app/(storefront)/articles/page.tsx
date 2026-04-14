@@ -3,8 +3,11 @@ import { getArticles } from '@/lib/data';
 import ArticleList from '@/components/ArticleList';
 
 export const metadata: Metadata = {
-  title: 'The Journal | Custom Automotive Guides & Inspiration | Engraving Nation',
+  title: 'The Journal | Automotive Guides & Inspiration',
   description: 'Deep dives into automotive craftsmanship, installation guides, and custom build inspiration for Chevy, GMC, and Ford enthusiasts.',
+  alternates: {
+    canonical: 'https://engravingnation.store/articles',
+  },
 };
 
 export default async function ArticlesPage() {

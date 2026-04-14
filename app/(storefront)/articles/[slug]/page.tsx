@@ -18,6 +18,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: article.seoMetadata?.title || article.title,
     description: article.seoMetadata?.description || article.excerpt,
+    alternates: {
+      canonical: `https://engravingnation.store/articles/${slug}`,
+    },
     openGraph: {
       title: article.title,
       description: article.excerpt,

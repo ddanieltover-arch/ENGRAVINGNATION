@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Engraving Nation | Custom Emblem Inquiries & Support',
+  title: 'Contact Us | Custom Inquiries & Support',
   description: 'Get in touch for custom engraving inquiries, order support, and wholesale requests. Located in Hauppauge, NY. Call +1 (332) 256-6110 or email us today.',
   alternates: {
     canonical: 'https://engravingnation.store/contact',

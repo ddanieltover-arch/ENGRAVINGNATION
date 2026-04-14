@@ -2,7 +2,16 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, search } = request.nextUrl;
+  const host = request.headers.get('host');
+
+  // Enforce non-www domain canonicalization
+  if (host === 'www.engravingnation.store') {
+    return NextResponse.redirect(
+      `https://engravingnation.store${pathname}${search}`,
+      301
+    );
+  }
   
   // Only protect routes under /admin
   if (pathname.startsWith('/admin')) {

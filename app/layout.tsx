@@ -55,12 +55,10 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  alternates: {
+    canonical: 'https://engravingnation.store',
+  },
   icons: {
-    icon: [
-      { url: '/favicon.png' },
-      { url: '/icon.png' }
-    ],
-    shortcut: '/favicon.png',
     apple: '/icon.png',
   },
 };

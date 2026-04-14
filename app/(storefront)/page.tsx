@@ -8,9 +8,12 @@ import VIPNewsletter from '@/components/VIPNewsletter';
 import { getProducts } from '@/lib/data';
 import type { Metadata } from 'next';
 import TikTokFeed from '@/components/TikTokFeed';
+import LatestJournals from '@/components/LatestJournals';
+import CraftsmanshipSection from '@/components/CraftsmanshipSection';
+import { QualityIcon, CustomIcon, DurabilityIcon } from '@/components/Icons';
 
 export const metadata: Metadata = {
-  title: 'Engraving Nation | Custom Chevy Emblems, Silverado Badges & Engraved Logos',
+  title: 'Custom Chevy Emblems & Silverado Badges',
   description: 'Shop premium engraved Chevy emblems, custom Silverado badges, and Chevrolet truck emblems. Hand-etched Chevy badges and logos, custom silverado badges, and engraved car parts for the elite truck enthusiast.',
   alternates: {
     canonical: 'https://engravingnation.store',
@@ -120,7 +123,7 @@ export default async function HomePage() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-brand-gold/10 transition-colors"></div>
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-8 group-hover:scale-110 transition-transform">
-                  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                  <QualityIcon />
                 </div>
                 <h3 className="text-xl font-heading font-black uppercase italic tracking-tight text-white mb-4">Quality</h3>
                 <p className="text-white/50 text-base font-light leading-relaxed">
@@ -133,7 +136,7 @@ export default async function HomePage() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-brand-gold/10 transition-colors"></div>
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-8 group-hover:scale-110 transition-transform">
-                  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                  <CustomIcon />
                 </div>
                 <h3 className="text-xl font-heading font-black uppercase italic tracking-tight text-white mb-4">Custom</h3>
                 <p className="text-white/50 text-base font-light leading-relaxed">
@@ -146,7 +149,7 @@ export default async function HomePage() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-brand-gold/10 transition-colors"></div>
               <div className="relative z-10">
                 <div className="w-14 h-14 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-8 group-hover:scale-110 transition-transform">
-                  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                  <DurabilityIcon />
                 </div>
                 <h3 className="text-xl font-heading font-black uppercase italic tracking-tight text-white mb-4">Durability</h3>
                 <p className="text-white/50 text-base font-light leading-relaxed">
@@ -156,6 +159,10 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+
+        <CraftsmanshipSection />
+
+        <LatestJournals />
 
         <TikTokFeed />
 
@@ -172,7 +179,10 @@ export default async function HomePage() {
                 Ready to <span className="text-brand-gold">Upgrade Your Ride?</span>
               </h2>
               <p className="text-white/70 max-w-3xl mx-auto text-lg md:text-xl font-light leading-relaxed">
-                At Engraving Nation, we don&apos;t just make parts—we craft precision-engineered, hand-engraved automotive upgrades that turn heads and last a lifetime. Every emblem, mirror cap, and custom piece is built for perfect fit, unmatched durability, and show-stopping style.
+                At Engraving Nation, we don&apos;t just make parts—we craft precision-engineered, hand-engraved automotive upgrades that turn heads and last a lifetime. Every custom emblem, mirror cap, and specialty component is engineered for an exact fit, unmatched aesthetic depth, and rugged durability that thrives in any environment.
+              </p>
+              <p className="text-white/50 max-w-2xl mx-auto text-base font-light leading-relaxed mt-6">
+                Our commitment to craftsmanship means we never cut corners. Whether you are building a show truck or a daily driver, our engraved accessories provide that premium, custom-tailored look while ensuring your vehicle remains functional and protected from the elements. Explore our full inventory to see why elite enthusiasts choose the Nation.
               </p>
             </div>
 

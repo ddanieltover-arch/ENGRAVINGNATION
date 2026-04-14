@@ -5,14 +5,14 @@ import VehicleSelector from '@/components/VehicleSelector';
 import ProductCard from '@/components/ProductCard';
 
 export const metadata: Metadata = {
-  title: 'Custom Chevy Badges, Engraved Silverado Emblems & Logos | Engraving Nation',
+  title: 'Shop Custom Chevy Emblems & Silverado Badges',
   description: 'Shop engraved Chevy emblems, custom Silverado badges, and Chevrolet truck emblems. Premium Chevy Silverado emblem replacements, custom chevy badges, and engraved chevy logos for GMC, Ford, and RAM.',
   alternates: {
     canonical: 'https://engravingnation.store/products',
   },
   keywords: ['silverado emblem', 'silverado badges', 'engraved chevy emblem', 'chevrolet truck emblems', 'custom chevy badges', 'chevy silverado emblem', 'chevy silverado badges', 'engraved chevy logo', 'chevy truck badges', 'custom silverado badges', 'chevy emblem custom', 'silverado logos', 'chevy badges and emblems', 'engraved car parts'],
   openGraph: {
-    title: 'Engraved Chevy Emblems, Silverado Badges & Custom Logos | Engraving Nation',
+    title: 'Engraved Chevy Emblems & Custom Logos',
     description: 'Browse premium hand-engraved Silverado emblems, Chevrolet truck badges, and custom logos for Chevy, GMC, Ford, and RAM.',
     url: 'https://engravingnation.store/products',
   },

@@ -1,0 +1,31 @@
+# Engraving Nation
+
+> Premier custom automotive engraving and specialty parts for enthusiasts, specializing in hand-etched emblems and luxury vehicle accessories.
+
+## Overview
+
+Engraving Nation is a specialized automotive lifestyle brand that transforms standard factory vehicle components into high-performance, precision-etched art. Our primary focus is on Chevrolet, GMC, and Ford trucks, providing bespoke emblems, mirror caps, and custom branding solutions that define vehicle identity through craftsmanship and durability.
+
+## Key Sections
+
+- [Storefront Index](https://engravingnation.store): Main gateway to the Engraving Nation experience.
+- [Product Catalog](https://engravingnation.store/products): Browse our range of hand-engraved emblems, badges, and performance parts.
+- [The Journal](https://engravingnation.store/articles): Technical guides, installation walkthroughs, and stories behind the craftsmanship.
+- [Services](https://engravingnation.store/services): Detailed breakdown of our custom engraving capabilities and platform specializations.
+- [Gallery](https://engravingnation.store/gallery): High-resolution visual showcase of completed custom builds for inspiration.
+- [Contact Support](https://engravingnation.store/contact): Direct channel for custom project inquiries and customer service.
+
+## Platform Specializations
+
+- **Chevrolet:** Custom Silverado bowties, tailgate emblems, and interior accents.
+- **GMC:** Sierra mirror caps, Denali-specific branding, and signature etched logos.
+- **Ford:** F-150 emblem replacements and Super Duty custom branding.
+- **Bespoke Services:** Custom laser and hand-etching for individual projects on most metal and plastic automotive surfaces.
+
+## Technical & Contact Information
+
+- **Primary URL:** https://engravingnation.store
+- **Email:** info@engravingnation.store
+- **Support:** +1 (332) 256-6110
+- **Location:** Hauppauge, NY (Engraving Nation Headquarters)
+- **Sitemap:** [sitemap.xml](https://engravingnation.store/sitemap.xml)

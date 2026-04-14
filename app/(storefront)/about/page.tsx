@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Our Story & Craftsmanship | Engraving Nation',
+  title: 'Our Story & Craftsmanship',
   description: 'Learn about Engraving Nation\'s commitment to handmade, precision-etched automotive art. From custom Silverado emblems to unique vehicle styling.',
   alternates: {
     canonical: 'https://engravingnation.store/about',
