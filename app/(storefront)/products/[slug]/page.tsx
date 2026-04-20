@@ -136,33 +136,62 @@ export default async function ProductDetailPage({
         "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
         "returnMethod": "https://schema.org/ReturnByMail"
       },
-      shippingDetails: {
-        "@type": "OfferShippingDetails",
-        "shippingRate": {
-          "@type": "MonetaryAmount",
-          "value": product.price >= FREE_SHIPPING_THRESHOLD_USA ? "0.00" : SHIPPING_COST_USA.toFixed(2),
-          "currency": "USD"
-        },
-        "shippingDestination": {
-          "@type": "DefinedRegion",
-          "addressCountry": "US"
-        },
-        "deliveryTime": {
-          "@type": "ShippingDeliveryTime",
-          "handlingTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 3,
-            "maxValue": 5,
-            "unitCode": "DAY"
+      shippingDetails: [
+        {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": product.price >= FREE_SHIPPING_THRESHOLD_USA ? "0.00" : SHIPPING_COST_USA.toFixed(2),
+            "currency": "USD"
           },
-          "transitTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 1,
-            "maxValue": 3,
-            "unitCode": "DAY"
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "US"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 5,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 3,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": product.price >= FREE_SHIPPING_THRESHOLD_INTL ? "0.00" : SHIPPING_COST_INTL.toFixed(2),
+            "currency": "USD"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": ["CA", "GB", "AU", "DE", "FR"]
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 3,
+              "maxValue": 5,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 7,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
           }
         }
-      }
+      ]
     },
   };
 
