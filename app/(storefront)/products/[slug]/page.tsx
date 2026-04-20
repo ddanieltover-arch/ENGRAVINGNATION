@@ -102,8 +102,10 @@ export default async function ProductDetailPage({
     ...(totalReviews > 0 ? {
       aggregateRating: {
         '@type': 'AggregateRating',
-        ratingValue: averageRating,
+        ratingValue: averageRating || "5.0",
         reviewCount: totalReviews,
+        bestRating: "5",
+        worstRating: "1"
       },
       review: reviewsData.map((r: any) => ({
         '@type': 'Review',
