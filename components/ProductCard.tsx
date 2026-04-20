@@ -12,6 +12,7 @@ interface ProductCardProps {
     name: string;
     price: number;
     images: string[];
+    vehicle_fitment?: any[];
   };
 }
 
@@ -42,7 +43,11 @@ export default function ProductCard({ product }: ProductCardProps) {
           {product.images?.[0] ? (
             <Image
               src={product.images[0]}
-              alt={`Premium Custom Engraved ${product.name} - Hand-Etched Automotive Art`}
+              alt={`Custom Engraved ${product.name} ${
+                product.vehicle_fitment && product.vehicle_fitment.length > 0 
+                  ? `for ${product.vehicle_fitment[0].make} ${product.vehicle_fitment[0].model}` 
+                  : '- Premium Hand-Etched Automotive Art'
+              }`}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-110"
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"

@@ -9,7 +9,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/30 z-10"></div>
         <Image 
           src="/hero.png" 
-          alt="Premium custom engraved GMC truck" 
+          alt="Premium custom engraved GMC truck with high country emblems" 
           fill
           className="object-cover object-center opacity-80 scale-105 animate-slow-zoom"
           priority
@@ -19,7 +19,7 @@ export default function Hero() {
       <div className="container mx-auto px-4 relative z-20 h-full flex flex-col justify-center pt-48">
         <div className="max-w-4xl mx-auto text-center animate-slide-up">
           <div className="inline-block px-4 py-1.5 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-[10px] font-black uppercase tracking-[0.4em] mb-8">
-            Premium Automotive Art
+            Precision Car Engraving & Custom Emblems
           </div>
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-extrabold tracking-tighter leading-[0.8] drop-shadow-sm">
             <span className="text-brand-gold block">ENGRAVING</span>
@@ -27,7 +27,7 @@ export default function Hero() {
           </h1>
           
           <p className="text-lg md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed font-light tracking-wide drop-shadow-sm">
-            Elite <span className="text-brand-gold font-black italic">custom engraved Silverado & Chevrolet emblems</span> and accessories. Precision-etched performance art for those who demand excellence.
+            Elite <span className="text-brand-gold font-black italic">custom car emblem engraving</span>, including Silverado, GMC, & high country emblems. Precision-etched performance art for those who demand excellence.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">

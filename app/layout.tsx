@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: '%s | Engraving Nation',
   },
   description: 'Elevate your vehicle with custom engraved emblems, mirror caps, and accessories for Chevy, GMC, Ford, and more. Precision hand-crafted quality.',
-  keywords: ['custom emblems', 'automotive engraving', 'chevy emblems', 'silverado emblem', 'silverado badges', 'engraved chevy emblem', 'chevrolet truck emblems', 'custom chevy badges', 'chevy silverado emblem', 'chevy silverado badges', 'engraved chevy logo', 'chevy truck badges', 'silverado logos', 'engraved car parts', 'gmc mirror caps', 'truck accessories'],
+  keywords: ['custom emblems', 'automotive engraving', 'chevy emblems', 'silverado emblem', 'silverado badges', 'engraved chevy emblem', 'chevrolet truck emblems', 'custom chevy badges', 'chevy silverado emblem', 'chevy silverado badges', 'engraved chevy logo', 'chevy truck badges', 'silverado logos', 'engraved car parts', 'gmc mirror caps', 'truck accessories', 'custom car emblem engraving', 'engraved mirror caps', 'oem silverado emblems', 'engraving services near me', 'custom forged chevy emblem'],
   authors: [{ name: 'Engraving Nation' }],
   creator: 'Engraving Nation',
   publisher: 'Engraving Nation',
@@ -60,6 +60,9 @@ export const metadata: Metadata = {
   },
   icons: {
     apple: '/icon.png',
+  },
+  verification: {
+    google: 'AZZ1u6u8rhM5vzOBwxamuspwz-B5KebW0Kz2Cp6quHs',
   },
 };
 

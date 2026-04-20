@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://engravingnation.store',
   },
-  keywords: ['silverado emblem', 'silverado badges', 'silverado badge', 'engraved chevy emblem', 'chevrolet truck emblems', 'custom chevy badges', 'chevy silverado emblem', 'chevy silverado badges', 'engraved chevy logo', 'chevy truck badges', 'chevy badges and emblems', 'custom silverado badges', 'engraved car parts', 'silverado logos'],
+  keywords: ['silverado emblem', 'silverado badges', 'silverado badge', 'engraved chevy emblem', 'chevrolet truck emblems', 'custom chevy badges', 'chevy silverado emblem', 'chevy silverado badges', 'engraved chevy logo', 'chevy truck badges', 'chevy badges and emblems', 'custom silverado badges', 'engraved car parts', 'silverado logos', 'custom forged chevy emblem', 'black ford fusion emblem', 'engraved mirror caps', 'oem silverado emblems', 'chevy texas edition badge'],
 };
 
 export const revalidate = 0;

@@ -78,16 +78,6 @@ const nextConfig: NextConfig = {
       },
       // Old WooCommerce shop pages
       {
-        source: '/shop',
-        destination: 'https://engravingnation.store/products',
-        permanent: true,
-      },
-      {
-        source: '/shop/',
-        destination: 'https://engravingnation.store/products',
-        permanent: true,
-      },
-      {
         source: '/shop/:path*',
         destination: 'https://engravingnation.store/products',
         permanent: true,
@@ -98,14 +88,19 @@ const nextConfig: NextConfig = {
         destination: 'https://engravingnation.store/products',
         permanent: true,
       },
-      // Old WordPress pages
+      // Catch-all for any other common WP paths
       {
-        source: '/my-account',
-        destination: 'https://engravingnation.store/',
+        source: '/tag/:slug*',
+        destination: 'https://engravingnation.store/products',
         permanent: true,
       },
       {
-        source: '/my-account/',
+        source: '/category/:slug*',
+        destination: 'https://engravingnation.store/products',
+        permanent: true,
+      },
+      {
+        source: '/author/:slug*',
         destination: 'https://engravingnation.store/',
         permanent: true,
       },
@@ -117,6 +112,32 @@ const nextConfig: NextConfig = {
       {
         source: '/wp-login.php',
         destination: 'https://engravingnation.store/',
+        permanent: true,
+      },
+      // Old individual post paths
+      {
+        source: '/2022/:slug*',
+        destination: 'https://engravingnation.store/articles',
+        permanent: true,
+      },
+      {
+        source: '/2023/:slug*',
+        destination: 'https://engravingnation.store/articles',
+        permanent: true,
+      },
+      {
+        source: '/2024/:slug*',
+        destination: 'https://engravingnation.store/articles',
+        permanent: true,
+      },
+      {
+        source: '/2025/:slug*',
+        destination: 'https://engravingnation.store/articles',
+        permanent: true,
+      },
+      {
+        source: '/2026/:slug*',
+        destination: 'https://engravingnation.store/articles',
         permanent: true,
       },
     ];

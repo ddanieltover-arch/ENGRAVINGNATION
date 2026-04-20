@@ -126,12 +126,15 @@ export default async function ProductDetailPage({
       seller: {
         '@type': 'Organization',
         name: 'Engraving Nation',
+        url: 'https://engravingnation.store',
       },
       hasMerchantReturnPolicy: {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "US",
         "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-        "merchantReturnLink": "https://engravingnation.store/refund-and-returns"
+        "merchantReturnLink": "https://engravingnation.store/refund-and-returns",
+        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+        "returnMethod": "https://schema.org/ReturnByMail"
       },
       shippingDetails: {
         "@type": "OfferShippingDetails",

@@ -17,13 +17,13 @@ export default function CraftsmanshipSection() {
           
           <div className="space-y-6 text-white/60 font-light leading-relaxed text-lg">
             <p>
-              At Engraving Nation, we believe your vehicle deserves more than mass-produced plastic. Our specialized engraving process transforms premium materials like <strong className="text-white/90 font-bold">certified billet aluminum</strong> and high-impact automotive polymers into bespoke performance art. Each piece undergoes a rigorous design phase where we map digital textures to physical 3D surfaces with sub-millimeter precision.
+              At Engraving Nation, we believe your vehicle deserves more than mass-produced plastic. Our specialized engraving process transforms premium materials like <strong className="text-white/90 font-bold">certified billet aluminum</strong> and high-impact automotive polymers into bespoke performance art, including <strong className="text-white/90 font-bold">custom forged chevy emblems</strong> and precision-crafted <strong className="text-white/90 font-bold">engraved mirror caps</strong>. Each piece undergoes a rigorous design phase where we map digital textures to physical 3D surfaces with sub-millimeter precision.
             </p>
             <p>
               Our technique combines the raw power of <strong className="text-white/90 font-bold">CNC precision</strong> with the finesse of hand-etching. This methodology allows us to create deep, multi-layered textures—such as our signature honeycomb and shattered carbon patterns—that catch the light at every angle. Unlike painted or wrap-based modifications, our engravings are permanent, resistant to UV degredation, and built to withstand the harshest road elements without losing definition.
             </p>
             <p>
-              We focus on the most popular performance platforms, including the <strong className="text-white/90 font-bold">GMT-T1XX (2019+ Silverado/Sierra)</strong> and heavy-duty series. By understanding the specific geometry of these vehicles, we ensure that every custom emblem, mirror cap, and tailgate badge maintains factory mounting integrity while delivering a clean, aggressive aesthetic that defines your build's identity.
+              We focus on the most popular performance platforms, including the <strong className="text-white/90 font-bold">GMT-T1XX (2019+ Silverado/Sierra)</strong> and heavy-duty series. By understanding the specific geometry of these vehicles, we ensure that every <strong className="text-white/90 font-bold">oem silverado emblem</strong>, mirror cap, and tailgate badge maintains factory mounting integrity while delivering a clean, aggressive aesthetic that defines your build's identity.
             </p>
           </div>
         </div>
