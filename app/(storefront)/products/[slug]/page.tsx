@@ -89,7 +89,11 @@ export default async function ProductDetailPage({
     '@type': 'Product',
     name: product.name,
     image: product.images,
-    description: product.description?.substring(0, 5000),
+    description: (product.description || '')
+      .replace(/<[^>]*>?/gm, '') // Strip HTML tags
+      .replace(/\s+/g, ' ')      // Normalize whitespace
+      .trim()
+      .substring(0, 4000),      // Safe limit for GSC
     sku: product.sku,
     brand: {
       '@type': 'Brand',
