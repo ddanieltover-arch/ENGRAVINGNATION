@@ -1,5 +1,5 @@
 import { getProductBySlug, getProducts } from '@/lib/data';
-import { FREE_SHIPPING_THRESHOLD_USA, SHIPPING_COST_USA } from '@/lib/constants';
+import { FREE_SHIPPING_THRESHOLD_USA, SHIPPING_COST_USA, FREE_SHIPPING_THRESHOLD_INTL, SHIPPING_COST_INTL } from '@/lib/constants';
 
 import Image from 'next/image';
 import Link from 'next/link';
