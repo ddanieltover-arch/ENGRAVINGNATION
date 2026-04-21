@@ -50,11 +50,7 @@ export async function GET() {
       <g:brand>Engraving Nation</g:brand>
       <g:condition>new</g:condition>
       <g:google_product_category>6066</g:google_product_category>
-      <g:shipping>
-        <g:country>US</g:country>
-        <g:service>Standard</g:service>
-        <g:price>${product.price >= 300 ? '0.00' : '15.00'} USD</g:price>
-      </g:shipping>
+      <g:shipping_label>International</g:shipping_label>
     </item>
 `;
     });

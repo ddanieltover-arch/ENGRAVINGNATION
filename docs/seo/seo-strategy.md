@@ -105,7 +105,7 @@ Follow these for each section. Adapt specificity to available inputs — be conc
 - URL structure rules
 - Internal linking plan (pillar → cluster pattern)
 - Schema markup types relevant to the business
-- Output: On-Page Task List table (URL | Issue | Fix | Priority) and Internal Linking Plan table (From | To | Anchor Text)
+- Output: On-Page Task List table (URL | Issue | Fix | Priority), Internal Linking Plan table (From | To | Anchor Text), and **[Master Anchor Text Map](file:///c:/Users/User/Desktop/ENGRAVING%20NATION/store/docs/seo/anchor-text-map.md)**.
 - Timeline: Meta/heading fixes Weeks 1–2, content rewrites Weeks 2–4
 
 ### Phase 4: Technical SEO
@@ -140,12 +140,15 @@ Follow these for each section. Adapt specificity to available inputs — be conc
 - [x] Outreach Tracker setup
 - [x] High-conversion Outreach Template Drafting
 - [ ] Campaign Initiation (Phase 7 Outreach Launch)
+- [NEW] Visual SEO & Pinterest Asset Distribution (Passive Link Building)
+- [NEW] Technical Reference Guide Marketing (Fitment Databases)
 - Backlink audit approach
 - Competitor backlink gap analysis
 - Link building campaign: target domain table (Domain | Contact | Opportunity Type | Status)
 - Outreach email templates (guest post, broken link, PR pitch)
-- Content promotion channels
-- Brand mention monitoring
+- **Zero-Email Strategy:** See [link-building-plan.md](file:///c:/Users/User/Desktop/ENGRAVING%20NATION/store/docs/seo/link-building-plan.md) for detailed tactical breakdown.
+- Content promotion channels (Instagram Builds, YouTube DIYs)
+- Brand mention monitoring (Google Alerts / Mention.com)
 - Timeline: Begin Month 2 after initial content is live
 
 ### Phase 8: Analytics Setup & Reporting
@@ -175,8 +178,9 @@ A checklist (markdown checkboxes) of all expected files:
 - [x] `sitemap.xml` (updated)
 - [x] `content_calendar.csv`
 - [x] `local_seo.md`
-- [x] `link_building_plan.md`
-- [x] `email_templates.md`
+- [x] `link_building_plan.md` (See [link-building-plan.md](file:///c:/Users/User/Desktop/ENGRAVING%20NATION/store/docs/seo/link-building-plan.md))
+- [x] `email_templates.md` (See [outreach-templates-v2.md](file:///c:/Users/User/Desktop/ENGRAVING%20NATION/store/docs/seo/outreach-templates-v2.md))
+- [x] `anchor_text_map.md` (See [anchor-text-map.md](file:///c:/Users/User/Desktop/ENGRAVING%20NATION/store/docs/seo/anchor-text-map.md))
 - [x] `analytics_setup.md`
 
 ---
