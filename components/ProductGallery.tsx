@@ -19,6 +19,23 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
     );
   }
 
+  const generateAltTag = (name: string, isMain: boolean, index: number = 0) => {
+    const lowerName = name.toLowerCase();
+    let keywordSuffix = "Hand-Etched Automotive Art";
+    
+    // Inject specific high-value keywords based on product name content
+    if (lowerName.includes('chevy') || lowerName.includes('silverado')) {
+      keywordSuffix = "chevrolet silverado emblems, silverado badge & custom mods";
+    } else if (lowerName.includes('gmc') || lowerName.includes('sierra')) {
+      keywordSuffix = "gmc sierra custom emblems & badges";
+    }
+
+    if (isMain) {
+       return `Premium Custom Engraved ${name} - ${keywordSuffix} by Engraving Nation`;
+    }
+    return `${name} - Official Product Detail Gallery view ${index + 1} - ${keywordSuffix}`;
+  };
+
   return (
     <div className="space-y-6 animate-slide-up">
       {/* Main Image Display */}
@@ -27,7 +44,7 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
         <div className="relative w-full h-full">
           <Image 
             src={activeImage} 
-            alt={`Premium Custom Engraved ${name} - Hand-Etched Automotive Art by Engraving Nation`}
+            alt={generateAltTag(name, true)}
             fill
             className="object-contain p-4 sm:p-8 transition-transform duration-700 group-hover:scale-105"
             sizes="(max-width: 1024px) 100vw, 50vw"
@@ -50,7 +67,7 @@ export default function ProductGallery({ images, name }: ProductGalleryProps) {
           >
             <Image 
               src={img} 
-              alt={`Custom Engraved ${name} - Official Product Detail Gallery view ${idx + 1}`}
+              alt={generateAltTag(name, false, idx)}
               fill
               className={`object-cover p-1 transition-transform duration-500 ${activeImage === img ? 'scale-105' : 'group-hover:scale-110 opacity-60 group-hover:opacity-100'}`}
               sizes="100px"

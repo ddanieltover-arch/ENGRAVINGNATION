@@ -501,5 +501,47 @@
       "title": "1977-1987 Chevy Silverado Grille Bowtie Attachment Guide",
       "description": "Restoration guide for Squarebody Chevy grille emblems. Learn the differences in mounting styles from 1977 to 1987."
     }
+  },
+  {
+    "slug": "restoring-1999-classic-silverado-badge-by-badge-guide",
+    "title": "Restoring the 1999 Classic Silverado: A Badge-by-Badge Guide",
+    "excerpt": "Take your GMT800 restoration to the next level. We break down the exact badges needed to bring your classic 1999 Silverado back to showroom glory.",
+    "content": "<h2>The Golden Era of Chevy Trucks</h2><p>The 1999 Chevrolet Silverado marked the beginning of the legendary GMT800 platform. Today, these trucks have crossed from 'used workhorses' into highly sought-after restoration projects. While tracking down heavy mechanical parts is easy, getting the aesthetics right requires attention to the details—specifically, the badges.</p><h3>The Front Bowtie: Classic Proportions</h3><p>The original 1999 grille featured a prominent bowtie measuring roughly 10.25 inches. Many enthusiasts find that factory plastic replacements crack easily. A custom-engraved aluminum bowtie in a polished or traditional scroll finish provides a durable, OEM+ look that respects the truck's heritage.</p><h3>Tailgate Identity</h3><p>The tailgate of the '99 used an iconic adhesive-backed 'Silverado' script alongside the rear bowtie. When replacing these, careful surface preparation is key. Use adhesive remover to clear 25 years of ghosting before applying your new custom aluminum pieces.</p><div class=\"cta-box bg-brand-gold/5 p-8 rounded-2xl border border-brand-gold/20 my-12 text-center\"><h4 class=\"text-white font-black uppercase italic mb-4\">Restore Your GMT800</h4><a href=\"/products?year=99-06\" class=\"btn-primary inline-block font-black italic\">Shop 1999-2006 Collection</a></div>",
+    "image": "/images/articles/tailgate-emblem-measurements-1999-2006-silverado.png",
+    "category": "Heritage",
+    "publishedAt": "2026-05-18T09:00:00Z",
+    "author": "Engraving Nation Team",
+    "seoMetadata": {
+      "title": "1999 Classic Silverado Restoration Badge Guide",
+      "description": "A comprehensive guide to replacing and restoring the emblems and badges on your 1999 GMT800 Chevy Silverado."
+    }
+  },
+  {
+    "slug": "why-aluminum-billets-outlast-plastic-salt-road-states",
+    "title": "Why Aluminum Billets Outlast Plastic in Salt-Road States",
+    "excerpt": "Winter is cruel to custom trucks. Discover why upgrading to deep-etched aluminum billets is the only way to beat rust belt corrosion.",
+    "content": "<h2>The Rust Belt Reality</h2><p>If you live in the Midwest or Northeast, you know the devastation road salt and brine cause to vehicles. While we constantly wash our undercarriages, we often forget about the front grille. Factory plastic emblems with chrome flashing are notoriously weak against salt-induced <em>pitting</em> and <em>peeling</em>.</p><h3>The Science of Billet Aluminum</h3><p>Unlike cheap plastic that degrades under combined UV and chemical stress, we carve our custom emblems from solid 6061 billet aluminum. Aluminum naturally forms a protective oxide layer, and when finished with our high-grade automotive clear coats, it becomes virtually impermeable to winter road treatments.</p><h3>No More Peeling Chrome</h3><p>There is nothing worse than a factory badge where the fake chrome starts flaking off, leaving white plastic exposed. By investing in solid metal, you guarantee your truck's identity survives the winter looking exactly as it did in July.</p><div class=\"cta-box bg-brand-gold/5 p-8 rounded-2xl border border-brand-gold/20 my-12 text-center\"><h4 class=\"text-white font-black uppercase italic mb-4\">Winter-Proof Your Build</h4><a href=\"/products\" class=\"btn-primary inline-block font-black italic\">Shop Billet Aluminum Upgrades</a></div>",
+    "image": "/images/articles/hand-engraved-comparison.png",
+    "category": "Maintenance",
+    "publishedAt": "2026-05-20T09:00:00Z",
+    "author": "Engraving Nation Team",
+    "seoMetadata": {
+      "title": "Aluminum Truck Emblems vs Plastic | Winter Durability",
+      "description": "Learn why billet aluminum custom emblems outlast factory plastic badges in states that use heavy road salt and brine."
+    }
+  },
+  {
+    "slug": "sema-2026-trend-report-integrated-luxury",
+    "title": "The SEMA 2026 Trend Report: Why Integrated Luxury is Replacing Flashy Builds",
+    "excerpt": "The era of the loud, bolt-on catalog build is over. We explore the 'Integrated Luxury' movement dominating the 2026 truck customization scene.",
+    "content": "<h2>The Maturation of Truck Customization</h2><p>Walk the floor of SEMA in 2026, and you'll immediately notice a shift. Builders are moving away from fluorescent suspension parts and oversized fake-rivet flares. The new undisputed king of the show floor is a concept known as <strong>Integrated Luxury</strong>.</p><h3>What is Integrated Luxury?</h3><p>It's the pursuit of the 'OEM++' aesthetic. Modifications should look like they came from a secret, high-end factory skunkworks division. Instead of bolting on loud accessories, builders are replacing factory components with hyper-detailed, premium material versions.</p><h3>Deep Engraving as the Centerpiece</h3><p>This is exactly why hand-engraved metal has surged in popularity. An engraved black chrome Chevy bowtie doesn't scream for attention from three blocks away. Instead, it rewards the viewer when they get close, revealing complex texture, weight, and undeniable craftsmanship. It is the definition of quiet luxury for the modern truck.</p><div class=\"cta-box bg-brand-gold/5 p-8 rounded-2xl border border-brand-gold/20 my-12 text-center\"><h4 class=\"text-white font-black uppercase italic mb-4\">Join the Movement</h4><a href=\"/products\" class=\"btn-primary inline-block font-black italic\">Upgrade to Integrated Luxury</a></div>",
+    "image": "/images/articles/sema-trends.png",
+    "category": "Trends",
+    "publishedAt": "2026-05-22T09:00:00Z",
+    "author": "Engraving Nation Team",
+    "seoMetadata": {
+      "title": "SEMA 2026 Trend Report | Integrated Luxury Truck Customization",
+      "description": "Discover the 'Integrated Luxury' movement from SEMA 2026. See why high-end, subtle craftsmanship is replacing loud, flashy truck modifications."
+    }
   }
 ]
