@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
   const host = request.headers.get('host');
 
-  // Enforce non-www domain canonicalization
+  // 1. Enforce non-www domain canonicalization for all routes
   if (host === 'www.engravingnation.store') {
     return NextResponse.redirect(
       `https://engravingnation.store${pathname}${search}`,
@@ -13,7 +13,7 @@ export function middleware(request: NextRequest) {
     );
   }
   
-  // Only protect routes under /admin
+  // 2. Protect routes under /admin
   if (pathname.startsWith('/admin')) {
     // Exclude the login page from protection to avoid infinite loops
     if (pathname === '/admin/login') {
@@ -34,5 +34,14 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
 };
