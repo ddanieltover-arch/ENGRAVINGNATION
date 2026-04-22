@@ -232,21 +232,12 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Interactive Workshop Map */}
-          <div className="animate-slide-up">
-            <div className="flex flex-col items-center mb-8">
-              <div className="inline-block px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-4">
-                Our Location
-              </div>
-              <h2 className="text-2xl font-heading font-black uppercase italic text-white text-center">
-                Wizbang <span className="text-brand-gold">Mushrooms</span> <span className="text-white/40 text-lg ml-2">(Mushroom Empire)</span>
-              </h2>
-            </div>
-            
-            <div className="glass-card overflow-hidden group h-[480px]">
+          {/* Interactive Workshop Map (Cropped to hide map title) */}
+          <div className="glass-card overflow-hidden animate-slide-up group h-[400px] relative">
+            <div className="absolute inset-0 overflow-hidden">
               <iframe 
                 src="https://www.google.com/maps/d/u/2/embed?mid=183D901XZLE-dXrHzaGCDye4EyqxVNEE&ehbc=2E312F" 
-                className="w-full h-full grayscale invert opacity-50 contrast-125 group-hover:grayscale-0 group-hover:invert-0 group-hover:opacity-100 transition-all duration-1000 ease-out"
+                className="absolute w-full h-[460px] -top-[52px] grayscale invert opacity-50 contrast-125 group-hover:grayscale-0 group-hover:invert-0 group-hover:opacity-100 transition-all duration-1000 ease-out"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
