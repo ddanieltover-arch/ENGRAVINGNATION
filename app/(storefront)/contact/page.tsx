@@ -208,7 +208,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="glass-card bg-brand-gold/5 p-8 md:p-12 relative overflow-hidden text-center animate-fade-in group">
+          <div className="glass-card bg-brand-gold/5 p-8 md:p-12 relative overflow-hidden text-center animate-fade-in group mb-12">
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-brand-gold/20 transition-all duration-700"></div>
             <div className="relative z-10 max-w-2xl mx-auto">
               <h3 className="text-xl font-heading font-black uppercase italic mb-6 text-white">Join the <span className="text-brand-gold">Nation</span></h3>
@@ -230,6 +230,17 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Interactive Workshop Map */}
+          <div className="glass-card overflow-hidden animate-slide-up group h-[480px]">
+            <iframe 
+              src="https://www.google.com/maps/d/u/2/embed?mid=183D901XZLE-dXrHzaGCDye4EyqxVNEE&ehbc=2E312F" 
+              className="w-full h-full grayscale invert opacity-50 contrast-125 group-hover:grayscale-0 group-hover:invert-0 group-hover:opacity-100 transition-all duration-1000 ease-out"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
       </div>
