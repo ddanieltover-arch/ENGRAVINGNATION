@@ -1,23 +1,35 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 export default function TikTokFeed() {
-  useEffect(() => {
-    // Load TikTok embed script
-    const script = document.createElement('script');
-    script.src = 'https://www.tiktok.com/embed.js';
-    script.async = true;
-    document.body.appendChild(script);
+  const sectionRef = useRef<HTMLElement>(null);
 
-    return () => {
-      document.body.removeChild(script);
-    };
+  useEffect(() => {
+    // Lazy-load TikTok embed only when section is visible (CWV optimization)
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          const script = document.createElement('script');
+          script.src = 'https://www.tiktok.com/embed.js';
+          script.async = true;
+          document.body.appendChild(script);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="py-24 bg-brand-bg relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 bg-brand-bg relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-gold/5 via-transparent to-transparent opacity-50"></div>
       
       <div className="container mx-auto px-4 relative z-10">

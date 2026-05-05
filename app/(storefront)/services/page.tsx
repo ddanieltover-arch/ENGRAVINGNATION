@@ -15,6 +15,15 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://engravingnation.store' },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://engravingnation.store/services' },
+    ],
+  };
+
   const services = [
     {
       title: "Custom Automotive Engraving",
@@ -50,18 +59,32 @@ export default function ServicesPage() {
 
   return (
     <div className="pt-32 pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="container mx-auto px-4 max-w-5xl">
         <header className="text-center mb-16">
           <div className="inline-block px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-6">
             Capabilities
           </div>
           <h1 className="text-4xl md:text-6xl font-heading font-black tracking-tighter uppercase italic leading-none mb-6 text-white">
-            Our <span className="text-brand-gold">Services</span>
+            What Engraving Services Do We <span className="text-brand-gold">Offer?</span>
           </h1>
           <p className="text-white/40 text-lg font-light max-w-2xl mx-auto">
-            High-quality, custom automotive engravings designed for durability and precision.
+            From custom Chevy emblems to precision mirror caps, explore the full range of hand-engraved automotive services we provide.
           </p>
         </header>
+
+        {/* GEO Answer Capsule */}
+        <section id="answer" aria-label="Services Overview" className="max-w-4xl mx-auto mb-16">
+          <div className="p-8 rounded-3xl bg-brand-gold/[0.03] border border-brand-gold/20 backdrop-blur-sm">
+            <p className="text-white/80 text-lg leading-relaxed text-center">
+              <strong className="text-brand-gold uppercase tracking-widest text-xs block mb-2">Quick Answer:</strong>
+              Engraving Nation offers <strong>precision laser engraving</strong> for Chevrolet, GMC, Ford, and RAM vehicles. Our services include custom emblem engraving, hand-finished mirror caps, and bespoke automotive accessories—all designed for OEM-level fitment and permanent, weather-resistant durability.
+            </p>
+          </div>
+        </section>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
@@ -80,7 +103,7 @@ export default function ServicesPage() {
         <div className="mt-16 glass-card p-12 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl -mr-48 -mt-48"></div>
           <div className="relative z-10">
-            <h2 className="text-2xl font-heading font-black uppercase italic mb-6 text-white">Our <span className="text-brand-gold">Commitment</span></h2>
+            <h2 className="text-2xl font-heading font-black uppercase italic mb-6 text-white">What Sets Engraving Nation <span className="text-brand-gold">Apart?</span></h2>
             <p className="text-white/50 font-light leading-relaxed max-w-3xl mx-auto">
               What sets Engraving Nation apart is our commitment to craftsmanship. Our engraving process is engineered to produce deep, clean lines that won’t fade, peel, or lose definition over time. Every design is carefully optimized to maintain proper proportions, mounting compatibility, and long-term durability. We don’t believe in one-size-fits-all—every product is made with vehicle-specific accuracy in mind.
             </p>

@@ -10,7 +10,7 @@ export default function CraftsmanshipSection() {
               Technical Excellence & Mastery
             </span>
             <h2 className="text-4xl md:text-6xl font-heading font-black tracking-tighter uppercase italic leading-none mb-6 text-white">
-              The Art of <span className="text-brand-gold">Automotive Etching</span>
+              How Does Precision <span className="text-brand-gold">Engraving Work?</span>
             </h2>
             <div className="w-24 h-1 bg-brand-gold mb-8"></div>
           </div>
@@ -26,6 +26,26 @@ export default function CraftsmanshipSection() {
               We focus on the most popular performance platforms, including the <strong className="text-white/90 font-bold">GMT-T1XX (2019+ Silverado/Sierra)</strong> and heavy-duty series. By understanding the specific geometry of these vehicles, we ensure that every <strong className="text-white/90 font-bold">oem silverado emblem</strong>, mirror cap, and tailgate badge maintains factory mounting integrity while delivering a clean, aggressive aesthetic that defines your build's identity.
             </p>
           </div>
+
+          {/* E-E-A-T Statistics Block */}
+          <div className="grid grid-cols-2 gap-4 pt-4">
+            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5">
+              <div className="text-3xl font-heading font-black text-brand-gold mb-1">500+</div>
+              <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Custom Emblems Produced</div>
+            </div>
+            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5">
+              <div className="text-3xl font-heading font-black text-brand-gold mb-1">0.05mm</div>
+              <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Engraving Tolerance</div>
+            </div>
+            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5">
+              <div className="text-3xl font-heading font-black text-brand-gold mb-1">6061-T6</div>
+              <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Aircraft-Grade Aluminum</div>
+            </div>
+            <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5">
+              <div className="text-3xl font-heading font-black text-brand-gold mb-1">98%</div>
+              <div className="text-[10px] uppercase tracking-widest text-white/40 font-bold">Customer Satisfaction</div>
+            </div>
+          </div>
         </div>
 
         <div className="relative">
@@ -33,7 +53,7 @@ export default function CraftsmanshipSection() {
             <div className="absolute inset-0 bg-brand-gold/5 z-10 group-hover:bg-brand-gold/10 transition-colors"></div>
             <img 
               src="/hero-specialty.png" 
-              alt="Close up of detailed custom emblem engraving" 
+              alt="Close-up of detailed CNC and hand-etched custom automotive emblem engraving process" 
               className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-110"
             />
             

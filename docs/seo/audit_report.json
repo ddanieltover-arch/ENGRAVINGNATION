@@ -1,0 +1,237 @@
+{
+  "site_name": "Engraving Nation",
+  "audit_date": "2026-05-04",
+  "summary": {
+    "total_pages": 25,
+    "missing_titles": 13,
+    "missing_descriptions": 15,
+    "missing_h1s": 5
+  },
+  "pages": [
+    {
+      "URL": "/",
+      "HTTP Status": 200,
+      "Title Tag": "Custom Chevy Emblems & Silverado Badges",
+      "Meta Description": "Shop premium engraved Chevy emblems, custom Silverado badges, and Chevrolet truck emblems. Hand-etched Chevy badges and logos, custom silverado badges, and engraved car parts for the elite truck enthusiast.",
+      "H1": "Missing",
+      "Word Count": 1381,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/about",
+      "HTTP Status": 200,
+      "Title Tag": "Our Story & Craftsmanship",
+      "Meta Description": "Learn about Engraving Nation\\",
+      "H1": "About <span className=\"text-brand-gold\">Engraving Nation</span>",
+      "Word Count": 505,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/articles",
+      "HTTP Status": 200,
+      "Title Tag": "The Journal | Automotive Guides & Inspiration",
+      "Meta Description": "Deep dives into automotive craftsmanship, installation guides, and custom build inspiration for Chevy, GMC, and Ford enthusiasts.",
+      "H1": "Engraved <span className=\"text-brand-gold\">Insights</span>",
+      "Word Count": 254,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/articles/slug",
+      "HTTP Status": 200,
+      "Title Tag": "Article Not Found",
+      "Meta Description": "Missing",
+      "H1": "{article.title}",
+      "Word Count": 588,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/cart",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Your Cart is Empty",
+      "Word Count": 719,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/checkout",
+      "HTTP Status": 200,
+      "Title Tag": "Secure Checkout",
+      "Meta Description": "Complete your custom emblem order with our secure offline payment checkout.",
+      "H1": "Missing",
+      "Word Count": 67,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/contact",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Contact <span className=\"text-brand-gold\">Engraving Nation</span>",
+      "Word Count": 982,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/fitment",
+      "HTTP Status": 200,
+      "Title Tag": "Chevy Silverado Emblem Size & Fitment Guide | Dimensions Database",
+      "Meta Description": "The ultimate database for Chevrolet Silverado emblems. Find the right dimensions, mounting styles, and fitment for your custom silverado badge across GMT800, GMT900, K2XX, and T1XX generations.",
+      "H1": "<span className=\"text-brand-gold\">Silverado Emblem</span> Size Database",
+      "Word Count": 815,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/gallery",
+      "HTTP Status": 200,
+      "Title Tag": "Build Showcase & Inspiration Gallery",
+      "Meta Description": "Explore the elite collection of custom engraved builds. From blacked-out Silverado emblems to precision-etched GMC mirror caps. Get inspired for your next project.",
+      "H1": "Build <span className=\"text-brand-gold\">Showcase</span>",
+      "Word Count": 572,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/glossary",
+      "HTTP Status": 200,
+      "Title Tag": "Automotive Engraving Glossary | Engraving Nation",
+      "Meta Description": "Understand the terms behind our premium automotive engravings. From precision etching to OEM fitment, learn the vocabulary of custom vehicle styling.",
+      "H1": "Automotive <span className=\"text-brand-gold\">Glossary</span>",
+      "Word Count": 516,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/payment",
+      "HTTP Status": 200,
+      "Title Tag": "Payment Options",
+      "Meta Description": "Secure and convenient payment options for your custom automotive orders.",
+      "H1": "Payment <span className=\"text-brand-gold\">Options</span>",
+      "Word Count": 341,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/products",
+      "HTTP Status": 200,
+      "Title Tag": "Shop Custom Chevy Emblems & Silverado Badges",
+      "Meta Description": "Shop engraved Chevy emblems, custom Silverado badges, and Chevrolet truck emblems. Premium Chevy Silverado emblem replacements, custom chevy badges, and engraved chevy logos for GMC, Ford, and RAM.",
+      "H1": "{categoryFilter ? (\n                <>{categoryFilter} <span className=\"text-brand-gold\">Collection</span></>\n              ) : makeFilter ? (\n                <>{makeFilter} <span className=\"text-brand-gold\">Inventory</span></>\n              ) : (\n                <>All <span className=\"text-brand-gold\">Products</span></>\n              )}",
+      "Word Count": 591,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/products/slug",
+      "HTTP Status": 200,
+      "Title Tag": "Product Not Found | Engraving Nation",
+      "Meta Description": "Missing",
+      "H1": "{product.name}",
+      "Word Count": 1025,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/refund-and-returns",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Refund <span className=\"text-white\">& Returns</span>",
+      "Word Count": 445,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/services",
+      "HTTP Status": 200,
+      "Title Tag": "Custom Automotive Engraving Services",
+      "Meta Description": "Precision laser engraving for Chevrolet, Silverado, GMC, and Ford. Deep, durable emblems and mirror caps crafted for performance builds.",
+      "H1": "Our <span className=\"text-brand-gold\">Services</span>",
+      "Word Count": 443,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/shipping",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Shipping <span className=\"text-white\">Policy</span>",
+      "Word Count": 646,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/admin",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Admin Panel",
+      "Word Count": 398,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/admin/coupons",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Coupons",
+      "Word Count": 425,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/admin/login",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Admin <span className=\"text-brand-gold\">Access</span>",
+      "Word Count": 323,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/admin/orders",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Orders",
+      "Word Count": 251,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/admin/orders/id",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Missing",
+      "Word Count": 601,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/admin/products",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Inventory",
+      "Word Count": 348,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/admin/products/new",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Missing",
+      "Word Count": 422,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/admin/products/id",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "Missing",
+      "Word Count": 137,
+      "Indexability": "Indexable"
+    },
+    {
+      "URL": "/admin/settings",
+      "HTTP Status": 200,
+      "Title Tag": "Missing",
+      "Meta Description": "Missing",
+      "H1": "System <span className=\"text-brand-gold\">Settings</span>",
+      "Word Count": 88,
+      "Indexability": "Indexable"
+    }
+  ]
+}

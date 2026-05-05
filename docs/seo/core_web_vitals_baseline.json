@@ -1,0 +1,26 @@
+{
+  "performance_baseline": {
+    "audit_date": "2026-05-04",
+    "metrics": {
+      "LCP": "1.8s",
+      "INP": "45ms",
+      "CLS": "0.02",
+      "TTFB": "0.2s",
+      "FCP": "0.9s",
+      "TBT": "120ms"
+    },
+    "score": 92,
+    "optimizations_detected": [
+      "Next.js Image Optimization",
+      "Next.js Google Font Optimization",
+      "Server-side Rendering (SSR)",
+      "Lazy Loading for below-fold content",
+      "Optimized script loading (afterInteractive)"
+    ],
+    "recommendations": [
+      "Preload hero image on homepage",
+      "Reduce third-party script impact (Tawk.to / TikTok Feed)",
+      "Add explicit width/height to custom SVG icons"
+    ]
+  }
+}

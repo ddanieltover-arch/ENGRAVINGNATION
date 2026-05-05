@@ -1,0 +1,21 @@
+{
+  "name": "Engraving Nation",
+  "short_name": "Engraving Nation",
+  "description": "Premier Custom Automotive Emblems & Engraving",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#d4a017",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

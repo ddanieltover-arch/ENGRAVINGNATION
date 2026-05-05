@@ -1,0 +1,28 @@
+{
+  "project": "Engraving Nation",
+  "baseline_date": "2026-05-04",
+  "search_console": {
+    "connection_status": "Verified",
+    "indexed_pages": 46,
+    "top_keywords": [
+      "silverado emblem",
+      "engraved chevy emblem",
+      "custom chevy badges",
+      "chevy silverado badges"
+    ]
+  },
+  "analytics": {
+    "ga4_status": "Installed (G-WHN37054LG)",
+    "conversion_tracking": "Enabled (lead, purchase)"
+  },
+  "domain_authority": {
+    "estimate": 12,
+    "referring_domains": 15,
+    "total_backlinks": 120
+  },
+  "organic_visibility": {
+    "monthly_organic_sessions": "est. 450",
+    "ranking_keywords_top_10": 8,
+    "ranking_keywords_top_100": 85
+  }
+}

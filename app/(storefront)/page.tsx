@@ -29,14 +29,39 @@ export default async function HomePage() {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Engraving Nation',
-    url: 'https://engravingnation.store',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://engravingnation.store/products?search={search_term_string}',
-      'query-input': 'required name=search_term_string',
-    },
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        name: 'Engraving Nation',
+        url: 'https://engravingnation.store',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: 'https://engravingnation.store/products?search={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'What makes custom engraved emblems better than stickers or overlays?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Custom engravings are permanently etched into the automotive part, meaning they will never peel, fade, or bubble like vinyl overlays. They provide a high-end 3D depth and are durable enough for off-road use and frequent car washes.'
+            }
+          },
+          {
+            '@type': 'Question',
+            name: 'Do these custom emblems fit specific truck models like the Silverado and Sierra?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes! We specialize in fitment for Chevy Silverado, GMC Sierra, Ford F-150, and RAM trucks. Each part is cross-referenced with vehicle year and trim levels to ensure a perfect OEM-style replacement.'
+            }
+          }
+        ]
+      }
+    ]
   };
 
   return (
@@ -47,6 +72,16 @@ export default async function HomePage() {
       />
       <Hero />
       
+      {/* GEO Answer Capsule */}
+      <section id="answer" aria-label="Quick Answer" className="container mx-auto px-4 pt-12 -mb-12 relative z-20">
+        <div className="max-w-4xl mx-auto p-8 rounded-3xl bg-brand-gold/[0.03] border border-brand-gold/20 backdrop-blur-sm">
+          <p className="text-white/80 text-lg leading-relaxed">
+            <strong className="text-brand-gold uppercase tracking-widest text-xs block mb-2">Quick Answer:</strong>
+            Engraving Nation specializes in <strong>custom automotive engravings</strong>, offering precision hand-etched Chevy emblems, Silverado badges, and G-series mirror caps. Unlike vinyl overlays, our permanent engravings provide superior durability and a premium aesthetic depth designed to withstand all road conditions while elevating your vehicle&apos;s custom identity.
+          </p>
+        </div>
+      </section>
+
       <div className="container mx-auto px-4 py-24">
         <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
           <VehicleSelector />
@@ -56,7 +91,7 @@ export default async function HomePage() {
         <section className="mt-32 animate-slide-up" style={{ animationDelay: '0.3s' }}>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-heading font-black tracking-tighter uppercase italic leading-none mb-4">
-              Shop by <span className="text-brand-gold">Brand</span>
+              Looking for Custom Emblems for Your <span className="text-brand-gold">Specific Brand?</span>
             </h2>
             <div className="w-24 h-1 bg-brand-gold mx-auto mb-6"></div>
           </div>
@@ -176,7 +211,7 @@ export default async function HomePage() {
                 VIEW MORE PRODUCTS FROM OUR STORE
               </span>
               <h2 className="text-4xl md:text-6xl font-heading font-black tracking-tighter uppercase italic leading-none mb-8">
-                Ready to <span className="text-brand-gold">Upgrade Your Ride?</span>
+                Why Choose Precision <span className="text-brand-gold">Engraved Automotive Upgrades?</span>
               </h2>
               <p className="text-white/70 max-w-3xl mx-auto text-lg md:text-xl font-light leading-relaxed">
                 At Engraving Nation, we don&apos;t just make parts—we craft precision-engineered, hand-engraved automotive upgrades that turn heads and last a lifetime. Every custom emblem, mirror cap, and specialty component is engineered for an exact fit, unmatched aesthetic depth, and rugged durability that thrives in any environment.

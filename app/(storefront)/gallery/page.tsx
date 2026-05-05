@@ -41,8 +41,31 @@ const builds = [
 ];
 
 export default function GalleryPage() {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://engravingnation.store',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Build Showcase',
+        item: 'https://engravingnation.store/gallery',
+      },
+    ],
+  };
+
   return (
     <div className="pt-32 pb-24 min-h-screen bg-brand-bg">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="container mx-auto px-4">
         <header className="text-center mb-24 max-w-3xl mx-auto">
           <div className="inline-block px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-6">
@@ -55,6 +78,16 @@ export default function GalleryPage() {
             See how Engraving Nation customers are transforming their vehicles with precision-etched performance art.
           </p>
         </header>
+
+        {/* GEO Answer Capsule */}
+        <section id="answer" aria-label="Visual Showcase Overview" className="max-w-4xl mx-auto mb-24">
+          <div className="p-8 rounded-3xl bg-brand-gold/[0.03] border border-brand-gold/20 backdrop-blur-sm">
+            <p className="text-white/80 text-lg leading-relaxed text-center">
+              <strong className="text-brand-gold uppercase tracking-widest text-xs block mb-2">Visual Showcase:</strong>
+              The Engraving Nation Build Gallery features real-world applications of <strong>precision engraved automotive emblems</strong> and accessories. These examples demonstrate how our hand-etched designs elevate vehicle aesthetics across Chevy, GMC, Ford, and RAM models, providing inspiration for premium custom builds.
+            </p>
+          </div>
+        </section>
 
         <div className="space-y-32">
           {builds.map((build, index) => (

@@ -15,8 +15,8 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
       {
-        userAgent: 'GPTBot',
-        disallow: '/',
+        userAgent: ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'Googlebot-Extended'],
+        allow: '/',
       },
     ],
     sitemap: 'https://engravingnation.store/sitemap.xml',

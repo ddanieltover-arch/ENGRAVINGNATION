@@ -97,11 +97,24 @@ export default async function ProductsPage({
     })),
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://engravingnation.store' },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://engravingnation.store/products' },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-brand-bg text-black/90 pt-24 pb-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Page Header */}
       <div className="border-b border-brand-border/30 bg-black/5 py-20 mb-12">
@@ -111,14 +124,14 @@ export default async function ProductsPage({
               {categoryFilter ? (
                 <>{categoryFilter} <span className="text-brand-gold">Collection</span></>
               ) : makeFilter ? (
-                <>{makeFilter} <span className="text-brand-gold">Inventory</span></>
+                <>Looking for Custom <span className="text-brand-gold">{makeFilter} Emblems?</span></>
               ) : (
-                <>All <span className="text-brand-gold">Products</span></>
+                <>What Custom Emblem Are You <span className="text-brand-gold">Looking For?</span></>
               )}
             </h1>
             <div className="w-32 h-1 bg-brand-gold mb-8"></div>
             <p className="text-white max-w-2xl text-xl font-light leading-relaxed">
-              Explore our curated selection of high-performance custom engraved parts for your vehicle.
+              Browse our full catalog of precision hand-engraved emblems, badges, and mirror caps for Chevy, GMC, Ford, and RAM trucks.
             </p>
           </div>
         </div>

@@ -64,6 +64,7 @@ export const metadata: Metadata = {
   verification: {
     google: 'AZZ1u6u8rhM5vzOBwxamuspwz-B5KebW0Kz2Cp6quHs',
   },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -149,6 +150,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <head>
+        {/* Preconnect hints for Core Web Vitals */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-WHN37054LG`}
