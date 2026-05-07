@@ -4,6 +4,10 @@ import { CreditCard, Wallet, Smartphone, Banknote, Info } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Payment Options',
   description: 'Secure and convenient payment options for your custom automotive orders.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function PaymentPage() {

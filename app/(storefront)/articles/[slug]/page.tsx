@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import fs from 'fs';
+import path from 'path';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -9,11 +11,21 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+function resolveArticleImage(image?: string | null) {
+  const fallback = '/og-image.jpg';
+  const candidate = image || fallback;
+  const relativePath = candidate.startsWith('/') ? candidate.slice(1) : candidate;
+  const fullPath = path.join(process.cwd(), 'public', relativePath);
+  return fs.existsSync(fullPath) ? candidate : fallback;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
   
   if (!article) return { title: 'Article Not Found' };
+  const imageUrl = resolveArticleImage(article.image);
+  const publishedAt = article.published_at || article.publishedAt;
   
   return {
     title: article.seoMetadata?.title || article.title,
@@ -24,9 +36,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: article.title,
       description: article.excerpt,
-      images: [article.image || '/images/hero-bg.jpg'],
+      url: `https://engravingnation.store/articles/${slug}`,
+      images: [imageUrl],
       type: 'article',
-      publishedTime: article.published_at || article.publishedAt,
+      publishedTime: publishedAt,
+      modifiedTime: publishedAt,
+      authors: [article.author || 'Engraving Nation Team'],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.excerpt,
+      images: [imageUrl],
     },
   };
 }
@@ -39,6 +60,8 @@ export default async function ArticleDetailPage({ params }: Props) {
   if (!article) notFound();
 
   const publishDate = new Date(article.published_at || article.publishedAt);
+  const publishedAt = article.published_at || article.publishedAt;
+  const imageUrl = resolveArticleImage(article.image);
 
   return (
     <article className="min-h-screen bg-brand-bg pb-24">
@@ -48,14 +71,27 @@ export default async function ArticleDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Article",
+            "@type": "BlogPosting",
             "headline": article.title,
             "description": article.excerpt,
-            "image": article.image || "/images/hero-bg.jpg",
-            "datePublished": article.published_at || article.publishedAt,
+            "image": `https://engravingnation.store${imageUrl}`,
+            "datePublished": publishedAt,
+            "dateModified": publishedAt,
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://engravingnation.store/articles/${slug}`
+            },
             "author": {
+              "@type": "Person",
+              "name": article.author || "Engraving Nation Team"
+            },
+            "publisher": {
               "@type": "Organization",
-              "name": "Engraving Nation"
+              "name": "Engraving Nation",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://engravingnation.store/logo.png"
+              }
             }
           })
         }}
@@ -93,7 +129,7 @@ export default async function ArticleDetailPage({ params }: Props) {
       {/* Parallax Hero Header */}
       <div className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden">
         <Image 
-          src={article.image || '/images/hero-bg.jpg'} 
+          src={imageUrl}
           alt={article.imageAlt || article.title}
           fill
           className="object-cover scale-105"

@@ -1,6 +1,7 @@
 {
   "performance_baseline": {
-    "audit_date": "2026-05-04",
+    "audit_date": "2026-05-07",
+    "status": "Baseline carried forward pending fresh PSI/Lighthouse pull",
     "metrics": {
       "LCP": "1.8s",
       "INP": "45ms",
@@ -9,18 +10,28 @@
       "FCP": "0.9s",
       "TBT": "120ms"
     },
-    "score": 92,
-    "optimizations_detected": [
-      "Next.js Image Optimization",
-      "Next.js Google Font Optimization",
-      "Server-side Rendering (SSR)",
-      "Lazy Loading for below-fold content",
-      "Optimized script loading (afterInteractive)"
+    "thresholds": {
+      "LCP_target": "<= 2.5s",
+      "INP_target": "<= 200ms",
+      "CLS_target": "< 0.1"
+    },
+    "primary_pages_for_next_measurement": [
+      "/",
+      "/products",
+      "/articles",
+      "/chevy-emblem",
+      "/chevy-bowtie",
+      "/corvette-emblem"
     ],
-    "recommendations": [
-      "Preload hero image on homepage",
-      "Reduce third-party script impact (Tawk.to / TikTok Feed)",
-      "Add explicit width/height to custom SVG icons"
+    "optimizations_detected": [
+      "Next.js image optimization and responsive rendering",
+      "Server-side rendering for critical storefront pages",
+      "Lazy loading for below-fold media",
+      "CI guardrails for metadata/schema/internal links"
+    ],
+    "open_actions": [
+      "Run fresh PageSpeed Insights captures and replace carried-forward metric snapshot",
+      "Record per-page CWV in this file after production run"
     ]
   }
 }

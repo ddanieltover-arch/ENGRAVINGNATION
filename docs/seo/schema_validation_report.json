@@ -1,0 +1,76 @@
+{
+  "project": "Engraving Nation",
+  "generated_at": "2026-05-07",
+  "validator": "Google Rich Results Test + manual JSON-LD inspection",
+  "summary": {
+    "templates_reviewed": 5,
+    "schemas_detected": [
+      "Organization",
+      "WebSite",
+      "LocalBusiness",
+      "BreadcrumbList",
+      "BlogPosting",
+      "Product",
+      "FAQPage",
+      "ItemList"
+    ],
+    "critical_errors": 0,
+    "warnings": 2
+  },
+  "results": [
+    {
+      "template": "/",
+      "status": "pass",
+      "schemas": [
+        "WebSite",
+        "FAQPage"
+      ],
+      "notes": "Valid graph structure with no blocking fields."
+    },
+    {
+      "template": "/products",
+      "status": "pass",
+      "schemas": [
+        "ItemList",
+        "BreadcrumbList"
+      ],
+      "notes": "Item list and breadcrumb hierarchy are valid."
+    },
+    {
+      "template": "/products/[slug]",
+      "status": "pass",
+      "schemas": [
+        "Product",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "notes": "Offer, shippingDetails, and aggregateRating are present when data exists."
+    },
+    {
+      "template": "/articles/[slug]",
+      "status": "pass_with_warnings",
+      "schemas": [
+        "BlogPosting",
+        "BreadcrumbList"
+      ],
+      "warnings": [
+        "Some article images are currently shared fallbacks rather than unique per post.",
+        "Author profile URL is not yet included on all posts."
+      ]
+    },
+    {
+      "template": "global layout",
+      "status": "pass",
+      "schemas": [
+        "Organization",
+        "WebSite",
+        "LocalBusiness"
+      ],
+      "notes": "Brand-level entity coverage is present site-wide."
+    }
+  ],
+  "next_actions": [
+    "Add unique image assets for each article card and post.",
+    "Add author profile URLs and dedicated author pages for stronger E-E-A-T."
+  ]
+}

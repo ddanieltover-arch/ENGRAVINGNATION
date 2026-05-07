@@ -4,19 +4,56 @@ import type { Metadata } from 'next';
 import VehicleSelector from '@/components/VehicleSelector';
 import ProductCard from '@/components/ProductCard';
 
-export const metadata: Metadata = {
-  title: 'Shop Custom Chevy Emblems & Silverado Badges',
-  description: 'Shop engraved Chevy emblems, custom Silverado badges, and Chevrolet truck emblems. Premium Chevy Silverado emblem replacements, custom chevy badges, and engraved chevy logos for GMC, Ford, and RAM.',
-  alternates: {
-    canonical: 'https://engravingnation.store/products',
-  },
-  keywords: ['silverado emblem', 'silverado badges', 'engraved chevy emblem', 'chevrolet truck emblems', 'custom chevy badges', 'chevy silverado emblem', 'chevy silverado badges', 'engraved chevy logo', 'chevy truck badges', 'custom silverado badges', 'chevy emblem custom', 'silverado logos', 'chevy badges and emblems', 'engraved car parts'],
-  openGraph: {
-    title: 'Engraved Chevy Emblems & Custom Logos',
-    description: 'Browse premium hand-engraved Silverado emblems, Chevrolet truck badges, and custom logos for Chevy, GMC, Ford, and RAM.',
-    url: 'https://engravingnation.store/products',
-  },
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  const hasFilterParams = ['category', 'make', 'model', 'year', 'search'].some(
+    (key) => !!params[key]
+  );
+
+  return {
+    title: 'Shop Custom Chevy Emblems & Silverado Badges',
+    description:
+      'Shop engraved Chevy emblems, custom Silverado badges, and Chevrolet truck emblems. Premium Chevy Silverado emblem replacements, custom chevy badges, and engraved chevy logos for GMC, Ford, and RAM.',
+    alternates: {
+      canonical: 'https://engravingnation.store/products',
+    },
+    robots: hasFilterParams
+      ? {
+          index: false,
+          follow: true,
+        }
+      : {
+          index: true,
+          follow: true,
+        },
+    keywords: [
+      'silverado emblem',
+      'silverado badges',
+      'engraved chevy emblem',
+      'chevrolet truck emblems',
+      'custom chevy badges',
+      'chevy silverado emblem',
+      'chevy silverado badges',
+      'engraved chevy logo',
+      'chevy truck badges',
+      'custom silverado badges',
+      'chevy emblem custom',
+      'silverado logos',
+      'chevy badges and emblems',
+      'engraved car parts',
+    ],
+    openGraph: {
+      title: 'Engraved Chevy Emblems & Custom Logos',
+      description:
+        'Browse premium hand-engraved Silverado emblems, Chevrolet truck badges, and custom logos for Chevy, GMC, Ford, and RAM.',
+      url: 'https://engravingnation.store/products',
+    },
+  };
+}
 
 // Opt out of caching so URL search params are read fresh if needed
 export const dynamic = 'force-dynamic';

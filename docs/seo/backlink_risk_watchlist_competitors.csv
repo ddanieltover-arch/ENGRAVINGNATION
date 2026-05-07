@@ -1,0 +1,13 @@
+Domain,Source,Risk Signal,Risk Level,Decision,Next Action
+directory-free.com,competitor_disavow_intel.csv,Directory spam footprint and competitor disavow inclusion,High,Watchlist - Review if found in our backlinks,Check Ahrefs/GSC export for domain occurrence
+world-business-zone.com,disavow_202605077.txt,Business directory/listing network pattern,High,Watchlist - Review if found in our backlinks,Block if repeated low-quality pages link to us
+violationfunding.com,disavow_202605077.txt,Irrelevant hacked/SEO thread context,High,Watchlist - Review if found in our backlinks,Disavow URL/domain if verified in profile
+weboworld.com,disavow_202605077.txt,Directory listing footprint,High,Watchlist - Review if found in our backlinks,Manual quality review on first detection
+flokii.com,disavow_202605077.txt,Community/business listing spam risk,Medium,Watchlist - Review if found in our backlinks,Disavow only if anchor/context is manipulative
+fobsourcify.com,disavow_202605077.txt,Sourcing-link network pattern,Medium,Watchlist - Review if found in our backlinks,Check anchor neighborhood before action
+sourcifychina.com,disavow_202605077.txt,Sourcing-listicle pattern often used for link drops,Medium,Watchlist - Review if found in our backlinks,Evaluate page quality and topical relevance
+libr.swill.be,disavow_202605077.txt,Aggregator/scraper-style endpoint pattern,High,Watchlist - Review if found in our backlinks,Disavow if non-editorial links appear
+search-a5-jazel-tango.jazel-qa.com,disavow_2026050777.txt,QA/staging subdomain and machine endpoint pattern,High,Watchlist - Review if found in our backlinks,Disavow technical junk links
+system.dealerfire.com,disavow_2026050777.txt,Autocheck endpoint and non-editorial machine URL,Medium,Watchlist - Review if found in our backlinks,Disavow only when repeated/noisy
+vms.autorevo.com,disavow_2026050777.txt,Vehicle data endpoint pattern not editorial,Medium,Watchlist - Review if found in our backlinks,Treat as low-value referral and audit frequency
+guessingheadlights.com,disavow_2026050777.txt,Low-trust content farm style domain naming,Medium,Watchlist - Review if found in our backlinks,Manual check before disavow

@@ -3,6 +3,12 @@ import { getProducts, getArticles } from '@/lib/data';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://engravingnation.store';
+  const priorityRoutes: Record<string, number> = {
+    '/chevy-emblem': 0.95,
+    '/chevy-bowtie': 0.95,
+    '/corvette-emblem': 0.94,
+    '/chevy-bowtie-fitment-pdf-download': 0.93,
+  };
 
   // Fetch all data for dynamic URLs
   let products: any[] = [];
@@ -35,6 +41,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/gallery',
     '/products',
     '/articles',
+    '/chevy-emblem',
+    '/chevy-bowtie',
+    '/corvette-emblem',
+    '/chevy-bowtie-fitment-pdf-download',
     '/services',
     '/about',
     '/contact',
@@ -45,8 +55,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === '/gallery' || route === '/articles' ? 'weekly' as const : 'monthly' as const,
-    priority: route === '' ? 1.0 : (route === '/gallery' || route === '/articles' ? 0.8 : 0.6),
+    changeFrequency:
+      route in priorityRoutes || route === '/gallery' || route === '/articles'
+        ? 'weekly' as const
+        : 'monthly' as const,
+    priority:
+      route === ''
+        ? 1.0
+        : route in priorityRoutes
+          ? priorityRoutes[route]
+          : (route === '/gallery' || route === '/articles' ? 0.8 : 0.6),
   }));
 
   return [...staticPages, ...productUrls, ...articleUrls];

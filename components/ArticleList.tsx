@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
+import ArticleImage from './ArticleImage';
 
 interface ArticleListProps {
   initialArticles: any[];
@@ -92,10 +92,9 @@ export default function ArticleList({ initialArticles }: ArticleListProps) {
           >
             <div className="relative aspect-16/10 overflow-hidden">
               <div className="absolute inset-0 bg-brand-gold/5 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <Image 
-                src={article.image || '/images/hero-bg.jpg'} 
+              <ArticleImage
+                src={article.image}
                 alt={article.imageAlt || article.title}
-                fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               <div className="absolute top-4 left-4 z-20">

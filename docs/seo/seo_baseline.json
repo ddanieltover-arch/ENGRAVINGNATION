@@ -1,9 +1,10 @@
 {
   "project": "Engraving Nation",
-  "baseline_date": "2026-05-04",
+  "baseline_date": "2026-05-07",
   "search_console": {
-    "connection_status": "Verified",
+    "connection_status": "Verified (manual check required for latest coverage)",
     "indexed_pages": 46,
+    "sitemap_submission_status": "Submitted; host canonicalization still needs final confirmation",
     "top_keywords": [
       "silverado emblem",
       "engraved chevy emblem",
@@ -13,7 +14,17 @@
   },
   "analytics": {
     "ga4_status": "Installed (G-WHN37054LG)",
-    "conversion_tracking": "Enabled (lead, purchase)"
+    "conversion_tracking": "Enabled (lead, purchase)",
+    "gsc_link_status": "Documented in analytics_setup.md; needs final property-side confirmation"
+  },
+  "robots": {
+    "validity": "Pass",
+    "ai_crawler_access": [
+      "GPTBot",
+      "ClaudeBot",
+      "PerplexityBot",
+      "Googlebot-Extended"
+    ]
   },
   "domain_authority": {
     "estimate": 12,

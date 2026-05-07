@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { getArticles } from '@/lib/data';
+import ArticleImage from './ArticleImage';
 
 export default async function LatestJournals() {
   const allArticles = await getArticles();
@@ -36,10 +36,9 @@ export default async function LatestJournals() {
             className="group glass-card overflow-hidden hover:border-brand-gold/30 transition-all duration-500 flex flex-col h-full"
           >
             <div className="relative aspect-16/9">
-              <Image 
-                src={article.image || '/images/hero-bg.jpg'} 
+              <ArticleImage
+                src={article.image}
                 alt={article.title}
-                fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute top-4 left-4">

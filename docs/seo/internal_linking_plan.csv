@@ -1,0 +1,36 @@
+From Page,To Page,Anchor Text,Priority
+/,/products,Shop custom Chevy emblems,High
+/,/services,Custom engraving services,High
+/,/articles,Truck emblem installation guides,High
+/,/glossary,Automotive engraving glossary,Medium
+/products,/fitment,Chevy Silverado emblem size guide,High
+/products,/articles/how-to-measure-truck-emblem-size-fitment-guide,How to measure your truck emblem,High
+/products,/articles/engraving-vs-vinyl-overlays-durability-comparison,Engraving vs vinyl durability,High
+/products,/services,Request a custom engraved emblem,High
+/services,/products,Browse custom emblem inventory,High
+/services,/articles/how-to-install-engraved-chevy-emblem-step-by-step,How to install engraved Chevy emblems,High
+/services,/contact,Contact our custom design team,High
+/articles,/products,Shop custom engraved emblems,High
+/articles,/fitment,Find your emblem fitment,High
+/articles,/glossary,Understand engraving terms,Medium
+/articles/[slug],/products?make=Chevrolet,Shop Chevy engraved emblems,High
+/articles/[slug],/products?make=GMC,Shop GMC custom badges,High
+/articles/[slug],/gallery,See customer build showcase,Medium
+/fitment,/products,Shop by exact emblem size,High
+/fitment,/articles/how-to-measure-truck-emblem-size-fitment-guide,Visual measurement guide,High
+/glossary,/articles,Read technical truck guides,Medium
+/glossary,/services,Book custom engraving service,Medium
+/gallery,/products,Get this look on your truck,High
+/gallery,/contact,Start your custom build request,High
+/faq,/products,Find the right emblem for your truck,High
+/faq,/shipping,Shipping policy details,Medium
+/,/chevy-emblem,Chevy emblem fitment and style guide,High
+/,/chevy-bowtie,Chevy bowtie size and fitment guide,High
+/products,/chevy-emblem,Chevy emblem buyer fitment guide,High
+/products,/chevy-bowtie,Chevy bowtie size by platform,High
+/products,/corvette-emblem,Corvette emblem upgrade guide,High
+/chevy-emblem,/chevy-bowtie,Chevy bowtie fitment details,High
+/chevy-bowtie,/chevy-bowtie-fitment-pdf-download,Download Chevy bowtie fitment PDF,High
+/corvette-emblem,/chevy-emblem,Compare Corvette and Chevy emblem fitment,Medium
+/articles,/chevy-emblem,Chevy emblem quick fitment hub,High
+/articles,/corvette-emblem,Corvette emblem fitment and upgrade path,High

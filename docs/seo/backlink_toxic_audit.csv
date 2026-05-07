@@ -1,0 +1,9 @@
+Domain,Discovery Source,Toxic Signal,Toxicity Score,Decision,Evidence Note,Disavow Action
+toplikevideo.com,SEMrush disavow export,Indexed link listing pattern,93,Confirmed - Included in current disavow,Present in user-provided live disavow_20260507.txt,Already in disavow list
+fiverr-quality-seo-at-affordable-rates.site,SEMrush disavow export,Spam SEO promotion footprint,97,Confirmed - Included in current disavow,Present in user-provided live disavow_20260507.txt,Already in disavow list
+domaindexer.com,SEMrush disavow export,Indexer/link manipulation footprint,95,Confirmed - Included in current disavow,Present in user-provided live disavow_20260507.txt,Already in disavow list
+dailymusings.top,SEMrush disavow export,Low-quality stats/link page pattern,90,Confirmed - Included in current disavow,Present in user-provided live disavow_20260507.txt,Already in disavow list
+buzzshrink.website,SEMrush disavow export,Shortener/share spam footprint,94,Confirmed - Included in current disavow,Two URLs present in user-provided live disavow_20260507.txt,Already in disavow list
+8coint.com,SEMrush disavow export,Link listing pattern,92,Confirmed - Included in current disavow,Present in user-provided live disavow_20260507.txt,Already in disavow list
+directory-free.com,Competitor disavow intelligence,Directory spam footprint seen in competitor disavow,78,Watchlist - Pending first-party evidence,Added from competitor watchlist and not yet found in our confirmed backlink export,Investigate before adding to disavow
+world-business-zone.com,Competitor disavow intelligence,Business listing network pattern seen in competitor disavow,74,Watchlist - Pending first-party evidence,Competitor signal only,Investigate before adding to disavow

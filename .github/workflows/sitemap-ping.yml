@@ -1,0 +1,16 @@
+name: Sitemap Ping
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 9 * * 1-5"
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Google sitemap endpoint
+        run: curl --fail --silent --show-error "https://www.google.com/ping?sitemap=https://engravingnation.store/sitemap.xml"
+
+      - name: Ping Bing sitemap endpoint
+        run: curl --fail --silent --show-error "https://www.bing.com/ping?sitemap=https://engravingnation.store/sitemap.xml"

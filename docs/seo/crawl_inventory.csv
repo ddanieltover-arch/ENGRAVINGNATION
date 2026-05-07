@@ -1,32 +1,22 @@
-URL,HTTP Status,Title Tag,Meta Description,H1,Word Count,Indexability
-/,200,Custom Chevy Emblems & Silverado Badges,"Shop premium engraved Chevy emblems, custom Silverado badges, and Chevrolet truck emblems. Hand-etched Chevy badges and logos, custom silverado badges, and engraved car parts for the elite truck enthusiast.",Missing,1381,Indexable
-/about,200,Our Story & Craftsmanship,Learn about Engraving Nation\,"About <span className=""text-brand-gold"">Engraving Nation</span>",505,Indexable
-/articles,200,The Journal | Automotive Guides & Inspiration,"Deep dives into automotive craftsmanship, installation guides, and custom build inspiration for Chevy, GMC, and Ford enthusiasts.","Engraved <span className=""text-brand-gold"">Insights</span>",254,Indexable
-/articles/slug,200,Article Not Found,Missing,{article.title},588,Indexable
-/cart,200,Missing,Missing,Your Cart is Empty,719,Indexable
-/checkout,200,Secure Checkout,Complete your custom emblem order with our secure offline payment checkout.,Missing,67,Indexable
-/contact,200,Missing,Missing,"Contact <span className=""text-brand-gold"">Engraving Nation</span>",982,Indexable
-/fitment,200,Chevy Silverado Emblem Size & Fitment Guide | Dimensions Database,"The ultimate database for Chevrolet Silverado emblems. Find the right dimensions, mounting styles, and fitment for your custom silverado badge across GMT800, GMT900, K2XX, and T1XX generations.","<span className=""text-brand-gold"">Silverado Emblem</span> Size Database",815,Indexable
-/gallery,200,Build Showcase & Inspiration Gallery,Explore the elite collection of custom engraved builds. From blacked-out Silverado emblems to precision-etched GMC mirror caps. Get inspired for your next project.,"Build <span className=""text-brand-gold"">Showcase</span>",572,Indexable
-/glossary,200,Automotive Engraving Glossary | Engraving Nation,"Understand the terms behind our premium automotive engravings. From precision etching to OEM fitment, learn the vocabulary of custom vehicle styling.","Automotive <span className=""text-brand-gold"">Glossary</span>",516,Indexable
-/payment,200,Payment Options,Secure and convenient payment options for your custom automotive orders.,"Payment <span className=""text-brand-gold"">Options</span>",341,Indexable
-/products,200,Shop Custom Chevy Emblems & Silverado Badges,"Shop engraved Chevy emblems, custom Silverado badges, and Chevrolet truck emblems. Premium Chevy Silverado emblem replacements, custom chevy badges, and engraved chevy logos for GMC, Ford, and RAM.","{categoryFilter ? (
-                <>{categoryFilter} <span className=""text-brand-gold"">Collection</span></>
-              ) : makeFilter ? (
-                <>{makeFilter} <span className=""text-brand-gold"">Inventory</span></>
-              ) : (
-                <>All <span className=""text-brand-gold"">Products</span></>
-              )}",591,Indexable
-/products/slug,200,Product Not Found | Engraving Nation,Missing,{product.name},1025,Indexable
-/refund-and-returns,200,Missing,Missing,"Refund <span className=""text-white"">& Returns</span>",445,Indexable
-/services,200,Custom Automotive Engraving Services,"Precision laser engraving for Chevrolet, Silverado, GMC, and Ford. Deep, durable emblems and mirror caps crafted for performance builds.","Our <span className=""text-brand-gold"">Services</span>",443,Indexable
-/shipping,200,Missing,Missing,"Shipping <span className=""text-white"">Policy</span>",646,Indexable
-/admin,200,Missing,Missing,Admin Panel,398,Indexable
-/admin/coupons,200,Missing,Missing,Coupons,425,Indexable
-/admin/login,200,Missing,Missing,"Admin <span className=""text-brand-gold"">Access</span>",323,Indexable
-/admin/orders,200,Missing,Missing,Orders,251,Indexable
-/admin/orders/id,200,Missing,Missing,Missing,601,Indexable
-/admin/products,200,Missing,Missing,Inventory,348,Indexable
-/admin/products/new,200,Missing,Missing,Missing,422,Indexable
-/admin/products/id,200,Missing,Missing,Missing,137,Indexable
-/admin/settings,200,Missing,Missing,"System <span className=""text-brand-gold"">Settings</span>",88,Indexable
+URL,HTTP Status,Title Tag,Meta Description,H1,Word Count,Indexability,Canonical
+/,200,Custom Chevy Emblems & Silverado Badges,Present,Present,1300+,Indexable,https://engravingnation.store/
+/products,200,Shop Custom Chevy Emblems & Silverado Badges,Present,Present,500+,Indexable,https://engravingnation.store/products
+/products/[slug],200,Dynamic Product Metadata,Present (dynamic),Present (dynamic),900+,Indexable,Dynamic canonical per product slug
+/articles,200,The Journal | Automotive Guides & Inspiration,Present,Present,250+,Indexable,https://engravingnation.store/articles
+/articles/[slug],200,Dynamic Article Metadata,Present (dynamic),Present (dynamic),500+,Indexable,Dynamic canonical per article slug
+/services,200,Custom Automotive Engraving Services,Present,Present,400+,Indexable,https://engravingnation.store/services
+/about,200,Our Story & Craftsmanship,Present,Present,500+,Indexable,https://engravingnation.store/about
+/gallery,200,Build Showcase & Inspiration Gallery,Present,Present,500+,Indexable,https://engravingnation.store/gallery
+/glossary,200,Automotive Engraving Glossary | Engraving Nation,Present,Present,500+,Indexable,https://engravingnation.store/glossary
+/faq,200,FAQ metadata defined,Present,Present,300+,Indexable,https://engravingnation.store/faq
+/fitment,200,Chevy Silverado Emblem Size & Fitment Guide,Present,Present,800+,Indexable,https://engravingnation.store/fitment
+/chevy-emblem,200,Chevy Emblem Guide: Fitment, Styles, and Install,Present,Present,900+,Indexable,https://engravingnation.store/chevy-emblem
+/chevy-bowtie,200,Chevy Bowtie Size and Fitment Guide,Present,Present,900+,Indexable,https://engravingnation.store/chevy-bowtie
+/corvette-emblem,200,Corvette Emblem Fitment and Upgrade Guide,Present,Present,800+,Indexable,https://engravingnation.store/corvette-emblem
+/chevy-bowtie-fitment-pdf-download,200,Chevy Bowtie Size and Fitment PDF Download,Present,Present,500+,Indexable,https://engravingnation.store/chevy-bowtie-fitment-pdf-download
+/payment,200,Payment Options,Present,Present,300+,Noindex,N/A (intentionally non-indexable)
+/checkout,200,Secure Checkout,Present,Present,100+,Noindex (target state),N/A (checkout flow)
+/cart,200,Cart Page Metadata Pending,Partial,Present,300+,Noindex (target state),N/A (transactional utility page)
+/contact,200,Contact Metadata Pending,Partial,Present,700+,Indexable,https://engravingnation.store/contact
+/shipping,200,Shipping Metadata Pending,Partial,Present,600+,Indexable,https://engravingnation.store/shipping
+/refund-and-returns,200,Refund Metadata Pending,Partial,Present,400+,Indexable,https://engravingnation.store/refund-and-returns

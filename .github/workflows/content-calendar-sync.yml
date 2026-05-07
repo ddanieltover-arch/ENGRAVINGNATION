@@ -1,0 +1,45 @@
+name: Content Calendar Sync
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+jobs:
+  sync-calendar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: store
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: store/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync content calendar
+        run: node scripts/sync-content-calendar.js
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- docs/seo/content-calendar.csv; then
+            echo "No content calendar changes."
+            exit 0
+          fi
+          git add docs/seo/content-calendar.csv
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(seo): sync content calendar"
+          git push

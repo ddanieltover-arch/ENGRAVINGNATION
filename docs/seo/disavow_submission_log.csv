@@ -1,0 +1,5 @@
+Date,Action,Property,File,Submitted By,Status,Notes
+2026-05-07,Draft prepared,https://www.engravingnation.store,docs/seo/disavow.txt,SEO Ops,Prepared - Awaiting GSC verification,Created candidate disavow list from backlink_toxic_audit.csv
+2026-05-07,Validation required,https://www.engravingnation.store,docs/seo/disavow.txt,SEO Ops,Blocked - Awaiting backlink export,Need Ahrefs/GSC backlink export to confirm candidates before submission
+2026-05-07,Imported current disavow baseline,https://www.engravingnation.store,docs/seo/disavow.txt,SEO Ops,Updated from live source,Synced from user-provided disavow_20260507.txt (SEMrush export)
+2026-05-07,Submission confirmation pending,https://www.engravingnation.store,docs/seo/disavow.txt,SEO Ops,Awaiting manual confirmation,Need GSC screenshot or export proving latest upload to log as Submitted
