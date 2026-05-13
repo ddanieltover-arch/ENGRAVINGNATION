@@ -5,16 +5,13 @@ export function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
   const host = request.headers.get('host');
 
-  /* 
   // 1. Enforce non-www domain canonicalization for all routes
-  // Disabling this because it clashing with platform-level redirects (Vercel/DNS)
   if (host === 'www.engravingnation.store') {
     return NextResponse.redirect(
       `https://engravingnation.store${pathname}${search}`,
       301
     );
   }
-  */
   
   // 2. Protect routes under /admin
   if (pathname.startsWith('/admin')) {

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Outfit } from 'next/font/google';
 import './globals.css';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
@@ -187,6 +188,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans min-h-screen flex flex-col antialiased bg-[#0a0a0a] text-white">
         {children}
+        <Analytics />
       </body>
     </html>
   );
