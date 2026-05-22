@@ -12,8 +12,8 @@ export default function TawkChat() {
           var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
           Tawk_API.customStyle = {
             visibility: {
-              desktop: { xOffset: 20, yOffset: 20 },
-              mobile: { xOffset: 10, yOffset: 95 }
+              desktop: { xOffset: 20, yOffset: 100 },
+              mobile: { xOffset: 10, yOffset: 160 }
             }
           };
           (function(){
