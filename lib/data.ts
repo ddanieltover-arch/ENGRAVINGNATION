@@ -62,19 +62,7 @@ export async function getProducts() {
     .neq('slug', 'sys_settings');
   if (error) throw error;
   
-  // Merge reviews and enhanced descriptions from local JSON as a fallback/overlay
-  const localProducts = getJsonData(PRODUCTS_FILE);
-  
-  return data.map(p => {
-    const formatted = formatProduct(p);
-    const local = localProducts.find((lp: any) => lp.slug === p.slug);
-    
-    return {
-      ...formatted,
-      reviews: p.reviews && p.reviews.length > 0 ? p.reviews : (local?.reviews || []),
-      description: (local?.description && local.description.includes('href=')) ? local.description : p.description
-    };
-  });
+  return data.map(p => formatProduct(p));
 }
 
 export async function getProductBySlug(slug: string) {
@@ -85,15 +73,7 @@ export async function getProductBySlug(slug: string) {
     .single();
   if (error) return null;
   
-  const formatted = formatProduct(data);
-  const localProducts = getJsonData(PRODUCTS_FILE);
-  const local = localProducts.find((lp: any) => lp.slug === slug);
-  
-  return {
-    ...formatted,
-    reviews: data.reviews && data.reviews.length > 0 ? data.reviews : (local?.reviews || []),
-    description: (local?.description && local.description.includes('href=')) ? local.description : data.description
-  };
+  return formatProduct(data);
 }
 
 export async function getArticles() {
@@ -102,21 +82,11 @@ export async function getArticles() {
     .select('*')
     .order('published_at', { ascending: false });
   
-  const localArticles = getJsonData(ARTICLES_FILE);
-  
-  // Merge Supabase results with local JSON fallback
-  const dbData = data || [];
-  const merged = [...dbData];
-  
-  localArticles.forEach((local: any) => {
-    if (!merged.find(m => m.slug === local.slug)) {
-      merged.push(local);
-    }
-  });
+  if (error) throw error;
 
   // Filter out articles with future publish dates (Automated Scheduling)
   const now = new Date();
-  const filtered = merged.filter(article => {
+  const filtered = data.filter(article => {
     const pubDateStr = article.published_at || article.publishedAt;
     return pubDateStr ? new Date(pubDateStr) <= now : true;
   });
@@ -131,10 +101,8 @@ export async function getArticleBySlug(slug: string) {
     .eq('slug', slug)
     .single();
   
-  if (data) return data;
-  
-  const localArticles = getJsonData(ARTICLES_FILE);
-  return localArticles.find((a: any) => a.slug === slug) || null;
+  if (error) return null;
+  return data;
 }
 
 const DEFAULT_SETTINGS = {

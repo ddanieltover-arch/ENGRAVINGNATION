@@ -169,8 +169,16 @@ export default async function ArticleDetailPage({ params }: Props) {
             {/* Artistic pattern overlay */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl -mr-48 -mt-48 opacity-50 pointer-events-none"></div>
             
+            {/* Answer Capsule (GEO) */}
+            <section id="answer" aria-label="Quick Answer" className="bg-white/5 border-l-2 border-brand-gold p-6 mb-12 relative z-10">
+              <p className="text-white/80 text-sm leading-relaxed">
+                <strong className="text-white font-bold block mb-2 uppercase tracking-widest text-xs">Quick Answer:</strong>
+                {article.excerpt}
+              </p>
+            </section>
+
             <div 
-              className="article-content max-w-none"
+              className="article-content max-w-none relative z-10"
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
           </div>

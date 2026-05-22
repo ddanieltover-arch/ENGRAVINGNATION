@@ -173,24 +173,24 @@ export default function ProductTabs({ productId, productSlug, productName, descr
               <div className="description-formatted">
                 {formatDescription(description)}
               </div>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 list-none p-0">
-                <li className="flex items-center gap-3 text-sm text-white/50 bg-white/5 p-4 rounded-xl border border-white/5">
-                  <div className="w-2 h-2 rounded-full bg-brand-gold"></div>
-                  <span>High-grade automotive material</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm text-white/50 bg-white/5 p-4 rounded-xl border border-white/5">
-                  <div className="w-2 h-2 rounded-full bg-brand-gold"></div>
-                  <span>Weather & heat resistant finish</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm text-white/50 bg-white/5 p-4 rounded-xl border border-white/5">
-                  <div className="w-2 h-2 rounded-full bg-brand-gold"></div>
-                  <span>Precision hand-etched engraving</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm text-white/50 bg-white/5 p-4 rounded-xl border border-white/5">
-                  <div className="w-2 h-2 rounded-full bg-brand-gold"></div>
-                  <span>Direct replacement for OEM parts</span>
-                </li>
-              </ul>
+              <dl className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-12 p-0" aria-label="Product Specifications">
+                <div className="flex items-center gap-3 text-sm text-white/50 bg-white/5 p-4 rounded-xl border border-white/5">
+                  <dt className="sr-only">Material Quality</dt>
+                  <dd className="flex items-center gap-3 m-0"><div className="w-2 h-2 rounded-full bg-brand-gold"></div>High-grade automotive material</dd>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-white/50 bg-white/5 p-4 rounded-xl border border-white/5">
+                  <dt className="sr-only">Durability</dt>
+                  <dd className="flex items-center gap-3 m-0"><div className="w-2 h-2 rounded-full bg-brand-gold"></div>Weather & heat resistant finish</dd>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-white/50 bg-white/5 p-4 rounded-xl border border-white/5">
+                  <dt className="sr-only">Manufacturing Process</dt>
+                  <dd className="flex items-center gap-3 m-0"><div className="w-2 h-2 rounded-full bg-brand-gold"></div>Precision hand-etched engraving</dd>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-white/50 bg-white/5 p-4 rounded-xl border border-white/5">
+                  <dt className="sr-only">Compatibility</dt>
+                  <dd className="flex items-center gap-3 m-0"><div className="w-2 h-2 rounded-full bg-brand-gold"></div>Direct replacement for OEM parts</dd>
+                </div>
+              </dl>
               <div className="mt-12 pt-8 border-t border-white/5 flex flex-wrap gap-x-8 gap-y-4">
                 <div className="flex flex-col gap-1">
                   <span className="text-[10px] text-white/20 uppercase tracking-widest font-bold">Purchase Protection</span>

@@ -7,6 +7,8 @@ import { Analytics } from '@vercel/analytics/react';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
 
+import ChatConcierge from '@/components/ChatConcierge';
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://engravingnation.store'),
   title: {
@@ -102,10 +104,12 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Engraving Nation',
+    description: 'Premier provider of custom hand-engraved automotive emblems, mirror caps, and accessories for Chevy, Ford, GMC, and RAM trucks.',
     image: 'https://engravingnation.store/og-image.jpg',
     '@id': 'https://engravingnation.store',
     url: 'https://engravingnation.store',
     telephone: '+1-332-256-6110',
+    priceRange: '$$$',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '111 SMITHTOWN BYP STE 228',
@@ -188,6 +192,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans min-h-screen flex flex-col antialiased bg-[#0a0a0a] text-white">
         {children}
+        <ChatConcierge />
         <Analytics />
       </body>
     </html>

@@ -332,6 +332,14 @@ export default async function ProductDetailPage({
           </div>
         </div>
 
+        {/* Answer Capsule (GEO) */}
+        <section id="answer" aria-label="Quick Answer" className="bg-white/5 border-l-2 border-brand-gold p-6 mb-12 max-w-4xl">
+          <p className="text-white/80 text-sm leading-relaxed">
+            <strong className="text-white font-bold block mb-2 uppercase tracking-widest text-xs">Quick Answer:</strong>
+            The {product.name} is a precision hand-engraved automotive upgrade offering permanent, weather-resistant customization. Unlike standard vinyl overlays, this deeply etched component will not fade or peel. {product.vehicle_fitment && product.vehicle_fitment.length > 0 ? `It is specifically manufactured for proper fitment on ${product.vehicle_fitment.map((f: any) => `${f.year} ${f.make} ${f.model}`).join(', ')}.` : 'It serves as a premium aesthetic replacement over factory-standard parts, ensuring long-lasting durability and a unique custom appearance.'}
+          </p>
+        </section>
+
         {/* Product Details Tabs */}
         <ProductTabs 
           productId={product.id.toString()} 

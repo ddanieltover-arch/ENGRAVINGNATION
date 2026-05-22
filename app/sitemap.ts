@@ -41,6 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/gallery',
     '/products',
     '/articles',
+    '/fitment',
     '/chevy-emblem',
     '/chevy-bowtie',
     '/corvette-emblem',
@@ -56,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency:
-      route in priorityRoutes || route === '/gallery' || route === '/articles'
+      route in priorityRoutes || route === '/gallery' || route === '/articles' || route === '/fitment'
         ? 'weekly' as const
         : 'monthly' as const,
     priority:
@@ -64,7 +65,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ? 1.0
         : route in priorityRoutes
           ? priorityRoutes[route]
-          : (route === '/gallery' || route === '/articles' ? 0.8 : 0.6),
+          : (route === '/gallery' || route === '/articles' || route === '/fitment' ? 0.8 : 0.6),
   }));
 
   return [...staticPages, ...productUrls, ...articleUrls];

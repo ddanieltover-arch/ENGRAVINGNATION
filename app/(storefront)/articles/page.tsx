@@ -32,11 +32,29 @@ export default async function ArticlesPage() {
     ],
   };
 
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Engraving Nation Journal Articles',
+    description: 'Expert guides, craft stories, and technical deep-dives for the modern automotive enthusiast.',
+    numberOfItems: articles.length,
+    itemListElement: articles.map((article: any, index: number) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `https://engravingnation.store/articles/${article.slug}`,
+      name: article.title,
+    })),
+  };
+
   return (
     <div className="pt-32 pb-24 min-h-screen bg-brand-bg">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
       <div className="container mx-auto px-4">
         <header className="text-center mb-24 max-w-3xl mx-auto">
