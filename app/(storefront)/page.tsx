@@ -72,6 +72,36 @@ export default async function HomePage() {
         <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
           <VehicleSelector />
         </div>
+
+        {/* SEO hub links — Week 1 internal linking */}
+        <section className="mt-20 animate-slide-up" aria-label="Fitment and emblem guides">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link href="/chevy-emblem" className="glass-card p-8 hover:border-brand-gold/40 transition-colors group">
+              <h2 className="text-lg font-heading font-black uppercase italic text-white group-hover:text-brand-gold mb-3">
+                Chevy Emblem Fitment Guide
+              </h2>
+              <p className="text-white/50 text-sm leading-relaxed">
+                Chevrolet emblem and chevy symbol sizing, styles, and install paths for every platform.
+              </p>
+            </Link>
+            <Link href="/chevy-bowtie" className="glass-card p-8 hover:border-brand-gold/40 transition-colors group">
+              <h2 className="text-lg font-heading font-black uppercase italic text-white group-hover:text-brand-gold mb-3">
+                Engraved Chevy Bowtie Guide
+              </h2>
+              <p className="text-white/50 text-sm leading-relaxed">
+                Engraved chevy bowtie dimensions, mount types, and platform fitment tables.
+              </p>
+            </Link>
+            <Link href="/fitment" className="glass-card p-8 hover:border-brand-gold/40 transition-colors group">
+              <h2 className="text-lg font-heading font-black uppercase italic text-white group-hover:text-brand-gold mb-3">
+                Silverado Emblem Size Guide
+              </h2>
+              <p className="text-white/50 text-sm leading-relaxed">
+                Silverado badges and emblem dimensions by generation — measure before you buy.
+              </p>
+            </Link>
+          </div>
+        </section>
         
         {/* Browse by Make Section */}
         <section className="mt-32 animate-slide-up" style={{ animationDelay: '0.3s' }}>
@@ -127,13 +157,17 @@ export default async function HomePage() {
             ))}
           </div>
 
-          <div className="mt-20 text-center">
+          <div className="mt-20 text-center space-y-4">
             <Link 
-              href="/products" 
+              href="/products?make=Chevrolet" 
               className="px-12 py-4 rounded-full bg-brand-gold text-black font-black uppercase tracking-widest hover:shadow-[0_0_30px_rgba(212,160,23,0.4)] transition-all duration-300 inline-block italic"
             >
-              View All Products
+              Shop Custom Chevy Emblems
             </Link>
+            <p className="text-white/40 text-sm">
+              Or browse all{' '}
+              <Link href="/products" className="text-brand-gold hover:underline">engraved emblems &amp; badges</Link>
+            </p>
           </div>
         </section>
 

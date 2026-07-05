@@ -6,8 +6,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const priorityRoutes: Record<string, number> = {
     '/chevy-emblem': 0.95,
     '/chevy-bowtie': 0.95,
+    '/fitment': 0.95,
     '/corvette-emblem': 0.94,
     '/chevy-bowtie-fitment-pdf-download': 0.93,
+    '/products': 0.5,
   };
 
   // Fetch all data for dynamic URLs
@@ -65,7 +67,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ? 1.0
         : route in priorityRoutes
           ? priorityRoutes[route]
-          : (route === '/gallery' || route === '/articles' || route === '/fitment' ? 0.8 : 0.6),
+          : route === '/gallery' || route === '/articles'
+            ? 0.8
+            : 0.6,
   }));
 
   return [...staticPages, ...productUrls, ...articleUrls];

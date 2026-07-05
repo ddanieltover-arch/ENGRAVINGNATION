@@ -9,6 +9,9 @@ import ProductCard from '@/components/ProductCard';
 import ProductTabs from '@/components/ProductTabs';
 import ProductGallery from '@/components/ProductGallery';
 import TrustSeals from '@/components/TrustSeals';
+import { getProductCanonicalHubs } from '@/lib/seo/canonical-clusters';
+import { getSkuKeywordEntry, getSkuSeoOverrides, SKU_KEYWORD_MAP } from '@/lib/seo/sku-keyword-map';
+import ProductSkuKeywordBlock from '@/components/ProductSkuKeywordBlock';
 import type { Metadata, ResolvingMetadata } from 'next';
 
 export async function generateMetadata(
@@ -36,9 +39,11 @@ export async function generateMetadata(
     ? `${product.short_description}${fitmentSummary} Premium hand-engraved quality.` 
     : `Shop ${product.name}.${fitmentSummary} Hand-etched precision custom automotive part for your vehicle. Premium quality, built to last.`;
 
+  const skuSeo = getSkuSeoOverrides(slug);
+
   return {
-    title: metaTitle,
-    description: metaDescription.substring(0, 160),
+    title: skuSeo?.seoTitle ?? metaTitle,
+    description: (skuSeo?.seoDescription ?? metaDescription).substring(0, 160),
     alternates: {
       canonical: `https://engravingnation.store/products/${slug}`,
     },
@@ -72,11 +77,22 @@ export default async function ProductDetailPage({
   const { slug } = await params;
   const product = await getProductBySlug(slug);
   const allProducts = await getProducts();
-  const relatedProducts = allProducts.filter((p: any) => p.slug !== slug).slice(0, 4);
+  const skuEntry = getSkuKeywordEntry(slug);
+  const clusterSlugs = Object.values(SKU_KEYWORD_MAP)
+    .filter((e) => e.slug !== slug)
+    .map((e) => e.slug);
+  const relatedProducts = [
+    ...allProducts.filter((p: { slug: string }) => clusterSlugs.includes(p.slug)),
+    ...allProducts.filter((p: { slug: string }) => p.slug !== slug && !clusterSlugs.includes(p.slug)),
+  ]
+    .filter((p: { slug: string }) => p.slug !== slug)
+    .slice(0, 4);
 
   if (!product) {
     notFound();
   }
+
+  const canonicalHubs = getProductCanonicalHubs(product);
 
   const reviewsData = product.reviews || [];
   const totalReviews = reviewsData.length;
@@ -339,6 +355,34 @@ export default async function ProductDetailPage({
             The {product.name} is a precision hand-engraved automotive upgrade offering permanent, weather-resistant customization. Unlike standard vinyl overlays, this deeply etched component will not fade or peel. {product.vehicle_fitment && product.vehicle_fitment.length > 0 ? `It is specifically manufactured for proper fitment on ${product.vehicle_fitment.map((f: any) => `${f.year} ${f.make} ${f.model}`).join(', ')}.` : 'It serves as a premium aesthetic replacement over factory-standard parts, ensuring long-lasting durability and a unique custom appearance.'}
           </p>
         </section>
+
+        {skuEntry && <ProductSkuKeywordBlock entry={skuEntry} />}
+
+        {canonicalHubs.length > 0 && (
+          <aside
+            aria-label="Fitment guides for this product"
+            className="mb-12 max-w-4xl rounded-xl border border-white/10 bg-white/5 p-6"
+          >
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-brand-gold mb-2">
+              Sizing &amp; fitment
+            </p>
+            <p className="text-white/70 text-sm mb-4">
+              Confirm emblem dimensions on our dedicated guides — not on this product page — to avoid ordering the wrong size.
+            </p>
+            <ul className="flex flex-wrap gap-3">
+              {canonicalHubs.map((hub) => (
+                <li key={hub.href}>
+                  <Link
+                    href={hub.href}
+                    className="inline-block rounded-full border border-brand-gold/30 px-4 py-2 text-xs font-bold uppercase tracking-wider text-brand-gold transition hover:bg-brand-gold/10"
+                  >
+                    {hub.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        )}
 
         {/* Product Details Tabs */}
         <ProductTabs 

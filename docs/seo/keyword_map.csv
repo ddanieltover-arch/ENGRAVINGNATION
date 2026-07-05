@@ -1,13 +1,56 @@
-Keyword,Target URL,Priority,Optimized Element,Status
-silverado emblem,/products?make=Chevrolet,Critical,H1 / Category Description,TARGETED
-engraved chevy emblem,/products?make=Chevrolet,Critical,Title / Meta / Answer Capsule,TARGETED
-custom chevy badges,/products?make=Chevrolet,Critical,Title / Meta / H2,TARGETED
-gmc mirror caps,/products?make=GMC,High,H1 / Product Descriptions,TARGETED
-ford f-150 custom emblems,/products?make=Ford,High,H2 / Meta Description,TARGETED
-hand-etched automotive engravings,/glossary,High,Glossary Entry / Answer Capsule,TARGETED
-how to remove chevy emblem,/articles,Medium,Blog Title / H2,PENDING
-silverado emblem removal guide,/articles,Medium,Blog Title / FAQ,PENDING
-engraving nation vs billet badges,/glossary,Medium,Comparison Table,PENDING
-custom truck accessories near me,/,Low,LocalBusiness Schema,TARGETED
-Precision Engraving,/glossary,Medium,Definition Block,TARGETED
-OEM Fitment,/glossary,Medium,Definition Block,TARGETED
+Keyword,Target URL,SEMrush Pos,Volume,KD,Intent,Priority,Optimized Element,Status
+engraved chevy bowtie,/chevy-bowtie,3,210,22,Informational,Critical,H1 / FAQ / Answer Capsule / Fitment Table,QUICK_WIN_DONE
+personalized chevy emblem,/chevy-emblem,3,110,24,Commercial,Critical,H1 / FAQ / Answer Capsule / Fitment Table,QUICK_WIN_DONE
+custom chevrolet bowtie emblem,/chevy-bowtie,3,70,23,Commercial,Critical,H1 / FAQ / Answer Capsule / Fitment Table,QUICK_WIN_DONE
+engraved chevy logo,/chevy-bowtie,3,70,20,Informational,Critical,H1 / FAQ / Answer Capsule / Fitment Table,QUICK_WIN_DONE
+engraved bowtie chevy,/chevy-bowtie,6,40,20,Informational,Critical,H1 / FAQ / Answer Capsule / Fitment Table,QUICK_WIN_DONE
+custom chevy emblems,/products?make=Chevrolet,7,210,14,Commercial,Critical,Category Meta / Intro Copy / H2,QUICK_WIN_DONE
+custom chevy logo,/chevy-emblem,7,210,26,Commercial,Critical,H1 / FAQ / Answer Capsule / Fitment Table,QUICK_WIN_DONE
+custom chevy logos,/chevy-emblem,7,50,15,Commercial,Critical,H1 / FAQ / Answer Capsule / Fitment Table,QUICK_WIN_DONE
+chevrolet custom emblems,/products?make=Chevrolet,11,170,27,Commercial,High,Category Meta / Intro Copy / H2,QUICK_WIN_DONE
+custom chevy badges,/products?make=Chevrolet,12,170,14,Commercial,High,Category Meta / Intro Copy / H2,QUICK_WIN_DONE
+chevy silverado badges,/fitment,14,170,30,Commercial,High,H1 / HowTo Schema / Dimension Table,QUICK_WIN_DONE
+engraved chevy emblem,/chevy-emblem,14,170,24,Commercial,High,H1 / FAQ / Answer Capsule / Fitment Table,QUICK_WIN_DONE
+chevy badges,/chevy-emblem,15,90,28,Commercial,High,H1 / FAQ / Answer Capsule / Fitment Table,QUICK_WIN_DONE
+silverado badges,/fitment,17,320,16,Informational,High,H1 / HowTo Schema / Dimension Table,QUICK_WIN_DONE
+silverado badge,/fitment,17,210,18,Commercial,High,H1 / HowTo Schema / Dimension Table,QUICK_WIN_DONE
+chevy silverado emblems,/chevy-emblem,18,320,15,Commercial,High,H1 / FAQ / Answer Capsule / Fitment Table,QUICK_WIN_DONE
+chevy bowtie emblems for sale,/chevy-bowtie,20,40,15,Transactional,Medium,H1 / FAQ / Answer Capsule / Fitment Table,QUICK_WIN_DONE
+silverado emblems,/fitment,22,320,19,Commercial,High,H1 / HowTo Schema / Dimension Table,TIER2_DONE
+white chevy emblem,/chevy-emblem,22,140,30,Transactional,Medium,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+custom chevy symbol,/chevy-emblem,23,140,18,Commercial,Medium,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+chevy silverado logo,/chevy-emblem,23,140,23,Informational,Medium,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+purple chevy emblem,/chevy-emblem,23,50,23,Commercial,Medium,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+chevy emblem,/chevy-emblem,25,3600,24,Informational,High,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+purple chevy symbol,/chevy-emblem,25,50,23,Informational,Medium,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+car engraving,/services,26,110,28,Informational,Medium,H1 / Service Copy / LocalBusiness,TIER2_DONE
+chevy truck emblems,/products?make=Chevrolet,29,170,17,Commercial,Medium,Category Meta / Intro Copy / H2,TIER2_DONE
+chevy truck badges,/products?make=Chevrolet,29,110,12,Commercial,Medium,Category Meta / Intro Copy / H2,TIER2_DONE
+chevy symbol,/chevy-emblem,31,3600,37,Informational,High,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+chevrolet emblems for sale,/products?make=Chevrolet,31,70,28,Transactional,Medium,Category Meta / Intro Copy / H2,TIER2_DONE
+chevy grille emblems,/chevy-emblem,32,260,27,Commercial,Medium,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+chevrolet emblems,/chevy-emblem,33,320,26,Informational,High,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+camo chevy emblem,/chevy-emblem,33,70,23,Commercial,Medium,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+chevrolet badges,/chevy-emblem,33,50,25,Commercial,Medium,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+chevrolet emblem,/chevy-emblem,35,2900,29,Informational,High,H1 / FAQ / Answer Capsule / Fitment Table,TIER2_DONE
+emblems chevy,/products?make=Chevrolet,35,320,25,Commercial,High,Category Meta / Intro Copy / H2,TIER2_DONE
+chevy decals emblems,/products?make=Chevrolet,36,140,22,Commercial,Low,Category Meta / Intro Copy / H2,TIER2_DONE
+chevrolet truck emblems,/products?make=Chevrolet,40,140,16,Transactional,Low,Category Meta / Intro Copy / H2,TIER2_DONE
+chevy silverado decals and emblems,/fitment,51,140,18,Commercial,Low,H1 / HowTo Schema / Dimension Table,CANONICAL_SET
+black and white ford emblem,/products/black-ford-emblem,59,140,19,Transactional,Low,Product Title / Meta / SKU Block,TIER3_DONE
+silverado emblem,/products/chevy-silverado-for-all-models-and-years-front-and-back,—,590,24,Commercial,High,Product Title / Meta / SKU Block,TIER3_DONE
+chevy badge,/products/chevy-emblem-fully-engraved,—,320,20,Informational,High,Product Title / Meta / SKU Block,TIER3_DONE
+custom chevy emblem,/products/chevy-emblem-fully-engraved,—,170,19,Commercial,Low,Product Title / Meta / SKU Block,TIER3_DONE
+custom chevrolet emblems,/products/black-front-emblem-fully-engraved,—,140,14,Commercial,Low,Product Title / Meta / SKU Block,TIER3_DONE
+chevy silverado emblem,/products/chevy-silverado-for-all-models-and-years-front-and-back,—,140,14,Commercial,Low,Product Title / Meta / SKU Block,TIER3_DONE
+vortec max badge,/contact,—,110,5,Commercial,Low,Fitment custom-order note,CUSTOM_ORDER
+high country badges,/products/gmc-engraved-front-emblem,—,110,8,Commercial,Low,Product Title / Meta / SKU Block,TIER3_DONE
+engraved gmc emblem,/products/gmc-engraved-front-emblem,—,90,21,Commercial,Low,Product Title / Meta / SKU Block,TIER3_DONE
+custom chevy bowtie emblems,/chevy-bowtie,—,90,18,Informational,Low,H1 / FAQ / Answer Capsule / Fitment Table,CANONICAL_SET
+engraved chevy badge,/products/black-set-of-2-emblems-for-front-and-back,—,90,12,Commercial,Low,Product Title / Meta / SKU Block,TIER3_DONE
+chevy badges and emblems,/products/set-front-and-back-chevy-fully-engraved,—,90,10,Commercial,Low,Product Title / Meta / SKU Block,TIER3_DONE
+custom chevy bowtie,/chevy-bowtie,—,70,23,Commercial,Low,H1 / FAQ / Answer Capsule / Fitment Table,CANONICAL_SET
+chevy emblems for sale,/products/set-front-and-back-chevy-fully-engraved,—,70,28,Transactional,Low,Product Title / Meta / SKU Block,TIER3_DONE
+silverado ss emblems,/products/ss-badge-emblem-billet,—,70,16,Informational,Low,Product Title / Meta / SKU Block,TIER3_DONE
+high country badge,/products/gmc-engraved-front-emblem,—,50,12,Commercial,Low,Product Title / Meta / SKU Block,TIER3_DONE
+chevy custom bowtie,/chevy-bowtie,—,40,8,Informational,Low,H1 / FAQ / Answer Capsule / Fitment Table,CANONICAL_SET

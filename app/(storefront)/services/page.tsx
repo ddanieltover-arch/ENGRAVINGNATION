@@ -1,18 +1,21 @@
 import type { Metadata } from 'next';
-import { Shield, Zap, Hammer, Award, Wrench } from 'lucide-react';
+import Link from 'next/link';
+import { Shield, Zap, Hammer, Award, Wrench, Car } from 'lucide-react';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = {
-  title: 'Custom Automotive Engraving Services',
-  description: 'Precision laser engraving for Chevrolet, Silverado, GMC, and Ford. Deep, durable emblems and mirror caps crafted for performance builds.',
-  alternates: {
-    canonical: 'https://engravingnation.store/services',
-  },
-  openGraph: {
-    title: 'Custom Engraving Services | Engraving Nation',
-    description: 'Professional hand-engraved emblems, mirror caps, and custom automotive accessories.',
-    url: 'https://engravingnation.store/services',
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Custom Car Engraving & Automotive Emblem Services',
+  description:
+    'Professional car engraving for Chevy, GMC, Ford, and RAM — custom emblem engraving, mirror caps, and hand-etched automotive badges with OEM-style fitment.',
+  path: '/services',
+  keywords: [
+    'car engraving',
+    'automotive engraving',
+    'custom emblem engraving',
+    'truck badge engraving',
+    'hand engraved emblems',
+  ],
+});
 
 export default function ServicesPage() {
   const breadcrumbJsonLd = {
@@ -25,6 +28,11 @@ export default function ServicesPage() {
   };
 
   const services = [
+    {
+      title: "Custom Car Engraving",
+      desc: "Precision hand and laser engraving on emblems, mirror caps, and trim pieces — permanent car engraving that outlasts vinyl overlays.",
+      icon: Car
+    },
     {
       title: "Custom Automotive Engraving",
       desc: "Precision laser engraving on various vehicle components to elevate aesthetics and personalization.",
@@ -81,7 +89,7 @@ export default function ServicesPage() {
           <div className="p-8 rounded-3xl bg-brand-gold/[0.03] border border-brand-gold/20 backdrop-blur-sm">
             <p className="text-white/80 text-lg leading-relaxed text-center">
               <strong className="text-brand-gold uppercase tracking-widest text-xs block mb-2">Quick Answer:</strong>
-              Engraving Nation offers <strong>precision laser engraving</strong> for Chevrolet, GMC, Ford, and RAM vehicles. Our services include custom emblem engraving, hand-finished mirror caps, and bespoke automotive accessories—all designed for OEM-level fitment and permanent, weather-resistant durability.
+              Engraving Nation offers <strong>precision car engraving</strong> and laser-etched detail for Chevrolet, GMC, Ford, and RAM vehicles. Our services include custom emblem engraving, hand-finished mirror caps, and bespoke automotive accessories—all designed for OEM-level fitment and permanent, weather-resistant durability.
             </p>
           </div>
         </section>
@@ -99,6 +107,44 @@ export default function ServicesPage() {
             </div>
           ))}
         </div>
+
+        <section id="car-engraving" aria-label="Car engraving services" className="mt-16 glass-card p-10">
+          <h2 className="text-2xl md:text-3xl font-heading font-black uppercase italic text-white mb-4">
+            What Is <span className="text-brand-gold">Car Engraving?</span>
+          </h2>
+          <p className="text-white/60 leading-relaxed mb-6 max-w-3xl">
+            <strong className="text-white/80">Car engraving</strong> permanently cuts design detail into emblem, badge,
+            or mirror-cap material instead of applying stickers or paint on top. Searchers looking for automotive
+            engraving usually want durability — etched lines that survive car washes, road salt, and UV exposure without
+            peeling. We specialize in truck platforms where factory badges are replaced with hand-finished engraved
+            equivalents.
+          </p>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white/50 text-sm mb-8">
+            <li className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <strong className="text-white block mb-1">Emblem engraving</strong>
+              Bowties, tailgate badges, and grille scripts for Chevy and GMC builds.
+            </li>
+            <li className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <strong className="text-white block mb-1">Mirror cap engraving</strong>
+              Paired caps with matched pattern depth and finish families.
+            </li>
+            <li className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <strong className="text-white block mb-1">Custom requests</strong>
+              Contact us for one-off patterns on supported OEM-style bases.
+            </li>
+            <li className="rounded-xl border border-white/10 bg-white/5 p-4">
+              <strong className="text-white block mb-1">Fitment support</strong>
+              We route sizing questions to our guides before production.
+            </li>
+          </ul>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/contact" className="btn-primary font-black italic">Request Custom Engraving</Link>
+            <Link href="/articles/hand-engraved-vs-machine-etched-emblems-durability" className="btn-secondary font-black italic">
+              Hand vs Machine Etching
+            </Link>
+            <Link href="/chevy-emblem" className="btn-secondary font-black italic">Chevy Emblem Guide</Link>
+          </div>
+        </section>
 
         <div className="mt-16 glass-card p-12 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/5 rounded-full blur-3xl -mr-48 -mt-48"></div>

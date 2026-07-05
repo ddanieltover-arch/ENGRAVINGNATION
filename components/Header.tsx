@@ -14,10 +14,13 @@ const navLinks = [
     label: 'Shop',
     dropdown: [
       { href: '/products', label: 'All Products' },
-      { href: '/products?make=Chevrolet', label: 'Chevrolet' },
+      { href: '/products?make=Chevrolet', label: 'Shop Chevy' },
       { href: '/products?make=GMC', label: 'GMC' },
       { href: '/products?make=Ford', label: 'Ford' },
       { href: '/products?make=Ram', label: 'Ram' },
+      { href: '/chevy-emblem', label: 'Chevy Emblem Guide' },
+      { href: '/chevy-bowtie', label: 'Chevy Bowtie Guide' },
+      { href: '/fitment', label: 'Silverado Fitment' },
     ]
   },
   { href: '/articles', label: 'The Journal' },

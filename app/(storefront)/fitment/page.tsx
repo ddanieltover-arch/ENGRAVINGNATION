@@ -5,12 +5,22 @@ import JsonLd from '@/components/JsonLd';
 import AnswerCapsule from '@/components/AnswerCapsule';
 import { breadcrumbJsonLd } from '@/lib/seo/json-ld';
 import { buildPageMetadata } from '@/lib/seo/metadata';
+import RelatedGuideLinks from '@/components/RelatedGuideLinks';
+import HubProductPicks from '@/components/HubProductPicks';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Chevy Silverado Emblem Size & Fitment Guide',
+  title: 'Silverado Emblems & Badge Size Guide | Fitment Database',
   description:
-    'The ultimate database for Chevrolet Silverado emblems. Find dimensions, mounting styles, and fitment for GMT800, GMT900, K2XX, and T1XX generations.',
+    'Silverado emblems, silverado emblem sizes, and chevy silverado badges by generation. GMT800 through T1XX fitment database with measurement steps.',
   path: '/fitment',
+  keywords: [
+    'silverado emblems',
+    'silverado emblem',
+    'silverado badges',
+    'silverado badge',
+    'chevy silverado badges',
+    'chevy silverado emblems',
+  ],
 });
 
 export default function FitmentHubPage() {
@@ -70,12 +80,13 @@ export default function FitmentHubPage() {
             Technical Resources
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black tracking-tighter uppercase italic leading-tight mb-6 text-white">
-            <span className="text-brand-gold">Silverado Emblem</span> Size Database
+            <span className="text-brand-gold">Silverado Emblems</span> &amp; Badge Fitment
           </h1>
           <AnswerCapsule className="max-w-3xl mx-auto mb-8 p-8 rounded-3xl bg-brand-gold/[0.03] border border-brand-gold/20 text-left">
-            Silverado emblem sizes vary by generation (GMT800, GMT900, K2XX, T1XX). Front grille badges typically range
-            from 9.5&quot; to 11.5&quot; wide depending on year and trim. Always measure your existing emblem width,
-            height, and mount type before ordering a custom replacement.
+            <strong className="text-white">Silverado badges</strong> and{' '}
+            <strong className="text-white">silverado emblems</strong> vary by generation — front grille bowties are
+            typically 9.5&quot; to 11.5&quot; wide depending on year and trim. Use this database to match your{' '}
+            <strong className="text-white">chevy silverado badges</strong> before ordering a custom replacement.
           </AnswerCapsule>
           <p className="text-white/60 text-lg font-light max-w-3xl mx-auto leading-relaxed">
             Finding the correct dimensions for a <strong className="text-white">Silverado badge</strong> can be frustrating. Chevrolet has changed the size, mounting style, and depth of <strong className="text-white">chevrolet silverado emblems</strong> almost every generation. Use our master fitment hub below to identify the standard dimensions for your truck.
@@ -118,8 +129,115 @@ export default function FitmentHubPage() {
           </div>
         </div>
 
+        <section id="silverado-emblems-guide" className="mb-12 glass-card p-8">
+          <h2 className="text-2xl font-heading font-black uppercase italic text-white mb-4">
+            Silverado Emblems — Complete Fitment Overview
+          </h2>
+          <p className="text-white/70 leading-relaxed mb-4">
+            <strong className="text-white">Silverado emblems</strong> and the singular{' '}
+            <strong className="text-white">silverado emblem</strong> search both point here — buyers need generation-level
+            dimensions before ordering a custom replacement. This page is the canonical fitment hub; for purchase context
+            read the{' '}
+            <Link href="/articles/silverado-emblem-buying-guide-2026" className="text-brand-gold hover:underline">
+              Silverado emblem buying guide
+            </Link>.
+          </p>
+          <p className="text-white/60 leading-relaxed">
+            Emblem types and styles:{' '}
+            <Link href="/chevy-emblem" className="text-brand-gold hover:underline">Chevy emblem hub</Link>.
+          </p>
+        </section>
+
+        <section id="chevy-silverado-badges" className="mb-12 glass-card p-8">
+          <h2 className="text-2xl font-heading font-black uppercase italic text-white mb-4">
+            Chevy Silverado Badges — Front Grille vs Tailgate
+          </h2>
+          <p className="text-white/70 leading-relaxed mb-4">
+            <strong className="text-white">Chevy silverado badges</strong> on the front grille use different widths and
+            clips than rear tailgate badges. A <strong className="text-white">silverado badge</strong> listing online may
+            refer to either position — measure both if you want a matched set.
+          </p>
+          <p className="text-white/60 leading-relaxed">
+            Style and emblem types:{' '}
+            <Link href="/chevy-emblem" className="text-brand-gold hover:underline">Chevy emblem guide</Link>.
+            Bowtie-only sizes:{' '}
+            <Link href="/chevy-bowtie" className="text-brand-gold hover:underline">Engraved chevy bowtie hub</Link>.
+          </p>
+        </section>
+
+        <section id="silverado-badges-emblems" className="mb-12 glass-card p-8">
+          <h2 className="text-2xl font-heading font-black uppercase italic text-white mb-4">
+            Silverado Badges &amp; Silverado Emblems by Generation
+          </h2>
+          <p className="text-white/70 leading-relaxed">
+            Use the tables below when replacing <strong className="text-white">silverado badges</strong> or{' '}
+            <strong className="text-white">silverado emblems</strong>. Reference dimensions are starting points — always
+            measure your physical badge before ordering from the{' '}
+            <Link href="/products?make=Chevrolet" className="text-brand-gold hover:underline">Chevy shop collection</Link>.
+          </p>
+        </section>
+
+        <section id="silverado-ss-emblems" className="mb-12 glass-card p-8">
+          <h2 className="text-2xl font-heading font-black uppercase italic text-white mb-4">
+            Silverado SS Emblems &amp; Decals — Fitment Notes
+          </h2>
+          <p className="text-white/70 leading-relaxed mb-4">
+            <strong className="text-white">Silverado ss emblems</strong> and{' '}
+            <strong className="text-white">chevy silverado decals and emblems</strong> often refer to auxiliary badges
+            (SS script, Z71, ZR2) rather than the center bowtie. These pieces use different adhesive footprints and
+            cannot be inferred from grille bowtie dimensions alone.
+          </p>
+          <p className="text-white/60 leading-relaxed mb-4">
+            SS billet badge SKU:{' '}
+            <Link href="/products/ss-badge-emblem-billet" className="text-brand-gold hover:underline">
+              EN-U4R1FW — SS Badge emblem billet
+            </Link>
+            . For ZR2 blackout context see{' '}
+            <Link href="/articles/silverado-zr2-blackout-emblem-upgrades-deep-etching" className="text-brand-gold hover:underline">
+              ZR2 blackout emblem guide
+            </Link>.
+          </p>
+          <p className="text-white/50 text-sm">
+            Searching <strong className="text-white/70">vortec max badge</strong>? Engine-callout badges vary by year and
+            bed side —{' '}
+            <Link href="/contact" className="text-brand-gold hover:underline">contact us</Link> for custom Vortec Max
+            badge engraving (no standard catalog SKU).
+          </p>
+        </section>
+
+        <RelatedGuideLinks
+          guides={[
+            {
+              href: '/articles/silverado-emblem-buying-guide-2026',
+              title: 'Silverado Emblem Buying Guide (2026)',
+              description: 'Complete buyer checklist for silverado emblem and badge orders.',
+            },
+            {
+              href: '/articles/chevrolet-emblem-style-fitment-guide',
+              title: 'Chevrolet Emblem Style Guide',
+              description: 'Emblem types, positions, and style paths for Chevy trucks.',
+            },
+            {
+              href: '/articles/how-to-measure-truck-emblem-size-fitment-guide',
+              title: 'How to Measure Your Truck Emblem',
+              description: 'Visual measurement steps before you order.',
+            },
+          ]}
+        />
+
+        <HubProductPicks hub="fitment" title="Silverado Emblem SKUs — Map to Catalog" />
+
         {/* The Database */}
-        <h2 className="text-2xl font-heading font-black uppercase italic text-white mb-6">Generational Reference Guide</h2>
+        <h2 className="text-2xl font-heading font-black uppercase italic text-white mb-2">Silverado Badges & Emblems by Generation</h2>
+        <p className="text-white/50 mb-6 max-w-3xl">
+          Whether you are replacing a <strong className="text-white/70">silverado badge</strong> on the tailgate or a front{' '}
+          <strong className="text-white/70">chevy silverado emblem</strong>, start with your platform below. For bowtie-only
+          sizing, see our{' '}
+          <Link href="/chevy-bowtie" className="text-brand-gold hover:underline">engraved chevy bowtie guide</Link>.
+          For style and finish options, visit the{' '}
+          <Link href="/chevy-emblem" className="text-brand-gold hover:underline">Chevy emblem fitment hub</Link>.
+        </p>
+        <h3 className="text-xl font-heading font-black uppercase italic text-white/80 mb-6">Generational Reference Guide</h3>
         <div className="space-y-6">
           {generations.map((gen, index) => (
             <div key={index} className="glass-card p-6 md:p-8">
@@ -155,12 +273,16 @@ export default function FitmentHubPage() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-white/60 mb-6">Got your measurements? It's time to upgrade your factory plastic to deep-etched aluminum.</p>
-          <Link href="/products?make=Chevrolet" className="btn-primary inline-flex items-center gap-2 font-black italic">
-            Shop Custom Chevy Bowties <ArrowRight size={18} />
-          </Link>
+        <div className="mt-16 text-center space-y-6">
+          <p className="text-white/60">Got your measurements? Shop custom engraved Silverado badges or browse the full Chevy collection.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/products?make=Chevrolet" className="btn-primary inline-flex items-center gap-2 font-black italic">
+              Shop Custom Chevy Emblems <ArrowRight size={18} />
+            </Link>
+            <Link href="/chevy-emblem" className="btn-secondary inline-flex items-center gap-2 font-black italic">
+              Chevy Emblem Guide <ArrowRight size={18} />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -43,10 +43,13 @@ export default function Footer() {
           <div>
             <h4 className="text-[10px] font-black tracking-[0.2em] uppercase text-brand-gold mb-6">Specialties</h4>
             <ul className="space-y-3">
-              <li><Link href="/products?make=Chevrolet" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Chevy Emblems</Link></li>
-              <li><Link href="/products?make=GMC" className="text-sm text-white/40 hover:text-brand-gold transition-colors">GMC Emblems</Link></li>
-              <li><Link href="/products?make=Ford" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Ford Emblems</Link></li>
-              <li><Link href="/products?make=Ram" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Ram Emblems</Link></li>
+              <li><Link href="/chevy-emblem" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Chevy Emblem Guide</Link></li>
+              <li><Link href="/chevy-bowtie" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Chevy Bowtie Guide</Link></li>
+              <li><Link href="/fitment" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Silverado Fitment</Link></li>
+              <li><Link href="/products?make=Chevrolet" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Shop Chevy Emblems</Link></li>
+              <li><Link href="/products?make=GMC" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Shop GMC Emblems</Link></li>
+              <li><Link href="/products?make=Ford" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Shop Ford Emblems</Link></li>
+              <li><Link href="/products?make=Ram" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Shop Ram Emblems</Link></li>
               <li><Link href="/articles" className="text-sm text-white/40 hover:text-brand-gold transition-colors">The Journal</Link></li>
               <li><Link href="/gallery" className="text-sm text-white/40 hover:text-brand-gold transition-colors">Build Gallery</Link></li>
             </ul>
