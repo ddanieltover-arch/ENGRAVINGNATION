@@ -4,10 +4,10 @@ import './globals.css';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit', display: 'swap' });
 
-import ChatConcierge from '@/components/ChatConcierge';
+import LazyChatConcierge from '@/components/LazyChatConcierge';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://engravingnation.store'),
@@ -134,7 +134,11 @@ export default function RootLayout({
       ],
       opens: '09:00',
       closes: '18:00'
-    }
+    },
+    areaServed: [
+      { '@type': 'Country', name: 'United States' },
+      { '@type': 'AdministrativeArea', name: 'New York' },
+    ],
   };
 
   const websiteJsonLd = {
@@ -156,24 +160,29 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <head>
         {/* Preconnect hints for Core Web Vitals */}
+        <link rel="preload" href="/hero.png" as="image" type="image/png" fetchPriority="high" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src={`https://www.googletagmanager.com/gtag/js?id=G-WHN37054LG`}
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-WHN37054LG');
+              gtag('config', 'G-WHN37054LG', {
+                send_page_view: true,
+                allow_google_signals: true,
+                allow_ad_personalization_signals: false
+              });
             `,
           }}
         />
@@ -192,7 +201,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans min-h-screen flex flex-col antialiased bg-[#0a0a0a] text-white">
         {children}
-        <ChatConcierge />
+        <LazyChatConcierge />
         <Analytics />
       </body>
     </html>

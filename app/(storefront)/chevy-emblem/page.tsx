@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getProducts } from '@/lib/data';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
 type VehicleFitment = { make?: string };
 type LandingProduct = {
@@ -11,14 +12,13 @@ type LandingProduct = {
   vehicle_fitment?: VehicleFitment[];
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Chevy Emblem Guide: Fitment, Styles, and Install',
   description:
     'Find the right Chevy emblem by year and platform. Compare finishes, view fitment tables, and install with confidence using our step-by-step guidance.',
-  alternates: {
-    canonical: 'https://engravingnation.store/chevy-emblem',
-  },
-};
+  path: '/chevy-emblem',
+  keywords: ['chevy emblem', 'custom chevy emblem', 'silverado emblem', 'chevrolet truck emblems'],
+});
 
 export default async function ChevyEmblemPage() {
   const products = (await getProducts()) as LandingProduct[];

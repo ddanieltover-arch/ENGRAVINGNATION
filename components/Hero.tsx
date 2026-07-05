@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-black">
       {/* Background Image / Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/30 z-10"></div>
@@ -11,8 +11,10 @@ export default function Hero() {
           src="/hero.png" 
           alt="Premium custom engraved GMC truck with high country emblems" 
           fill
-          className="object-cover object-center opacity-80 scale-105 animate-slow-zoom"
           priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover object-center opacity-80 scale-105 animate-slow-zoom"
         />
       </div>
 

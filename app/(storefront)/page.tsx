@@ -29,37 +29,23 @@ export default async function HomePage() {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@graph': [
+    '@type': 'FAQPage',
+    mainEntity: [
       {
-        '@type': 'WebSite',
-        name: 'Engraving Nation',
-        url: 'https://engravingnation.store',
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: 'https://engravingnation.store/products?search={search_term_string}',
-          'query-input': 'required name=search_term_string',
-        },
+        '@type': 'Question',
+        name: 'What makes custom engraved emblems better than stickers or overlays?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Custom engravings are permanently etched into the automotive part, meaning they will never peel, fade, or bubble like vinyl overlays. They provide a high-end 3D depth and are durable enough for off-road use and frequent car washes.'
+        }
       },
       {
-        '@type': 'FAQPage',
-        mainEntity: [
-          {
-            '@type': 'Question',
-            name: 'What makes custom engraved emblems better than stickers or overlays?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Custom engravings are permanently etched into the automotive part, meaning they will never peel, fade, or bubble like vinyl overlays. They provide a high-end 3D depth and are durable enough for off-road use and frequent car washes.'
-            }
-          },
-          {
-            '@type': 'Question',
-            name: 'Do these custom emblems fit specific truck models like the Silverado and Sierra?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Yes! We specialize in fitment for Chevy Silverado, GMC Sierra, Ford F-150, and RAM trucks. Each part is cross-referenced with vehicle year and trim levels to ensure a perfect OEM-style replacement.'
-            }
-          }
-        ]
+        '@type': 'Question',
+        name: 'Do these custom emblems fit specific truck models like the Silverado and Sierra?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes! We specialize in fitment for Chevy Silverado, GMC Sierra, Ford F-150, and RAM trucks. Each part is cross-referenced with vehicle year and trim levels to ensure a perfect OEM-style replacement.'
+        }
       }
     ]
   };

@@ -2,20 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getProducts } from '@/lib/data';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
 type LandingProduct = {
   slug: string;
   name: string;
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Corvette Emblem Fitment and Upgrade Guide',
   description:
-    'Corvette emblem fitment guide by generation with install tips, finish recommendations, media examples, and buyer FAQs.',
-  alternates: {
-    canonical: 'https://engravingnation.store/corvette-emblem',
-  },
-};
+    'Corvette emblem fitment by generation with install tips, finish recommendations, media examples, and buyer FAQs.',
+  path: '/corvette-emblem',
+  keywords: ['corvette emblem', 'custom corvette badge', 'c8 corvette emblem'],
+});
 
 export default async function CorvetteEmblemPage() {
   const products = (await getProducts()) as LandingProduct[];

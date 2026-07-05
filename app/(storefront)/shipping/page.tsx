@@ -21,6 +21,13 @@ export default function ShippingPage() {
       </div>
 
       <div className="container mx-auto px-4 max-w-4xl">
+        <section id="answer" aria-label="Quick Answer" className="mb-12 p-8 rounded-3xl bg-brand-gold/[0.03] border border-brand-gold/20">
+          <p className="text-white/80 text-lg leading-relaxed">
+            <strong className="text-brand-gold uppercase tracking-widest text-xs block mb-2">Quick Answer:</strong>
+            Custom orders ship after payment verification, typically within 5–7 business days. USA orders over $300 ship free;
+            international orders over $1,000 ship free. Standard USA delivery takes 3–5 business days after dispatch.
+          </p>
+        </section>
         <div className="glass-card p-8 md:p-12 space-y-12 animate-slide-up">
           <section>
             <h2 className="text-3xl font-heading font-bold mb-6 text-brand-gold flex items-center gap-3">

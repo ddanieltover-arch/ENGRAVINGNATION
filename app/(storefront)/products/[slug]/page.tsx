@@ -51,7 +51,7 @@ export async function generateMetadata(
         ...(product.images?.[0] ? [product.images[0]] : []),
         ...previousImages,
       ],
-      type: 'article',
+      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',

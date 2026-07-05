@@ -1,19 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Ruler, AlertTriangle, ArrowRight, Pickaxe, CheckCircle2 } from 'lucide-react';
+import JsonLd from '@/components/JsonLd';
+import AnswerCapsule from '@/components/AnswerCapsule';
+import { breadcrumbJsonLd } from '@/lib/seo/json-ld';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
-export const metadata: Metadata = {
-  title: 'Chevy Silverado Emblem Size & Fitment Guide | Dimensions Database',
-  description: 'The ultimate database for Chevrolet Silverado emblems. Find the right dimensions, mounting styles, and fitment for your custom silverado badge across GMT800, GMT900, K2XX, and T1XX generations.',
-  alternates: {
-    canonical: 'https://engravingnation.store/fitment',
-  },
-  openGraph: {
-    title: 'Silverado Emblem Size Database | Engraving Nation',
-    description: 'Stop guessing your emblem size. Our technical fitment guide helps you measure your Chevrolet Silverado emblems before you buy.',
-    url: 'https://engravingnation.store/fitment',
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Chevy Silverado Emblem Size & Fitment Guide',
+  description:
+    'The ultimate database for Chevrolet Silverado emblems. Find dimensions, mounting styles, and fitment for GMT800, GMT900, K2XX, and T1XX generations.',
+  path: '/fitment',
+});
 
 export default function FitmentHubPage() {
   const generations = [
@@ -49,6 +47,23 @@ export default function FitmentHubPage() {
 
   return (
     <div className="pt-32 pb-24">
+      <JsonLd data={breadcrumbJsonLd([
+        { name: 'Home', path: '/' },
+        { name: 'Fitment Guide', path: '/fitment' },
+      ])} />
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'HowTo',
+          name: 'How to measure a Silverado emblem for replacement',
+          description: 'Measure width, height, and mounting style before ordering a custom engraved Silverado emblem.',
+          step: [
+            { '@type': 'HowToStep', name: 'Measure width', text: 'Measure from the furthest left to furthest right point of the existing bowtie.' },
+            { '@type': 'HowToStep', name: 'Measure height', text: 'Measure from top center to bottom center of the emblem face.' },
+            { '@type': 'HowToStep', name: 'Check mount type', text: 'Confirm whether the badge uses clips, studs, adhesive, or a backing plate.' },
+          ],
+        }}
+      />
       <div className="container mx-auto px-4 max-w-5xl">
         <header className="text-center mb-16">
           <div className="inline-block px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-[10px] font-bold uppercase tracking-widest mb-6">
@@ -57,6 +72,11 @@ export default function FitmentHubPage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-black tracking-tighter uppercase italic leading-tight mb-6 text-white">
             <span className="text-brand-gold">Silverado Emblem</span> Size Database
           </h1>
+          <AnswerCapsule className="max-w-3xl mx-auto mb-8 p-8 rounded-3xl bg-brand-gold/[0.03] border border-brand-gold/20 text-left">
+            Silverado emblem sizes vary by generation (GMT800, GMT900, K2XX, T1XX). Front grille badges typically range
+            from 9.5&quot; to 11.5&quot; wide depending on year and trim. Always measure your existing emblem width,
+            height, and mount type before ordering a custom replacement.
+          </AnswerCapsule>
           <p className="text-white/60 text-lg font-light max-w-3xl mx-auto leading-relaxed">
             Finding the correct dimensions for a <strong className="text-white">Silverado badge</strong> can be frustrating. Chevrolet has changed the size, mounting style, and depth of <strong className="text-white">chevrolet silverado emblems</strong> almost every generation. Use our master fitment hub below to identify the standard dimensions for your truck.
           </p>

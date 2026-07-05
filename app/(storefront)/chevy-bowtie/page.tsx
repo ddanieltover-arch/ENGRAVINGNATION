@@ -2,20 +2,20 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getProducts } from '@/lib/data';
+import { buildPageMetadata } from '@/lib/seo/metadata';
 
 type LandingProduct = {
   slug: string;
   name: string;
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Chevy Bowtie Size and Fitment Guide',
   description:
-    'Use this Chevy bowtie guide to match size, year, and mounting style. Includes fitment table, install videos, and downloadable resources.',
-  alternates: {
-    canonical: 'https://engravingnation.store/chevy-bowtie',
-  },
-};
+    'Match Chevy bowtie size, year, and mounting style. Includes fitment table, install videos, and downloadable resources.',
+  path: '/chevy-bowtie',
+  keywords: ['chevy bowtie', 'chevy bowtie size', 'silverado bowtie fitment'],
+});
 
 export default async function ChevyBowtiePage() {
   const products = (await getProducts()) as LandingProduct[];
