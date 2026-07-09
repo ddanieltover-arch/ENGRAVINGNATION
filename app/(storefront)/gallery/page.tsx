@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Custom Build Gallery | Engraving Nation',
     description: 'Real-world examples of our precision engraving on Chevy, GMC, Ford, and more.',
     url: 'https://engravingnation.store/gallery',
-    images: ['/og-image.jpg'],
+    images: ['/images/products/candy_red_gmc.png'],
   },
 };
 

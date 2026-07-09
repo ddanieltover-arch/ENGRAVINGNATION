@@ -120,7 +120,7 @@ export default async function CorvetteEmblemPage() {
           <h2 className="text-2xl font-heading font-black uppercase italic text-white mb-6">Corvette Emblem Finish Examples</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <figure className="glass-card p-4">
-              <Image src="/og-image.jpg" alt="Premium engraved emblem sample with polished highlights for Corvette-style builds." width={1200} height={630} className="w-full h-auto rounded-xl" />
+              <Image src="/images/products/candy_red_gmc.png" alt="Premium engraved emblem sample with polished highlights for Corvette-style builds." width={1200} height={630} className="w-full h-auto rounded-xl" />
               <figcaption className="text-white/60 text-sm mt-3">Polished engraving profile for clean performance styling.</figcaption>
             </figure>
             <figure className="glass-card p-4">

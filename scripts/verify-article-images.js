@@ -3,7 +3,7 @@ const path = require('path');
 
 const articlesPath = path.join(process.cwd(), 'data', 'articles.json');
 const publicPath = path.join(process.cwd(), 'public');
-const fallbackImage = '/og-image.jpg';
+const fallbackImage = '/images/products/candy_red_gmc.png';
 
 if (!fs.existsSync(articlesPath)) {
   console.error('articles.json not found.');

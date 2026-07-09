@@ -317,6 +317,10 @@ export default async function ProductsPage({
         {makeFilter === 'GMC' && !categoryFilter && (
           <HubProductPicks hub="products-gmc" title="Engraved GMC Emblem & High Country Badge SKUs" />
         )}
+
+        {makeFilter === 'Ford' && !categoryFilter && (
+          <HubProductPicks hub="ford" title="Ford Emblem SKUs — Product Intent Matches" />
+        )}
         
         {products.length === 0 ? (
           <div className="text-center py-32 glass-card">

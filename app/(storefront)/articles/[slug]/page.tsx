@@ -12,7 +12,7 @@ interface Props {
 }
 
 function resolveArticleImage(image?: string | null) {
-  const fallback = '/og-image.jpg';
+  const fallback = '/images/products/candy_red_gmc.png';
   const candidate = image || fallback;
   const relativePath = candidate.startsWith('/') ? candidate.slice(1) : candidate;
   const fullPath = path.join(process.cwd(), 'public', relativePath);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useCart } from '@/components/CartProvider';
 
 interface AddToCartFormProps {
@@ -17,6 +17,31 @@ export default function AddToCartForm({ product }: AddToCartFormProps) {
   const [finishType, setFinishType] = useState('Gloss Black');
   const [customText, setCustomText] = useState('');
   const [added, setAdded] = useState(false);
+  const hasTrackedViewRef = useRef(false);
+
+  useEffect(() => {
+    if (hasTrackedViewRef.current || typeof window === 'undefined') return;
+    const fireViewItem = () => {
+      if (hasTrackedViewRef.current || !(window as any).gtag) return;
+      (window as any).gtag('event', 'view_item', {
+        currency: 'USD',
+        value: product.price,
+        items: [
+          {
+            item_id: product.slug,
+            item_name: product.name,
+            price: product.price,
+            item_variant: finishType,
+            quantity: 1,
+          },
+        ],
+      });
+      hasTrackedViewRef.current = true;
+    };
+    fireViewItem();
+    const retry = window.setTimeout(fireViewItem, 1500);
+    return () => window.clearTimeout(retry);
+  }, [finishType, product.name, product.price, product.slug]);
 
   const handleAddToCart = () => {
     // GA4 Tracking

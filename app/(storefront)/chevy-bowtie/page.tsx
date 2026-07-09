@@ -263,7 +263,7 @@ export default async function ChevyBowtiePage() {
           <h2 className="text-2xl font-heading font-black uppercase italic text-white mb-6">Bowtie Style Gallery</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <figure className="glass-card p-4">
-              <Image src="/og-image.jpg" alt="Chevy bowtie emblem with deep engraved pattern and metallic highlights." width={1200} height={630} className="w-full h-auto rounded-xl" />
+              <Image src="/images/products/candy_red_gmc.png" alt="Chevy bowtie emblem with deep engraved pattern and metallic highlights." width={1200} height={630} className="w-full h-auto rounded-xl" />
               <figcaption className="text-white/60 text-sm mt-3">Deep-etched bowtie texture for premium builds.</figcaption>
             </figure>
             <figure className="glass-card p-4">

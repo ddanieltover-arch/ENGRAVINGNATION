@@ -392,7 +392,7 @@ export default async function ChevyEmblemPage() {
           <h2 className="text-2xl font-heading font-black uppercase italic text-white mb-6">Finish and Build Gallery</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <figure className="glass-card p-4">
-              <Image src="/og-image.jpg" alt="Custom engraved Chevy emblem close-up in polished finish." width={1200} height={630} className="w-full h-auto rounded-xl" />
+              <Image src="/images/products/candy_red_gmc.png" alt="Custom engraved Chevy emblem close-up in polished finish." width={1200} height={630} className="w-full h-auto rounded-xl" />
               <figcaption className="text-white/60 text-sm mt-3">Polished engraved finish for classic chrome builds.</figcaption>
             </figure>
             <figure className="glass-card p-4">

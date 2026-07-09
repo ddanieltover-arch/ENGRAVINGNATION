@@ -1,7 +1,7 @@
 export const SITE_URL = 'https://engravingnation.store';
 export const SITE_NAME = 'Engraving Nation';
 export const GA4_ID = 'G-WHN37054LG';
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/images/products/candy_red_gmc.png`;
 
 export const ORGANIZATION = {
   name: SITE_NAME,

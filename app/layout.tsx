@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: 'Engraving Nation',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/images/products/candy_red_gmc.png',
         width: 1200,
         height: 630,
         alt: 'Engraving Nation Custom Emblems',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Engraving Nation | Custom Automotive Emblems',
     description: 'Elevate your vehicle with custom engraved emblems and accessories.',
-    images: ['/og-image.jpg'],
+    images: ['/images/products/candy_red_gmc.png'],
   },
   robots: {
     index: true,
@@ -105,7 +105,7 @@ export default function RootLayout({
     '@type': 'LocalBusiness',
     name: 'Engraving Nation',
     description: 'Premier provider of custom hand-engraved automotive emblems, mirror caps, and accessories for Chevy, Ford, GMC, and RAM trucks.',
-    image: 'https://engravingnation.store/og-image.jpg',
+    image: 'https://engravingnation.store/images/products/candy_red_gmc.png',
     '@id': 'https://engravingnation.store',
     url: 'https://engravingnation.store',
     telephone: '+1-332-256-6110',
