@@ -91,7 +91,7 @@ export default function RootLayout({
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+1-332-256-6110',
+      telephone: '+1-262-686-5628',
       contactType: 'customer service',
       email: 'info@engravingnation.store',
     },
@@ -108,7 +108,7 @@ export default function RootLayout({
     image: 'https://engravingnation.store/images/products/candy_red_gmc.png',
     '@id': 'https://engravingnation.store',
     url: 'https://engravingnation.store',
-    telephone: '+1-332-256-6110',
+    telephone: '+1-262-686-5628',
     priceRange: '$$$',
     address: {
       '@type': 'PostalAddress',

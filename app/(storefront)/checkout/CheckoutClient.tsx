@@ -214,7 +214,7 @@ export default function CheckoutClient({ settings }: { settings: any }) {
               <div className="mt-6 pt-6 border-t border-white/10 space-y-2">
                 <p className="text-[10px] font-bold uppercase tracking-widest text-white/20 mb-3">Support Contacts</p>
                 <p className="text-sm font-mono text-white/60">Email: info@engravingnation.store</p>
-                <p className="text-sm font-mono text-white/60">Phone: +1 (332) 256-6110</p>
+                <p className="text-sm font-mono text-white/60">Phone: +1 (262) 686-5628</p>
               </div>
             </div>
           </div>

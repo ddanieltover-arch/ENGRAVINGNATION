@@ -6,7 +6,7 @@ import { buildPageMetadata } from '@/lib/seo/metadata';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Contact Us | Custom Inquiries & Support',
   description:
-    'Get in touch for custom engraving inquiries, order support, and wholesale requests. Located in Hauppauge, NY. Call +1 (332) 256-6110 or email us today.',
+    'Get in touch for custom engraving inquiries, order support, and wholesale requests. Located in Hauppauge, NY. Call +1 (262) 686-5628 or email us today.',
   path: '/contact',
 });
 

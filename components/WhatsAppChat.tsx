@@ -1,9 +1,10 @@
 'use client';
 
 import { MessageCircle } from 'lucide-react';
+import { PHONE } from '@/lib/seo/constants';
 
 export default function WhatsAppChat() {
-  const phoneNumber = '13322566110';
+  const phoneNumber = PHONE.e164Digits;
   const message = 'Hi Engraving Nation! I am interested in a custom build for my vehicle. Can you help?';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 

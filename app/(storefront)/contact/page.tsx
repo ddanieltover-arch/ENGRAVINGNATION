@@ -65,7 +65,7 @@ export default function ContactPage() {
           <section id="answer" aria-label="Quick Answer" className="mb-16 p-8 rounded-3xl bg-brand-gold/[0.03] border border-brand-gold/20">
             <p className="text-white/80 text-lg leading-relaxed text-center">
               <strong className="text-brand-gold uppercase tracking-widest text-xs block mb-2">Quick Answer:</strong>
-              Contact Engraving Nation at +1 (332) 256-6110 or info@engravingnation.store for custom emblem quotes,
+              Contact Engraving Nation at +1 (262) 686-5628 or info@engravingnation.store for custom emblem quotes,
               fitment questions, and order support. We are based in Hauppauge, NY and respond to inquiries within one business day.
             </p>
           </section>
@@ -76,7 +76,7 @@ export default function ContactPage() {
                 <Phone size={20} />
               </div>
               <h3 className="text-xs font-black uppercase tracking-widest text-white mb-2 text-[9px]">Call Us</h3>
-              <a href="tel:+13322566110" className="text-white/40 hover:text-brand-gold transition-colors font-light text-[11px] tracking-tight">+1 (332) 256-6110</a>
+              <a href="tel:+12626865628" className="text-white/40 hover:text-brand-gold transition-colors font-light text-[11px] tracking-tight">+1 (262) 686-5628</a>
             </div>
 
             <div className="glass-card p-6 text-center flex flex-col items-center group">

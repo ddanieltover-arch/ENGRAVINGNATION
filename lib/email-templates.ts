@@ -46,7 +46,7 @@ const baseLayout = (content: string, title: string) => `
                                 &copy; ${new Date().getFullYear()} Engraving Nation. All rights reserved.
                             </p>
                             <p style="margin: 10px 0 0; color: ${TEXT_GRAY}; font-size: 10px;">
-                                13322566110 | info@engravingnation.store
+                                +1 (262) 686-5628 | info@engravingnation.store
                             </p>
                         </td>
                     </tr>
